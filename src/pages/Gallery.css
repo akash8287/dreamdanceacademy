@@ -1,0 +1,325 @@
+/* Gallery Hero */
+.gallery-hero {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 150px 0 60px;
+  overflow: hidden;
+}
+
+.gallery-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-primary) 100%);
+}
+
+.gallery-hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 30% 70%, rgba(8, 145, 178, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(6, 182, 212, 0.2) 0%, transparent 40%);
+}
+
+.gallery-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  color: var(--color-cream);
+}
+
+/* Gallery Section */
+.gallery-section {
+  background: var(--color-cream);
+}
+
+.gallery-filter {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sm);
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.gallery-item:nth-child(5),
+.gallery-item:nth-child(10) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-dark-soft));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-normal);
+}
+
+.image-icon {
+  font-size: 4rem;
+}
+
+.gallery-item:nth-child(5) .image-icon,
+.gallery-item:nth-child(10) .image-icon {
+  font-size: 8rem;
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 10, 15, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  color: var(--color-cream);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-item:hover .gallery-image {
+  transform: scale(1.1);
+}
+
+.gallery-overlay h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.gallery-overlay p {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+.view-btn {
+  padding: 0.5rem 1.5rem;
+  background: var(--color-secondary);
+  color: var(--color-dark);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+}
+
+.lightbox-content {
+  background: var(--color-dark-soft);
+  border-radius: 20px;
+  overflow: hidden;
+  max-width: 800px;
+  width: 100%;
+  position: relative;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  color: var(--color-cream);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: background var(--transition-fast);
+}
+
+.lightbox-close:hover {
+  background: var(--color-primary);
+}
+
+.lightbox-image {
+  aspect-ratio: 16/10;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-icon {
+  font-size: 10rem;
+}
+
+.lightbox-info {
+  padding: var(--space-md);
+  color: var(--color-cream);
+}
+
+.lightbox-info h3 {
+  margin-bottom: 0.5rem;
+}
+
+.lightbox-info p {
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+.lightbox-category {
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  background: var(--color-secondary);
+  color: var(--color-dark);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* Video Section */
+.video-section {
+  position: relative;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.video-card {
+  cursor: pointer;
+}
+
+.video-thumbnail {
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-dark-soft));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: transform var(--transition-normal);
+}
+
+.video-card:hover .video-thumbnail {
+  transform: scale(1.02);
+}
+
+.thumbnail-icon {
+  font-size: 4rem;
+}
+
+.play-btn {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: var(--color-secondary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--color-dark);
+  transition: all var(--transition-fast);
+}
+
+.video-card:hover .play-btn {
+  transform: scale(1.1);
+}
+
+.video-card h4 {
+  color: var(--color-cream);
+  font-size: 1.1rem;
+}
+
+/* Gallery CTA */
+.gallery-cta {
+  background: var(--color-cream-dark);
+  text-align: center;
+}
+
+.gallery-cta-content h2 {
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.gallery-cta-content p {
+  color: var(--color-text-light);
+  margin-bottom: var(--space-md);
+  font-size: 1.15rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gallery-item:nth-child(5),
+  .gallery-item:nth-child(10) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .gallery-item:nth-child(5) .image-icon,
+  .gallery-item:nth-child(10) .image-icon {
+    font-size: 4rem;
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-filter {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.5rem;
+  }
+
+  .gallery-filter .filter-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .lightbox-icon {
+    font-size: 6rem;
+  }
+}
