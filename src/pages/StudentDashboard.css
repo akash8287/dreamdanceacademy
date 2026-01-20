@@ -44,26 +44,40 @@
 .student-details {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
 }
 
-.student-details strong {
+.student-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.student-name-row strong {
   color: var(--color-cream);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .student-id-badge {
-  display: inline-block;
-  background: linear-gradient(135deg, rgba(74, 189, 172, 0.2), rgba(74, 189, 172, 0.1));
+  background: rgba(74, 189, 172, 0.15);
   color: var(--color-secondary);
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-weight: 600;
   font-family: 'Monaco', 'Consolas', monospace;
-  padding: 4px 8px;
-  border-radius: 6px;
-  border: 1px solid rgba(74, 189, 172, 0.3);
-  letter-spacing: 0.5px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.student-role {
+  color: rgba(253, 246, 233, 0.5);
+  font-size: 0.75rem;
 }
 
 /* Main Content */

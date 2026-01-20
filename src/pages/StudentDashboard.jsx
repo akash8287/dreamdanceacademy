@@ -177,8 +177,11 @@ const StudentDashboard = () => {
               {profile?.profile_image ? '🖼️' : '👤'}
             </span>
             <div className="student-details">
-              <strong>{user?.firstName} {user?.lastName}</strong>
-              <span className="student-id-badge">ID: 02112020{String(profile?.id || user?.id).padStart(4, '0')}</span>
+              <div className="student-name-row">
+                <strong>{user?.firstName} {user?.lastName}</strong>
+                <span className="student-id-badge">02112020{String(profile?.id || user?.id).padStart(4, '0')}</span>
+              </div>
+              <span className="student-role">Student</span>
             </div>
           </div>
           <button className="logout-btn" onClick={handleLogout}>Logout</button>
