@@ -177,7 +177,7 @@ const StudentDashboard = () => {
               <span className="student-avatar">
                 {profile?.profile_image ? '🖼️' : '👤'}
               </span>
-              <span className="student-id-badge">#{profile?.id || user?.id}</span>
+              <span className="student-id-badge">02112020{String(profile?.id || user?.id).padStart(4, '0')}</span>
             </div>
             <div>
               <strong>{user?.firstName} {user?.lastName}</strong>
