@@ -74,6 +74,12 @@
   transition: transform var(--transition-normal);
 }
 
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .image-icon {
   font-size: 4rem;
 }
@@ -173,6 +179,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.lightbox-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .lightbox-icon {
@@ -207,8 +220,100 @@
 /* Video Section */
 .video-section {
   position: relative;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: var(--space-xl) 0;
 }
 
+/* Actual Video Grid */
+.video-grid-actual {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.video-card-actual {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.video-card-actual:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(6, 182, 212, 0.3);
+  border-color: var(--color-secondary);
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  cursor: pointer;
+  overflow: hidden;
+  background: #000;
+}
+
+.performance-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-overlay-play {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(8, 145, 178, 0.3), rgba(6, 182, 212, 0.3));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.video-card-actual:hover .video-overlay-play {
+  background: linear-gradient(135deg, rgba(8, 145, 178, 0.5), rgba(6, 182, 212, 0.5));
+}
+
+.play-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.5);
+}
+
+.video-card-actual:hover .play-icon {
+  transform: scale(1.15);
+  box-shadow: 0 15px 40px rgba(6, 182, 212, 0.7);
+}
+
+.video-info {
+  padding: 1.5rem 2rem 2rem;
+}
+
+.video-info h4 {
+  color: #fff;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.video-info p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Legacy video grid (kept for backwards compatibility) */
 .video-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -275,7 +380,7 @@
 }
 
 .gallery-cta-content p {
-  color: var(--color-text-light);
+  color: var(--color-text-dark);
   margin-bottom: var(--space-md);
   font-size: 1.15rem;
 }
@@ -300,6 +405,11 @@
   .video-grid {
     grid-template-columns: 1fr;
   }
+
+  .video-grid-actual {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -321,5 +431,28 @@
 
   .lightbox-icon {
     font-size: 6rem;
+  }
+
+  .video-grid-actual {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .video-card-actual {
+    border-radius: 16px;
+  }
+
+  .video-info {
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+
+  .video-info h4 {
+    font-size: 1.1rem;
+  }
+
+  .play-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
   }
 }

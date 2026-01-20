@@ -269,6 +269,14 @@ tr:hover td {
   background: #f44336;
 }
 
+.action-btn.edit {
+  background: rgba(76, 175, 80, 0.25);
+}
+
+.action-btn.edit:hover {
+  background: #4caf50;
+}
+
 /* Content Header */
 .content-header {
   display: flex;

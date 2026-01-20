@@ -128,7 +128,7 @@
 }
 
 .step-description {
-  color: var(--color-text-light);
+  color: var(--color-text-dark);
   margin-bottom: var(--space-md);
 }
 
@@ -155,7 +155,7 @@
   gap: 0.75rem;
   cursor: pointer;
   font-size: 0.95rem;
-  color: var(--color-text);
+  color: var(--color-text-dark);
 }
 
 .checkbox-label input {
@@ -222,7 +222,7 @@
 }
 
 .review-label {
-  color: var(--color-text-light);
+  color: var(--color-text-dark);
 }
 
 .review-value {
@@ -282,7 +282,7 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.5rem 0;
-  color: var(--color-text);
+  color: var(--color-text-dark);
   font-size: 0.95rem;
 }
 
@@ -292,7 +292,7 @@
 }
 
 .contact-card p {
-  color: var(--color-text-light);
+  color: var(--color-text-dark);
   margin-bottom: var(--space-sm);
 }
 

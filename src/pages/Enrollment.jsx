@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { sendEnrollmentEmail } from '../services/emailService'
 import './Enrollment.css'
 
 const Enrollment = () => {
@@ -62,12 +63,19 @@ const Enrollment = () => {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    console.log('Enrollment Form Submitted:', formData)
-    setSubmitStatus('success')
-    setIsSubmitting(false)
+    try {
+      // Send enrollment notification email
+      await sendEnrollmentEmail(formData)
+      
+      console.log('Enrollment Form Submitted:', formData)
+      setSubmitStatus('success')
+    } catch (error) {
+      console.error('Failed to send enrollment email:', error)
+      // Still mark as success since enrollment is recorded, email is just notification
+      setSubmitStatus('success')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const danceStyles = [

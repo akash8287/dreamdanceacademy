@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { sendContactEmail } from '../services/emailService'
 import './Contact.css'
 
 const Contact = () => {
@@ -12,6 +13,7 @@ const Contact = () => {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -21,50 +23,58 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setErrorMessage('')
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    
-    console.log('Contact Form Submitted:', formData)
-    setSubmitStatus('success')
-    setIsSubmitting(false)
-    
-    // Reset form after success
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    })
-    
-    // Clear success message after 5 seconds
-    setTimeout(() => setSubmitStatus(null), 5000)
+    try {
+      // Send email using EmailJS
+      await sendContactEmail(formData)
+      
+      setSubmitStatus('success')
+      
+      // Reset form after success
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+      })
+      
+      // Clear success message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000)
+    } catch (error) {
+      console.error('Failed to send email:', error)
+      setSubmitStatus('error')
+      setErrorMessage('Failed to send message. Please try again or contact us directly.')
+      setTimeout(() => setSubmitStatus(null), 5000)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const contactInfo = [
     {
       icon: '📍',
       title: 'Visit Us',
-      details: ['123 Dance Avenue', 'Creative District', 'CA 90210'],
-      action: { text: 'Get Directions', link: '#' }
+      details: ['Bawana Road, Pehladpur', 'Near by Maan Medical', 'Delhi'],
+      action: { text: 'Get Directions', link: 'https://maps.google.com' }
     },
     {
       icon: '📞',
       title: 'Call Us',
-      details: ['+1 (555) 123-4567', '+1 (555) 987-6543'],
-      action: { text: 'Call Now', link: 'tel:+15551234567' }
+      details: ['+91 7065910907', '+91 9319205425'],
+      action: { text: 'Call Now', link: 'tel:+917065910907' }
     },
     {
       icon: '✉️',
       title: 'Email Us',
-      details: ['info@dreamdanceacademy.com', 'admissions@dreamdance.com'],
-      action: { text: 'Send Email', link: 'mailto:info@dreamdanceacademy.com' }
+      details: ['shivamsmj008@gmail.com'],
+      action: { text: 'Send Email', link: 'mailto:shivamsmj008@gmail.com' }
     },
     {
-      icon: '🕐',
-      title: 'Hours',
-      details: ['Mon - Sat: 9AM - 9PM', 'Sunday: 10AM - 6PM'],
+      icon: '🌐',
+      title: 'Website',
+      details: ['www.dreamdanceacademy.in', 'Private & Online Classes Available'],
       action: null
     }
   ]
@@ -191,6 +201,11 @@ const Contact = () => {
               {submitStatus === 'success' && (
                 <div className="message message-success">
                   ✓ Thank you! Your message has been sent successfully. We'll get back to you soon.
+                </div>
+              )}
+              {submitStatus === 'error' && (
+                <div className="message message-error">
+                  ✗ {errorMessage}
                 </div>
               )}
               
@@ -327,8 +342,8 @@ const Contact = () => {
           <div className="map-content">
             <span className="map-icon">📍</span>
             <h3>Find Us Here</h3>
-            <p>123 Dance Avenue, Creative District, CA 90210</p>
-            <a href="#" className="btn btn-gold">Open in Google Maps</a>
+            <p>Bawana Road, Pehladpur, Near by Maan Medical, Delhi</p>
+            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="btn btn-gold">Open in Google Maps</a>
           </div>
         </div>
       </section>

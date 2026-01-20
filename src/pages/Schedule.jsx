@@ -18,59 +18,59 @@ const Schedule = () => {
 
   const schedule = {
     monday: [
-      { time: '9:00 AM', class: 'Kids Ballet', instructor: 'Lisa Thompson', level: 'Ages 4-7', studio: 'Studio A' },
-      { time: '10:30 AM', class: 'Classical Ballet', instructor: 'Maria Santos', level: 'Beginner', studio: 'Studio B' },
-      { time: '12:00 PM', class: 'Contemporary', instructor: 'Elena Volkov', level: 'Intermediate', studio: 'Studio A' },
-      { time: '4:00 PM', class: 'Kids Hip Hop', instructor: 'James Rivera', level: 'Ages 8-12', studio: 'Studio C' },
-      { time: '5:30 PM', class: 'Hip Hop', instructor: 'James Rivera', level: 'All Levels', studio: 'Studio C' },
-      { time: '7:00 PM', class: 'Classical Ballet', instructor: 'Maria Santos', level: 'Advanced', studio: 'Studio A' }
+      { time: '9:00 AM', class: 'Kids Dance', instructor: 'Shivam SMJ', level: 'Ages 4-7', studio: 'Studio A' },
+      { time: '10:30 AM', class: 'Bharatanatyam', instructor: 'Priya Sharma', level: 'Beginner', studio: 'Studio B' },
+      { time: '12:00 PM', class: 'Contemporary', instructor: 'Shivam SMJ', level: 'Intermediate', studio: 'Studio A' },
+      { time: '4:00 PM', class: 'Kids Hip Hop', instructor: 'Rahul Kumar', level: 'Ages 8-12', studio: 'Studio C' },
+      { time: '5:30 PM', class: 'Hip Hop', instructor: 'Rahul Kumar', level: 'All Levels', studio: 'Studio C' },
+      { time: '7:00 PM', class: 'Kathak', instructor: 'Priya Sharma', level: 'Advanced', studio: 'Studio A' }
     ],
     tuesday: [
-      { time: '9:00 AM', class: 'Yoga for Dancers', instructor: 'Elena Volkov', level: 'All Levels', studio: 'Studio B' },
-      { time: '10:30 AM', class: 'Jazz', instructor: 'Sarah Kim', level: 'Beginner', studio: 'Studio A' },
-      { time: '12:00 PM', class: 'Contemporary', instructor: 'Elena Volkov', level: 'Advanced', studio: 'Studio A' },
-      { time: '4:00 PM', class: 'Kids Jazz', instructor: 'Sarah Kim', level: 'Ages 8-12', studio: 'Studio B' },
-      { time: '5:30 PM', class: 'Salsa', instructor: 'Carlos Mendez', level: 'Beginner', studio: 'Studio C' },
-      { time: '7:00 PM', class: 'Jazz', instructor: 'Sarah Kim', level: 'Intermediate', studio: 'Studio A' }
+      { time: '9:00 AM', class: 'Zumba', instructor: 'Shivam SMJ', level: 'All Levels', studio: 'Studio B' },
+      { time: '10:30 AM', class: 'Kuchipuri', instructor: 'Priya Sharma', level: 'Beginner', studio: 'Studio A' },
+      { time: '12:00 PM', class: 'Contemporary', instructor: 'Shivam SMJ', level: 'Advanced', studio: 'Studio A' },
+      { time: '4:00 PM', class: 'Kids Classical', instructor: 'Priya Sharma', level: 'Ages 8-12', studio: 'Studio B' },
+      { time: '5:30 PM', class: 'Bollywood', instructor: 'Rahul Kumar', level: 'Beginner', studio: 'Studio C' },
+      { time: '7:00 PM', class: 'Hip Hop', instructor: 'Rahul Kumar', level: 'Intermediate', studio: 'Studio A' }
     ],
     wednesday: [
-      { time: '9:00 AM', class: 'Kids Ballet', instructor: 'Lisa Thompson', level: 'Ages 4-7', studio: 'Studio A' },
-      { time: '10:30 AM', class: 'Bollywood', instructor: 'Raj Patel', level: 'All Levels', studio: 'Studio C' },
-      { time: '12:00 PM', class: 'Classical Ballet', instructor: 'Maria Santos', level: 'Intermediate', studio: 'Studio A' },
-      { time: '4:00 PM', class: 'Kids Contemporary', instructor: 'Elena Volkov', level: 'Ages 8-12', studio: 'Studio B' },
-      { time: '5:30 PM', class: 'Hip Hop', instructor: 'James Rivera', level: 'Intermediate', studio: 'Studio C' },
-      { time: '7:00 PM', class: 'Bollywood', instructor: 'Raj Patel', level: 'All Levels', studio: 'Studio C' }
+      { time: '9:00 AM', class: 'Kids Dance', instructor: 'Shivam SMJ', level: 'Ages 4-7', studio: 'Studio A' },
+      { time: '10:30 AM', class: 'Bollywood', instructor: 'Rahul Kumar', level: 'All Levels', studio: 'Studio C' },
+      { time: '12:00 PM', class: 'Bharatanatyam', instructor: 'Priya Sharma', level: 'Intermediate', studio: 'Studio A' },
+      { time: '4:00 PM', class: 'Kids Contemporary', instructor: 'Shivam SMJ', level: 'Ages 8-12', studio: 'Studio B' },
+      { time: '5:30 PM', class: 'Hip Hop', instructor: 'Rahul Kumar', level: 'Intermediate', studio: 'Studio C' },
+      { time: '7:00 PM', class: 'Kathak', instructor: 'Priya Sharma', level: 'All Levels', studio: 'Studio C' }
     ],
     thursday: [
-      { time: '9:00 AM', class: 'Pilates', instructor: 'Maria Santos', level: 'All Levels', studio: 'Studio B' },
-      { time: '10:30 AM', class: 'Jazz', instructor: 'Sarah Kim', level: 'Advanced', studio: 'Studio A' },
-      { time: '12:00 PM', class: 'Contemporary', instructor: 'Elena Volkov', level: 'Beginner', studio: 'Studio A' },
-      { time: '4:00 PM', class: 'Kids Hip Hop', instructor: 'James Rivera', level: 'Ages 4-7', studio: 'Studio C' },
-      { time: '5:30 PM', class: 'Bachata', instructor: 'Carlos Mendez', level: 'All Levels', studio: 'Studio C' },
-      { time: '7:00 PM', class: 'Jazz', instructor: 'Sarah Kim', level: 'All Levels', studio: 'Studio A' }
+      { time: '9:00 AM', class: 'Zumba', instructor: 'Shivam SMJ', level: 'All Levels', studio: 'Studio B' },
+      { time: '10:30 AM', class: 'Kathak', instructor: 'Priya Sharma', level: 'Advanced', studio: 'Studio A' },
+      { time: '12:00 PM', class: 'Contemporary', instructor: 'Shivam SMJ', level: 'Beginner', studio: 'Studio A' },
+      { time: '4:00 PM', class: 'Kids Hip Hop', instructor: 'Rahul Kumar', level: 'Ages 4-7', studio: 'Studio C' },
+      { time: '5:30 PM', class: 'Bollywood', instructor: 'Rahul Kumar', level: 'All Levels', studio: 'Studio C' },
+      { time: '7:00 PM', class: 'Kuchipuri', instructor: 'Priya Sharma', level: 'All Levels', studio: 'Studio A' }
     ],
     friday: [
-      { time: '9:00 AM', class: 'Classical Ballet', instructor: 'Maria Santos', level: 'Beginner', studio: 'Studio A' },
-      { time: '10:30 AM', class: 'Kathak', instructor: 'Priya Nair', level: 'Beginner', studio: 'Studio B' },
-      { time: '12:00 PM', class: 'Hip Hop', instructor: 'James Rivera', level: 'Advanced', studio: 'Studio C' },
-      { time: '4:00 PM', class: 'Kids Ballet', instructor: 'Lisa Thompson', level: 'Ages 8-12', studio: 'Studio A' },
-      { time: '5:30 PM', class: 'Salsa', instructor: 'Carlos Mendez', level: 'Intermediate', studio: 'Studio C' },
-      { time: '7:00 PM', class: 'Classical Ballet', instructor: 'Maria Santos', level: 'Intermediate', studio: 'Studio A' }
+      { time: '9:00 AM', class: 'Bharatanatyam', instructor: 'Priya Sharma', level: 'Beginner', studio: 'Studio A' },
+      { time: '10:30 AM', class: 'Kathak', instructor: 'Priya Sharma', level: 'Beginner', studio: 'Studio B' },
+      { time: '12:00 PM', class: 'Hip Hop', instructor: 'Rahul Kumar', level: 'Advanced', studio: 'Studio C' },
+      { time: '4:00 PM', class: 'Kids Classical', instructor: 'Priya Sharma', level: 'Ages 8-12', studio: 'Studio A' },
+      { time: '5:30 PM', class: 'Bollywood', instructor: 'Rahul Kumar', level: 'Intermediate', studio: 'Studio C' },
+      { time: '7:00 PM', class: 'Contemporary', instructor: 'Shivam SMJ', level: 'Intermediate', studio: 'Studio A' }
     ],
     saturday: [
-      { time: '9:00 AM', class: 'Kids Ballet', instructor: 'Lisa Thompson', level: 'Ages 4-7', studio: 'Studio A' },
-      { time: '9:00 AM', class: 'Kids Hip Hop', instructor: 'James Rivera', level: 'Ages 8-12', studio: 'Studio C' },
-      { time: '10:30 AM', class: 'Classical Ballet', instructor: 'Maria Santos', level: 'All Levels', studio: 'Studio A' },
-      { time: '10:30 AM', class: 'Kathak', instructor: 'Priya Nair', level: 'Intermediate', studio: 'Studio B' },
-      { time: '12:00 PM', class: 'Contemporary', instructor: 'Elena Volkov', level: 'All Levels', studio: 'Studio A' },
-      { time: '12:00 PM', class: 'Bollywood', instructor: 'Raj Patel', level: 'All Levels', studio: 'Studio C' },
-      { time: '2:00 PM', class: 'Hip Hop', instructor: 'James Rivera', level: 'All Levels', studio: 'Studio C' },
-      { time: '3:30 PM', class: 'Jazz', instructor: 'Sarah Kim', level: 'All Levels', studio: 'Studio A' }
+      { time: '9:00 AM', class: 'Kids Dance', instructor: 'Shivam SMJ', level: 'Ages 4-7', studio: 'Studio A' },
+      { time: '9:00 AM', class: 'Kids Hip Hop', instructor: 'Rahul Kumar', level: 'Ages 8-12', studio: 'Studio C' },
+      { time: '10:30 AM', class: 'Bharatanatyam', instructor: 'Priya Sharma', level: 'All Levels', studio: 'Studio A' },
+      { time: '10:30 AM', class: 'Kathak', instructor: 'Priya Sharma', level: 'Intermediate', studio: 'Studio B' },
+      { time: '12:00 PM', class: 'Contemporary', instructor: 'Shivam SMJ', level: 'All Levels', studio: 'Studio A' },
+      { time: '12:00 PM', class: 'Bollywood', instructor: 'Rahul Kumar', level: 'All Levels', studio: 'Studio C' },
+      { time: '2:00 PM', class: 'Hip Hop', instructor: 'Rahul Kumar', level: 'All Levels', studio: 'Studio C' },
+      { time: '3:30 PM', class: 'Zumba', instructor: 'Shivam SMJ', level: 'All Levels', studio: 'Studio A' }
     ],
     sunday: [
-      { time: '10:00 AM', class: 'Kathak', instructor: 'Priya Nair', level: 'Advanced', studio: 'Studio B' },
-      { time: '10:00 AM', class: 'Contemporary', instructor: 'Elena Volkov', level: 'Intermediate', studio: 'Studio A' },
-      { time: '12:00 PM', class: 'Salsa Social', instructor: 'Carlos Mendez', level: 'All Levels', studio: 'Studio C' },
+      { time: '10:00 AM', class: 'Kathak', instructor: 'Priya Sharma', level: 'Advanced', studio: 'Studio B' },
+      { time: '10:00 AM', class: 'Contemporary', instructor: 'Shivam SMJ', level: 'Intermediate', studio: 'Studio A' },
+      { time: '12:00 PM', class: 'Bollywood Fusion', instructor: 'Rahul Kumar', level: 'All Levels', studio: 'Studio C' },
       { time: '2:00 PM', class: 'Open Practice', instructor: 'Various', level: 'All Students', studio: 'All Studios' },
       { time: '4:00 PM', class: 'Performance Rehearsal', instructor: 'Various', level: 'By Invitation', studio: 'Main Hall' }
     ]
@@ -185,7 +185,7 @@ const Schedule = () => {
       </section>
 
       {/* Info Section */}
-      <section className="section section-dark schedule-info">
+      <section className="schedule-info">
         <div className="container">
           <div className="info-grid">
             <motion.div 
@@ -195,9 +195,9 @@ const Schedule = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="info-icon">📍</span>
+              <div className="info-icon">📍</div>
               <h3>Location</h3>
-              <p>123 Dance Avenue<br/>Creative District, CA 90210</p>
+              <p>Bawana Road, Pehladpur<br/>Near by Maan Medical, Delhi</p>
             </motion.div>
             <motion.div 
               className="info-item"
@@ -206,7 +206,7 @@ const Schedule = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <span className="info-icon">🕐</span>
+              <div className="info-icon">🕐</div>
               <h3>Studio Hours</h3>
               <p>Mon - Sat: 9AM - 9PM<br/>Sunday: 10AM - 6PM</p>
             </motion.div>
@@ -217,9 +217,9 @@ const Schedule = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <span className="info-icon">📞</span>
+              <div className="info-icon">📞</div>
               <h3>Contact</h3>
-              <p>+1 (555) 123-4567<br/>info@dreamdanceacademy.com</p>
+              <p>+91 7065910907<br/>shivamsmj008@gmail.com</p>
             </motion.div>
             <motion.div 
               className="info-item"
@@ -228,9 +228,9 @@ const Schedule = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <span className="info-icon">ℹ️</span>
+              <div className="info-icon">ℹ️</div>
               <h3>Note</h3>
-              <p>Schedule subject to change.<br/>Check website for updates.</p>
+              <p>Schedule subject to change.<br/>Visit: www.dreamdanceacademy.in</p>
             </motion.div>
           </div>
         </div>

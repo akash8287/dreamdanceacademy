@@ -17,6 +17,7 @@ const AdminDashboard = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [showAddModal, setShowAddModal] = useState(false)
   const [showScheduleModal, setShowScheduleModal] = useState(false)
+  const [editingSchedule, setEditingSchedule] = useState(null)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
 
@@ -87,24 +88,55 @@ const AdminDashboard = () => {
   const handleAddSchedule = async (e) => {
     e.preventDefault()
     try {
-      await adminAPI.addSchedule(selectedStudent.id, scheduleForm)
-      setSuccess('Schedule added successfully')
+      if (editingSchedule) {
+        await adminAPI.updateSchedule(editingSchedule.id, scheduleForm)
+        setSuccess('Schedule updated successfully')
+      } else {
+        await adminAPI.addSchedule(selectedStudent.id, scheduleForm)
+        setSuccess('Schedule added successfully')
+      }
       setShowScheduleModal(false)
+      setEditingSchedule(null)
       setScheduleForm({ dayOfWeek: '', timeSlot: '', className: '', instructor: '', studio: '', notes: '' })
-      handleViewStudent(selectedStudent)
+      if (selectedStudent) {
+        handleViewStudent(selectedStudent)
+      }
+      loadData() // Refresh all data including schedules list
     } catch (err) {
       setError(err.message)
     }
+  }
+
+  const handleEditSchedule = (schedule) => {
+    setEditingSchedule(schedule)
+    setScheduleForm({
+      dayOfWeek: schedule.day_of_week,
+      timeSlot: schedule.time_slot,
+      className: schedule.class_name,
+      instructor: schedule.instructor || '',
+      studio: schedule.studio || '',
+      notes: schedule.notes || ''
+    })
+    setShowScheduleModal(true)
   }
 
   const handleDeleteSchedule = async (scheduleId) => {
     try {
       await adminAPI.deleteSchedule(scheduleId)
       setSuccess('Schedule deleted')
-      handleViewStudent(selectedStudent)
+      if (selectedStudent) {
+        handleViewStudent(selectedStudent)
+      }
+      loadData() // Refresh all data
     } catch (err) {
       setError(err.message)
     }
+  }
+
+  const openAddScheduleModal = () => {
+    setEditingSchedule(null)
+    setScheduleForm({ dayOfWeek: '', timeSlot: '', className: '', instructor: '', studio: '', notes: '' })
+    setShowScheduleModal(true)
   }
 
   const handleLogout = () => {
@@ -335,7 +367,7 @@ const AdminDashboard = () => {
               <div className="detail-card full-width">
                 <div className="card-header">
                   <h3>Assigned Schedule</h3>
-                  <button className="btn btn-primary btn-sm" onClick={() => setShowScheduleModal(true)}>+ Add Class</button>
+                  <button className="btn btn-primary btn-sm" onClick={openAddScheduleModal}>+ Add Class</button>
                 </div>
                 {selectedStudent.schedules?.length > 0 ? (
                   <table className="schedule-table">
@@ -358,6 +390,7 @@ const AdminDashboard = () => {
                           <td>{schedule.instructor || '-'}</td>
                           <td>{schedule.studio || '-'}</td>
                           <td>
+                            <button className="action-btn edit" onClick={() => handleEditSchedule(schedule)}>Edit</button>
                             <button className="action-btn delete" onClick={() => handleDeleteSchedule(schedule.id)}>Remove</button>
                           </td>
                         </tr>
@@ -394,7 +427,10 @@ const AdminDashboard = () => {
         {/* Schedules Tab */}
         {activeTab === 'schedules' && (
           <div className="schedules-content">
-            <h1>All Schedules</h1>
+            <div className="content-header">
+              <h1>All Schedules</h1>
+              <button className="btn btn-secondary" onClick={loadData}>🔄 Refresh</button>
+            </div>
             {allSchedules.length > 0 ? (
               <div className="table-container">
                 <table>
@@ -419,6 +455,7 @@ const AdminDashboard = () => {
                         <td>{schedule.instructor || '-'}</td>
                         <td>{schedule.studio || '-'}</td>
                         <td>
+                          <button className="action-btn edit" onClick={() => handleEditSchedule(schedule)}>Edit</button>
                           <button className="action-btn delete" onClick={() => handleDeleteSchedule(schedule.id)}>Remove</button>
                         </td>
                       </tr>
@@ -495,13 +532,13 @@ const AdminDashboard = () => {
         </div>
       )}
 
-      {/* Add Schedule Modal */}
+      {/* Add/Edit Schedule Modal */}
       {showScheduleModal && (
-        <div className="modal-overlay" onClick={() => setShowScheduleModal(false)}>
+        <div className="modal-overlay" onClick={() => { setShowScheduleModal(false); setEditingSchedule(null) }}>
           <div className="modal" onClick={e => e.stopPropagation()}>
             <div className="modal-header">
-              <h2>Add Class Schedule</h2>
-              <button className="close-btn" onClick={() => setShowScheduleModal(false)}>×</button>
+              <h2>{editingSchedule ? 'Edit Schedule' : 'Add Class Schedule'}</h2>
+              <button className="close-btn" onClick={() => { setShowScheduleModal(false); setEditingSchedule(null) }}>×</button>
             </div>
             <form onSubmit={handleAddSchedule}>
               <div className="form-row">
@@ -539,8 +576,8 @@ const AdminDashboard = () => {
                 <textarea value={scheduleForm.notes} onChange={e => setScheduleForm({...scheduleForm, notes: e.target.value})} rows="2"></textarea>
               </div>
               <div className="modal-actions">
-                <button type="button" className="btn btn-secondary" onClick={() => setShowScheduleModal(false)}>Cancel</button>
-                <button type="submit" className="btn btn-primary">Add Schedule</button>
+                <button type="button" className="btn btn-secondary" onClick={() => { setShowScheduleModal(false); setEditingSchedule(null) }}>Cancel</button>
+                <button type="submit" className="btn btn-primary">{editingSchedule ? 'Save Changes' : 'Add Schedule'}</button>
               </div>
             </form>
           </div>

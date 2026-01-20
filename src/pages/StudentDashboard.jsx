@@ -173,9 +173,12 @@ const StudentDashboard = () => {
 
         <div className="sidebar-footer">
           <div className="student-info">
-            <span className="student-avatar">
-              {profile?.profile_image ? '🖼️' : '👤'}
-            </span>
+            <div className="student-avatar-container">
+              <span className="student-avatar">
+                {profile?.profile_image ? '🖼️' : '👤'}
+              </span>
+              <span className="student-id-badge">#{profile?.id || user?.id}</span>
+            </div>
             <div>
               <strong>{user?.firstName} {user?.lastName}</strong>
               <span>Student</span>
@@ -411,7 +414,12 @@ const StudentDashboard = () => {
             {/* Schedule Tab */}
             {activeTab === 'schedule' && (
               <div className="schedule-content">
-                <h1>My Schedule</h1>
+                <div className="content-header">
+                  <h1>My Schedule</h1>
+                  <button className="btn btn-secondary refresh-btn" onClick={loadData}>
+                    🔄 Refresh
+                  </button>
+                </div>
                 
                 {schedules.length > 0 ? (
                   <div className="schedule-grid">

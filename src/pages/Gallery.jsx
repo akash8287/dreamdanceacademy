@@ -1,11 +1,63 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import './Gallery.css'
 
+// Import images
+import mainBanner from '../../assets/WhatsApp Image 2026-01-19 at 19.07.44.jpeg'
+
+// Import videos
+import performanceVideo1 from '../../assets/WhatsApp Video 2026-01-19 at 19.21.54.mp4'
+import performanceVideo2 from '../../assets/WhatsApp Video 2026-01-19 at 19.22.21.mp4'
+import studioImage1 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.21.jpeg'
+import studioImage2 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.29.jpeg'
+import studioImage3 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.30.jpeg'
+import studioImage4 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.21 (1).jpeg'
+import studioImage5 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.28 (1).jpeg'
+import studioImage6 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.29 (1).jpeg'
+import hipHopImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.24.jpeg'
+import hipHopImage2 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.27 (1).jpeg'
+import kathakImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.25 (1).jpeg'
+import zumbaImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.22.jpeg'
+import classicalImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.26.jpeg'
+import classicalImage2 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.23 (1).jpeg'
+import contemporaryImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.23.jpeg'
+import kuchipuriImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.22 (1).jpeg'
+import onlineClassImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.24 (1).jpeg'
+import summerClassImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.27.jpeg'
+import promoImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.28.jpeg'
+import classPromoImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.25.jpeg'
+
 const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState('all')
   const [selectedImage, setSelectedImage] = useState(null)
+  const [playingVideo, setPlayingVideo] = useState(null)
+  const videoRef1 = useRef(null)
+  const videoRef2 = useRef(null)
+
+  const handleVideoPlay = (videoId) => {
+    if (playingVideo === videoId) {
+      // Pause the video
+      if (videoId === 1 && videoRef1.current) {
+        videoRef1.current.pause()
+      } else if (videoId === 2 && videoRef2.current) {
+        videoRef2.current.pause()
+      }
+      setPlayingVideo(null)
+    } else {
+      // Pause other video first
+      if (videoRef1.current) videoRef1.current.pause()
+      if (videoRef2.current) videoRef2.current.pause()
+      
+      // Play the selected video
+      if (videoId === 1 && videoRef1.current) {
+        videoRef1.current.play()
+      } else if (videoId === 2 && videoRef2.current) {
+        videoRef2.current.play()
+      }
+      setPlayingVideo(videoId)
+    }
+  }
 
   const filters = [
     { id: 'all', label: 'All' },
@@ -16,22 +68,22 @@ const Gallery = () => {
   ]
 
   const galleryItems = [
-    { id: 1, category: 'performances', icon: '🎭', title: 'Annual Showcase 2024', description: 'Our biggest event featuring all dance styles' },
-    { id: 2, category: 'classes', icon: '🩰', title: 'Ballet Class', description: 'Classical training in progress' },
-    { id: 3, category: 'events', icon: '🎉', title: 'Summer Workshop', description: 'Intensive dance workshop with guest instructors' },
-    { id: 4, category: 'studio', icon: '🏛️', title: 'Main Studio', description: 'Our state-of-the-art dance floor' },
-    { id: 5, category: 'performances', icon: '💃', title: 'Latin Night', description: 'Salsa and bachata performances' },
-    { id: 6, category: 'classes', icon: '🔥', title: 'Hip Hop Session', description: 'Breaking it down with James' },
-    { id: 7, category: 'events', icon: '🏆', title: 'Competition Winners', description: 'Our team at nationals' },
-    { id: 8, category: 'studio', icon: '🎵', title: 'Sound System', description: 'Premium audio equipment' },
-    { id: 9, category: 'performances', icon: '✨', title: 'Contemporary Piece', description: 'Emotional storytelling through dance' },
-    { id: 10, category: 'classes', icon: '🪘', title: 'Kathak Class', description: 'Traditional Indian dance training' },
-    { id: 11, category: 'events', icon: '🎬', title: 'Bollywood Night', description: 'Celebrating Indian cinema through dance' },
-    { id: 12, category: 'studio', icon: '🪞', title: 'Mirror Wall', description: 'Perfect for technique practice' },
-    { id: 13, category: 'performances', icon: '🌟', title: 'Jazz Showcase', description: 'High-energy jazz performance' },
-    { id: 14, category: 'classes', icon: '👧', title: 'Kids Program', description: 'Young dancers learning the basics' },
-    { id: 15, category: 'events', icon: '🎊', title: 'Year End Celebration', description: 'Celebrating our achievements' },
-    { id: 16, category: 'performances', icon: '🎪', title: 'Fusion Show', description: 'Blending multiple dance styles' }
+    { id: 1, category: 'performances', image: mainBanner, title: 'Dream Dance Academy', description: 'Our academy entrance and signboard' },
+    { id: 2, category: 'classes', image: classicalImage, title: 'Bharatanatyam Class', description: 'Classical dance training in progress' },
+    { id: 3, category: 'events', image: summerClassImage, title: 'Summer Workshop', description: 'Intensive dance workshop with guest instructors' },
+    { id: 4, category: 'studio', image: studioImage1, title: 'Main Studio', description: 'Our state-of-the-art dance floor' },
+    { id: 5, category: 'performances', image: promoImage, title: 'Dance Showcase', description: 'Hip Hop, Bollywood, Freestyle & more' },
+    { id: 6, category: 'classes', image: hipHopImage, title: 'Hip Hop Session', description: 'Best Hip Hop classes available' },
+    { id: 7, category: 'events', image: classPromoImage, title: 'Dance Styles', description: 'All styles of dance available' },
+    { id: 8, category: 'studio', image: studioImage2, title: 'LED Studio', description: 'Modern lighting and premium setup' },
+    { id: 9, category: 'performances', image: contemporaryImage, title: 'Contemporary Piece', description: 'Best contemporary dance classes' },
+    { id: 10, category: 'classes', image: kathakImage, title: 'Kathak Class', description: 'Traditional Indian dance training' },
+    { id: 11, category: 'events', image: kuchipuriImage, title: 'Kuchipuri Dance', description: 'Classical South Indian dance form' },
+    { id: 12, category: 'studio', image: studioImage3, title: 'Practice Area', description: 'Perfect for technique practice' },
+    { id: 13, category: 'performances', image: zumbaImage, title: 'Zumba Classes', description: 'High-energy fitness dance' },
+    { id: 14, category: 'classes', image: onlineClassImage, title: 'Online Classes', description: 'Learn from home with our online sessions' },
+    { id: 15, category: 'events', image: classicalImage2, title: 'Bharatanatyam Show', description: 'Classical dance performances' },
+    { id: 16, category: 'studio', image: studioImage5, title: 'Studio Interior', description: 'Modern dance studio setup' }
   ]
 
   const filteredItems = activeFilter === 'all' 
@@ -93,7 +145,7 @@ const Gallery = () => {
                   onClick={() => setSelectedImage(item)}
                 >
                   <div className="gallery-image">
-                    <span className="image-icon">{item.icon}</span>
+                    <img src={item.image} alt={item.title} className="gallery-img" />
                   </div>
                   <div className="gallery-overlay">
                     <h4>{item.title}</h4>
@@ -126,7 +178,7 @@ const Gallery = () => {
             >
               <button className="lightbox-close" onClick={() => setSelectedImage(null)}>×</button>
               <div className="lightbox-image">
-                <span className="lightbox-icon">{selectedImage.icon}</span>
+                <img src={selectedImage.image} alt={selectedImage.title} className="lightbox-img" />
               </div>
               <div className="lightbox-info">
                 <h3>{selectedImage.title}</h3>
@@ -152,45 +204,58 @@ const Gallery = () => {
             <h2>Watch Our Performances</h2>
             <div className="decorative-line"></div>
           </motion.div>
-          <div className="video-grid">
+          <div className="video-grid-actual">
             <motion.div 
-              className="video-card"
+              className="video-card-actual"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="video-thumbnail">
-                <span className="thumbnail-icon">🎬</span>
-                <span className="play-btn">▶</span>
+              <div className="video-container" onClick={() => handleVideoPlay(1)}>
+                <video 
+                  ref={videoRef1}
+                  src={performanceVideo1} 
+                  className="performance-video"
+                  playsInline
+                  onEnded={() => setPlayingVideo(null)}
+                />
+                {playingVideo !== 1 && (
+                  <div className="video-overlay-play">
+                    <span className="play-icon">▶</span>
+                  </div>
+                )}
               </div>
-              <h4>Annual Showcase 2024 Highlights</h4>
+              <div className="video-info">
+                <h4>Dance Performance Showcase</h4>
+                <p>Watch our talented dancers perform various styles</p>
+              </div>
             </motion.div>
             <motion.div 
-              className="video-card"
+              className="video-card-actual"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <div className="video-thumbnail">
-                <span className="thumbnail-icon">🩰</span>
-                <span className="play-btn">▶</span>
+              <div className="video-container" onClick={() => handleVideoPlay(2)}>
+                <video 
+                  ref={videoRef2}
+                  src={performanceVideo2} 
+                  className="performance-video"
+                  playsInline
+                  onEnded={() => setPlayingVideo(null)}
+                />
+                {playingVideo !== 2 && (
+                  <div className="video-overlay-play">
+                    <span className="play-icon">▶</span>
+                  </div>
+                )}
               </div>
-              <h4>Ballet Gala Performance</h4>
-            </motion.div>
-            <motion.div 
-              className="video-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <div className="video-thumbnail">
-                <span className="thumbnail-icon">🔥</span>
-                <span className="play-btn">▶</span>
+              <div className="video-info">
+                <h4>Academy Highlights</h4>
+                <p>Experience the energy of Dream Dance Academy</p>
               </div>
-              <h4>Hip Hop Battle Championship</h4>
             </motion.div>
           </div>
         </div>

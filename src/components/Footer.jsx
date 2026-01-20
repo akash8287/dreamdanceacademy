@@ -18,8 +18,8 @@ const Footer = () => {
               </div>
             </Link>
             <p className="footer-description">
-              Where passion meets movement. Join us on a journey of self-expression
-              through the art of dance.
+              Let your body speak, unleash the rhythm. Join us on a journey of self-expression
+              through the art of dance. Organized by Shivam SMJ.
             </p>
             <div className="social-links">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
@@ -35,11 +35,6 @@ const Footer = () => {
               <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                   <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-              </a>
-              <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
                 </svg>
               </a>
             </div>
@@ -59,11 +54,11 @@ const Footer = () => {
           <div className="footer-links">
             <h4>Dance Styles</h4>
             <ul>
-              <li><Link to="/classes">Classical Ballet</Link></li>
-              <li><Link to="/classes">Contemporary</Link></li>
+              <li><Link to="/classes">Bollywood</Link></li>
               <li><Link to="/classes">Hip Hop</Link></li>
-              <li><Link to="/classes">Jazz</Link></li>
+              <li><Link to="/classes">Contemporary</Link></li>
               <li><Link to="/classes">Kathak</Link></li>
+              <li><Link to="/classes">Bharatanatyam</Link></li>
             </ul>
           </div>
 
@@ -72,19 +67,19 @@ const Footer = () => {
             <div className="contact-info">
               <div className="contact-item">
                 <span className="contact-icon">📍</span>
-                <p>123 Dance Avenue,<br />Creative District, CA 90210</p>
+                <p>Bawana Road, Pehladpur<br />Near by Maan Medical</p>
               </div>
               <div className="contact-item">
                 <span className="contact-icon">📞</span>
-                <p>+1 (555) 123-4567</p>
+                <p>+91 7065910907<br />+91 9319205425</p>
               </div>
               <div className="contact-item">
                 <span className="contact-icon">✉️</span>
-                <p>info@dreamdanceacademy.com</p>
+                <p>shivamsmj008@gmail.com</p>
               </div>
               <div className="contact-item">
-                <span className="contact-icon">🕐</span>
-                <p>Mon - Sat: 9AM - 9PM<br />Sun: 10AM - 6PM</p>
+                <span className="contact-icon">🌐</span>
+                <p>www.dreamdanceacademy.in</p>
               </div>
             </div>
           </div>

@@ -2,6 +2,18 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import './Home.css'
 
+// Import images
+import heroBanner from '../../assets/WhatsApp Image 2026-01-19 at 19.22.28.jpeg'
+import studioImage1 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.29.jpeg'
+import studioImage2 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.30.jpeg'
+import studioImage3 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.21.jpeg'
+import hipHopImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.24.jpeg'
+import kathakImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.25 (1).jpeg'
+import zumbaImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.22.jpeg'
+import classicalImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.26.jpeg'
+import contemporaryImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.23.jpeg'
+import bollywoodImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.22 (1).jpeg'
+
 const Home = () => {
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
@@ -18,12 +30,12 @@ const Home = () => {
   }
 
   const danceStyles = [
-    { name: 'Classical Ballet', icon: '🩰', description: 'Master the timeless art of ballet with grace and precision.' },
-    { name: 'Contemporary', icon: '💫', description: 'Express yourself through fluid, emotional movement.' },
-    { name: 'Hip Hop', icon: '🔥', description: 'Learn the latest urban dance styles and techniques.' },
-    { name: 'Jazz', icon: '✨', description: 'Energetic and dynamic dance with theatrical flair.' },
-    { name: 'Kathak', icon: '🪘', description: 'Traditional Indian classical dance storytelling.' },
-    { name: 'Salsa', icon: '💃', description: 'Hot Latin rhythms and partner dance techniques.' },
+    { name: 'Classical Dance', image: classicalImage, description: 'Master the timeless art of Bharatanatyam and classical forms.' },
+    { name: 'Contemporary', image: contemporaryImage, description: 'Express yourself through fluid, emotional movement.' },
+    { name: 'Hip Hop', image: hipHopImage, description: 'Learn the latest urban dance styles and techniques.' },
+    { name: 'Zumba', image: zumbaImage, description: 'High-energy fitness dance that makes working out fun.' },
+    { name: 'Kathak', image: kathakImage, description: 'Traditional Indian classical dance storytelling.' },
+    { name: 'Kuchipuri', image: bollywoodImage, description: 'Traditional South Indian classical dance form.' },
   ]
 
   const stats = [
@@ -88,9 +100,8 @@ const Home = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div className="hero-dancer">
-              <div className="dancer-silhouette">💃</div>
-              <div className="dancer-glow"></div>
+            <div className="hero-dancer with-image">
+              <img src={heroBanner} alt="Dream Dance Academy" className="hero-image" />
             </div>
           </motion.div>
         </div>
@@ -152,7 +163,7 @@ const Home = () => {
                 variants={fadeInUp}
                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
               >
-                <div className="style-icon">{style.icon}</div>
+                <img src={style.image} alt={style.name} className="style-image" />
                 <h3>{style.name}</h3>
                 <p>{style.description}</p>
                 <Link to="/classes" className="style-link">
@@ -194,9 +205,15 @@ const Home = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="visual-collage">
-                <div className="collage-item collage-1">🎭</div>
-                <div className="collage-item collage-2">🩰</div>
-                <div className="collage-item collage-3">🎵</div>
+                <div className="collage-item collage-1">
+                  <img src={studioImage1} alt="Dance Studio" />
+                </div>
+                <div className="collage-item collage-2">
+                  <img src={studioImage2} alt="Dance Studio" />
+                </div>
+                <div className="collage-item collage-3">
+                  <img src={studioImage3} alt="Dance Studio" />
+                </div>
               </div>
             </motion.div>
           </div>

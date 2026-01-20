@@ -2,6 +2,9 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import './Instructors.css'
 
+// Import image
+import studioImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.30.jpeg'
+
 const Instructors = () => {
   const instructors = [
     {
@@ -184,7 +187,9 @@ const Instructors = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="join-image">🤝</div>
+              <div className="join-image">
+                <img src={studioImage} alt="Dance Studio" />
+              </div>
             </motion.div>
           </div>
         </div>

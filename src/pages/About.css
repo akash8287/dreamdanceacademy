@@ -101,7 +101,14 @@
 
 .story-content p {
   margin-bottom: var(--space-sm);
-  color: var(--color-text-light);
+  color: var(--color-text-dark);
+}
+
+.story-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
 }
 
 /* Mission Section */
@@ -167,7 +174,7 @@
 }
 
 .value-card p {
-  color: var(--color-text-light);
+  color: var(--color-text-dark);
   font-size: 0.95rem;
 }
 
@@ -248,7 +255,7 @@
 }
 
 .timeline-content p {
-  color: var(--color-text-light);
+  color: var(--color-text-dark);
   margin: 0;
 }
 
@@ -314,6 +321,13 @@
   font-size: 10rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
+  overflow: hidden;
+}
+
+.facility-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* About CTA */
@@ -328,7 +342,7 @@
 }
 
 .about-cta-content p {
-  color: var(--color-text-light);
+  color: var(--color-text-dark);
   margin-bottom: var(--space-md);
   font-size: 1.15rem;
 }
