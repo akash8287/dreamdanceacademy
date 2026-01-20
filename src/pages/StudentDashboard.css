@@ -30,11 +30,6 @@
   margin-bottom: 1rem;
 }
 
-.student-avatar-container {
-  position: relative;
-  display: inline-block;
-}
-
 .student-avatar {
   font-size: 2rem;
   width: 45px;
@@ -46,30 +41,29 @@
   justify-content: center;
 }
 
-.student-id-badge {
-  position: absolute;
-  bottom: -6px;
-  left: -6px;
-  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-  color: #fff;
-  font-size: 0.65rem;
-  font-weight: 700;
-  padding: 2px 6px;
-  border-radius: 8px;
-  border: 2px solid var(--color-dark);
-  min-width: 28px;
-  text-align: center;
+.student-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.student-info strong {
+.student-details strong {
   color: var(--color-cream);
-  display: block;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
-.student-info > div > span {
-  color: rgba(253, 246, 233, 0.5);
-  font-size: 0.75rem;
+.student-id-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(74, 189, 172, 0.2), rgba(74, 189, 172, 0.1));
+  color: var(--color-secondary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: 'Monaco', 'Consolas', monospace;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(74, 189, 172, 0.3);
+  letter-spacing: 0.5px;
 }
 
 /* Main Content */

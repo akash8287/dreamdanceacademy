@@ -173,15 +173,12 @@ const StudentDashboard = () => {
 
         <div className="sidebar-footer">
           <div className="student-info">
-            <div className="student-avatar-container">
-              <span className="student-avatar">
-                {profile?.profile_image ? '🖼️' : '👤'}
-              </span>
-              <span className="student-id-badge">02112020{String(profile?.id || user?.id).padStart(4, '0')}</span>
-            </div>
-            <div>
+            <span className="student-avatar">
+              {profile?.profile_image ? '🖼️' : '👤'}
+            </span>
+            <div className="student-details">
               <strong>{user?.firstName} {user?.lastName}</strong>
-              <span>Student</span>
+              <span className="student-id-badge">ID: 02112020{String(profile?.id || user?.id).padStart(4, '0')}</span>
             </div>
           </div>
           <button className="logout-btn" onClick={handleLogout}>Logout</button>
