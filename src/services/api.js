@@ -130,6 +130,33 @@ export const studentAPI = {
   deleteDocument: (id) =>
     apiCall(`/student/documents/${id}`, { method: 'DELETE' }),
   
+  viewDocument: (id) => {
+    const token = localStorage.getItem('token')
+    window.open(`${API_BASE}/student/documents/${id}/file?token=${token}`, '_blank')
+  },
+  
+  downloadDocument: async (id, fileName) => {
+    const token = localStorage.getItem('token')
+    try {
+      const response = await fetch(`${API_BASE}/student/documents/${id}/file?download=true`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      if (!response.ok) throw new Error('Download failed')
+      
+      const blob = await response.blob()
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = fileName
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      window.URL.revokeObjectURL(url)
+    } catch (error) {
+      throw new Error('Failed to download document')
+    }
+  },
+  
   uploadProfileImage: async (file) => {
     const token = localStorage.getItem('token')
     const formData = new FormData()

@@ -117,6 +117,19 @@ const StudentDashboard = () => {
     }
   }
 
+  const handleViewDocument = (id) => {
+    studentAPI.viewDocument(id)
+  }
+
+  const handleDownloadDocument = async (id, fileName) => {
+    try {
+      await studentAPI.downloadDocument(id, fileName)
+      setSuccess('Document downloaded')
+    } catch (err) {
+      setError(err.message)
+    }
+  }
+
   const handleLogout = () => {
     logout()
     navigate('/')
@@ -179,7 +192,7 @@ const StudentDashboard = () => {
             <div className="student-details">
               <div className="student-name-row">
                 <strong>{user?.firstName} {user?.lastName}</strong>
-                <span className="student-id-badge">02112020{String(profile?.id || user?.id).padStart(4, '0')}</span>
+                <span className="student-id-badge">SN02112020{String(profile?.id || user?.id).padStart(4, '0')}</span>
               </div>
               <span className="student-role">Student</span>
             </div>
@@ -501,7 +514,11 @@ const StudentDashboard = () => {
                             <span className="doc-type">{documentTypes.find(t => t.value === doc.document_type)?.label || doc.document_type}</span>
                             <span className="doc-date">{new Date(doc.upload_date).toLocaleDateString()}</span>
                           </div>
-                          <button className="delete-btn" onClick={() => handleDeleteDocument(doc.id)}>🗑️</button>
+                          <div className="doc-actions">
+                            <button className="view-btn" onClick={() => handleViewDocument(doc.id)} title="View">👁️</button>
+                            <button className="download-btn" onClick={() => handleDownloadDocument(doc.id, doc.original_name)} title="Download">⬇️</button>
+                            <button className="delete-btn" onClick={() => handleDeleteDocument(doc.id)} title="Delete">🗑️</button>
+                          </div>
                         </div>
                       ))}
                     </div>

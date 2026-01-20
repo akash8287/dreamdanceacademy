@@ -269,4 +269,39 @@ router.get('/classes', (req, res) => {
   }
 })
 
+// View/Download document
+router.get('/documents/:id/file', (req, res) => {
+  try {
+    const document = db.prepare(`
+      SELECT * FROM documents WHERE id = ? AND user_id = ?
+    `).get(req.params.id, req.user.id)
+
+    if (!document) {
+      return res.status(404).json({ error: 'Document not found' })
+    }
+
+    const filePath = path.join(__dirname, '../../uploads', req.user.id.toString(), document.file_name)
+    
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ error: 'File not found on server' })
+    }
+
+    // Set content type based on file type
+    res.setHeader('Content-Type', document.file_type)
+    
+    // Check if download is requested
+    if (req.query.download === 'true') {
+      res.setHeader('Content-Disposition', `attachment; filename="${document.original_name}"`)
+    } else {
+      res.setHeader('Content-Disposition', `inline; filename="${document.original_name}"`)
+    }
+
+    // Send the file
+    res.sendFile(filePath)
+  } catch (error) {
+    console.error('Get document file error:', error)
+    res.status(500).json({ error: 'Failed to get document' })
+  }
+})
+
 export default router

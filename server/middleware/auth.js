@@ -5,7 +5,8 @@ const JWT_SECRET = process.env.JWT_SECRET || 'dream-dance-academy-secret-key-202
 // Verify JWT token
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization']
-  const token = authHeader && authHeader.split(' ')[1]
+  // Check header first, then query param (for file viewing in new tab)
+  const token = (authHeader && authHeader.split(' ')[1]) || req.query.token
 
   if (!token) {
     return res.status(401).json({ error: 'Access token required' })
