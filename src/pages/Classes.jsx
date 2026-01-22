@@ -3,15 +3,19 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import './Classes.css'
 
-// Import images
-import hipHopImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.24.jpeg'
-import kathakImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.25 (1).jpeg'
-import zumbaImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.22.jpeg'
-import classicalImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.26.jpeg'
-import contemporaryImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.23.jpeg'
-import kuchipuriImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.22 (1).jpeg'
-import classicalImage2 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.23 (1).jpeg'
-import classPromoImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.25.jpeg'
+// Import images - Professional dance photos
+import hipHopImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.43.jpeg'
+import kathakImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42 (2).jpeg'
+import zumbaImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.48.jpeg'
+import classicalImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42 (1).jpeg'
+import contemporaryImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.44.jpeg'
+import kuchipuriImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.55.jpeg'
+import classicalImage2 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42.jpeg'
+import classPromoImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.47.jpeg'
+import bollywoodImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42 (1).jpeg'
+import jazzImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.39.jpeg'
+import westernImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.50.jpeg'
+import semiClassicalImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.49 (1).jpeg'
 
 const Classes = () => {
   const [activeFilter, setActiveFilter] = useState('all')
@@ -19,15 +23,15 @@ const Classes = () => {
   const classes = [
     {
       id: 1,
-      name: 'Bharatanatyam',
+      name: 'Kathak',
       category: 'classical',
       level: 'All Levels',
-      duration: '60-90 min',
-      image: classicalImage,
-      description: 'Master the foundations of classical Indian dance with Bharatanatyam. Build strength, flexibility, and grace through traditional techniques.',
-      schedule: 'Mon, Wed, Fri',
-      price: '₹2000/month',
-      features: ['Traditional poses', 'Expressive movements', 'Footwork', 'Performance prep']
+      duration: '90 min',
+      image: kathakImage,
+      description: 'Explore the ancient art of Indian classical dance. Kathak combines storytelling, graceful spins, footwork, and expressive movements.',
+      schedule: 'Sat, Sun',
+      price: '₹2200/month',
+      features: ['Tatkar (footwork)', 'Hand gestures', 'Facial expressions', 'Traditional compositions']
     },
     {
       id: 2,
@@ -67,27 +71,27 @@ const Classes = () => {
     },
     {
       id: 5,
-      name: 'Kathak',
-      category: 'classical',
+      name: 'Bollywood',
+      category: 'social',
       level: 'All Levels',
-      duration: '90 min',
-      image: kathakImage,
-      description: 'Explore the ancient art of Indian classical dance. Kathak combines storytelling, footwork, and expressive movements.',
-      schedule: 'Sat, Sun',
-      price: '₹2200/month',
-      features: ['Tatkar (footwork)', 'Hand gestures', 'Facial expressions', 'Traditional compositions']
+      duration: '60 min',
+      image: classicalImage,
+      description: 'Vibrant Indian film-style dance with colorful choreography. Learn popular Bollywood moves and routines.',
+      schedule: 'Mon, Wed, Fri',
+      price: '₹1500/month',
+      features: ['Film choreography', 'Expressive movements', 'Group formations', 'Performance prep']
     },
     {
       id: 6,
-      name: 'Kuchipuri',
-      category: 'classical',
+      name: 'Folk Dance',
+      category: 'social',
       level: 'All Levels',
       duration: '60 min',
       image: kuchipuriImage,
-      description: 'Traditional South Indian classical dance form known for its grace, fluid movements, and dramatic storytelling.',
+      description: 'Traditional cultural dances celebrating Indian heritage. Learn various folk styles from different regions.',
       schedule: 'Fri, Sun',
-      price: '₹2000/month',
-      features: ['Classical poses', 'Expressive dance', 'Traditional form', 'Performance pieces']
+      price: '₹1500/month',
+      features: ['Regional styles', 'Traditional costumes', 'Group choreography', 'Cultural events']
     },
     {
       id: 7,
@@ -103,15 +107,63 @@ const Classes = () => {
     },
     {
       id: 8,
-      name: 'Bharatanatyam Advanced',
+      name: 'Semi-Classical',
       category: 'classical',
+      level: 'All Levels',
+      duration: '75 min',
+      image: classicalImage2,
+      description: 'Fusion of classical and contemporary Indian dance forms. Perfect blend of tradition and modernity.',
+      schedule: 'Wed, Sat',
+      price: '₹1800/month',
+      features: ['Fusion techniques', 'Modern compositions', 'Traditional elements', 'Stage performance']
+    },
+    {
+      id: 9,
+      name: 'Western Dance',
+      category: 'urban',
+      level: 'All Levels',
+      duration: '60 min',
+      image: westernImage,
+      description: 'Modern western dance styles including jazz, freestyle, and commercial choreography for all skill levels.',
+      schedule: 'Mon, Wed, Fri',
+      price: '₹1500/month',
+      features: ['Jazz basics', 'Freestyle', 'Commercial style', 'Music video choreography']
+    },
+    {
+      id: 10,
+      name: 'Jazz Dance',
+      category: 'modern',
+      level: 'Intermediate',
+      duration: '60 min',
+      image: jazzImage,
+      description: 'Energetic theatrical dance with dynamic choreography. Learn classic and contemporary jazz techniques.',
+      schedule: 'Tue, Thu',
+      price: '₹1600/month',
+      features: ['Jazz technique', 'Isolations', 'Broadway style', 'Performance pieces']
+    },
+    {
+      id: 11,
+      name: 'Contemporary Fusion',
+      category: 'modern',
       level: 'Advanced',
       duration: '90 min',
-      image: classicalImage2,
-      description: 'Advanced classical dance training for experienced dancers. Focus on complex compositions and performance excellence.',
-      schedule: 'Wed, Sat',
-      price: '₹2500/month',
-      features: ['Complex footwork', 'Advanced poses', 'Performance prep', 'Competition training']
+      image: semiClassicalImage,
+      description: 'Advanced fusion of contemporary and jazz styles for experienced dancers seeking artistic expression.',
+      schedule: 'Sat afternoon',
+      price: '₹2000/month',
+      features: ['Advanced technique', 'Improvisation', 'Partnering', 'Competition prep']
+    },
+    {
+      id: 12,
+      name: 'Bollywood Kids',
+      category: 'kids',
+      level: 'Ages 5-12',
+      duration: '45 min',
+      image: bollywoodImage,
+      description: 'Fun Bollywood dance classes designed specially for kids. Learn popular movie songs and choreography.',
+      schedule: 'Sun morning',
+      price: '₹900/month',
+      features: ['Popular songs', 'Easy choreography', 'Fun activities', 'Annual showcase']
     }
   ]
 

@@ -68,8 +68,8 @@ const Contact = () => {
     {
       icon: '✉️',
       title: 'Email Us',
-      details: ['shivamsmj008@gmail.com'],
-      action: { text: 'Send Email', link: 'mailto:shivamsmj008@gmail.com' }
+      details: ['dreamdanceacademy28@gmail.com'],
+      action: { text: 'Send Email', link: 'mailto:dreamdanceacademy28@gmail.com' }
     },
     {
       icon: '🌐',

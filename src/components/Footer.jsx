@@ -75,7 +75,7 @@ const Footer = () => {
               </div>
               <div className="contact-item">
                 <span className="contact-icon">✉️</span>
-                <p>shivamsmj008@gmail.com</p>
+                <p>dreamdanceacademy28@gmail.com</p>
               </div>
               <div className="contact-item">
                 <span className="contact-icon">🌐</span>

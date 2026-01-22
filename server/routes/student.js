@@ -88,7 +88,14 @@ router.put('/profile', (req, res) => {
       emergencyPhone,
       emergencyRelation,
       medicalConditions,
-      allergies
+      allergies,
+      parentGuardianName,
+      parentGuardianPhone,
+      parentGuardianEmail,
+      parentGuardianRelation,
+      qualification,
+      idProofType,
+      idProofNumber
     } = req.body
 
     // Update user info
@@ -115,9 +122,18 @@ router.put('/profile', (req, res) => {
         emergency_phone = COALESCE(?, emergency_phone),
         emergency_relation = COALESCE(?, emergency_relation),
         medical_conditions = COALESCE(?, medical_conditions),
-        allergies = COALESCE(?, allergies)
+        allergies = COALESCE(?, allergies),
+        parent_guardian_name = COALESCE(?, parent_guardian_name),
+        parent_guardian_phone = COALESCE(?, parent_guardian_phone),
+        parent_guardian_email = COALESCE(?, parent_guardian_email),
+        parent_guardian_relation = COALESCE(?, parent_guardian_relation),
+        qualification = COALESCE(?, qualification),
+        id_proof_type = COALESCE(?, id_proof_type),
+        id_proof_number = COALESCE(?, id_proof_number)
       WHERE user_id = ?
-    `).run(goals, emergencyName, emergencyPhone, emergencyRelation, medicalConditions, allergies, req.user.id)
+    `).run(goals, emergencyName, emergencyPhone, emergencyRelation, medicalConditions, allergies, 
+           parentGuardianName, parentGuardianPhone, parentGuardianEmail, parentGuardianRelation,
+           qualification, idProofType, idProofNumber, req.user.id)
 
     res.json({ message: 'Profile updated successfully' })
   } catch (error) {
@@ -200,33 +216,7 @@ router.get('/documents', (req, res) => {
   }
 })
 
-// Delete document
-router.delete('/documents/:id', (req, res) => {
-  try {
-    // Get document info
-    const document = db.prepare(`
-      SELECT * FROM documents WHERE id = ? AND user_id = ?
-    `).get(req.params.id, req.user.id)
-
-    if (!document) {
-      return res.status(404).json({ error: 'Document not found' })
-    }
-
-    // Delete file from disk
-    const filePath = path.join(__dirname, '../../uploads', req.user.id.toString(), document.file_name)
-    if (fs.existsSync(filePath)) {
-      fs.unlinkSync(filePath)
-    }
-
-    // Delete from database
-    db.prepare('DELETE FROM documents WHERE id = ?').run(req.params.id)
-
-    res.json({ message: 'Document deleted successfully' })
-  } catch (error) {
-    console.error('Delete document error:', error)
-    res.status(500).json({ error: 'Failed to delete document' })
-  }
-})
+// Note: Document deletion is only allowed by admin
 
 // Upload profile image
 router.post('/profile-image', upload.single('image'), (req, res) => {
@@ -269,39 +259,6 @@ router.get('/classes', (req, res) => {
   }
 })
 
-// View/Download document
-router.get('/documents/:id/file', (req, res) => {
-  try {
-    const document = db.prepare(`
-      SELECT * FROM documents WHERE id = ? AND user_id = ?
-    `).get(req.params.id, req.user.id)
-
-    if (!document) {
-      return res.status(404).json({ error: 'Document not found' })
-    }
-
-    const filePath = path.join(__dirname, '../../uploads', req.user.id.toString(), document.file_name)
-    
-    if (!fs.existsSync(filePath)) {
-      return res.status(404).json({ error: 'File not found on server' })
-    }
-
-    // Set content type based on file type
-    res.setHeader('Content-Type', document.file_type)
-    
-    // Check if download is requested
-    if (req.query.download === 'true') {
-      res.setHeader('Content-Disposition', `attachment; filename="${document.original_name}"`)
-    } else {
-      res.setHeader('Content-Disposition', `inline; filename="${document.original_name}"`)
-    }
-
-    // Send the file
-    res.sendFile(filePath)
-  } catch (error) {
-    console.error('Get document file error:', error)
-    res.status(500).json({ error: 'Failed to get document' })
-  }
-})
+// Note: Document viewing/downloading is only allowed by admin
 
 export default router

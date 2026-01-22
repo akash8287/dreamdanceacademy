@@ -11,6 +11,7 @@ import Schedule from './pages/Schedule'
 import Gallery from './pages/Gallery'
 import Contact from './pages/Contact'
 import Enrollment from './pages/Enrollment'
+import PreAdmission from './pages/PreAdmission'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import AdminDashboard from './pages/AdminDashboard'
@@ -79,6 +80,7 @@ function AppContent() {
           <Route path="/gallery" element={<MainLayout><Gallery /></MainLayout>} />
           <Route path="/contact" element={<MainLayout><Contact /></MainLayout>} />
           <Route path="/enrollment" element={<MainLayout><Enrollment /></MainLayout>} />
+          <Route path="/apply" element={<MainLayout><PreAdmission /></MainLayout>} />
 
           {/* Auth Pages */}
           <Route path="/login" element={

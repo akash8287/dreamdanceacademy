@@ -219,7 +219,7 @@ const Schedule = () => {
             >
               <div className="info-icon">📞</div>
               <h3>Contact</h3>
-              <p>+91 7065910907<br/>shivamsmj008@gmail.com</p>
+              <p>+91 7065910907<br/>dreamdanceacademy28@gmail.com</p>
             </motion.div>
             <motion.div 
               className="info-item"

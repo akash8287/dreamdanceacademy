@@ -8,6 +8,7 @@ import { initDB } from './database.js'
 import authRoutes from './routes/auth.js'
 import adminRoutes from './routes/admin.js'
 import studentRoutes from './routes/student.js'
+import preadmissionRoutes from './routes/preadmission.js'
 
 dotenv.config()
 
@@ -35,6 +36,7 @@ app.use('/uploads', express.static(path.join(__dirname, '../uploads')))
 app.use('/api/auth', authRoutes)
 app.use('/api/admin', adminRoutes)
 app.use('/api/student', studentRoutes)
+app.use('/api/preadmission', preadmissionRoutes)
 
 // Health check
 app.get('/api/health', (req, res) => {

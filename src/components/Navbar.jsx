@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from '../context/AuthContext'
 import './Navbar.css'
+import logoImage from '../../assets/logo.jpeg'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -36,7 +37,7 @@ const Navbar = () => {
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="logo">
-          <span className="logo-icon">✦</span>
+          <img src={logoImage} alt="Dream Dance Academy Logo" className="logo-image" />
           <div className="logo-text">
             <span className="logo-name">Dream Dance</span>
             <span className="logo-tagline">Academy</span>
@@ -70,8 +71,8 @@ const Navbar = () => {
               <Link to="/login" className="nav-link login-link">
                 Login
               </Link>
-              <Link to="/enrollment" className="btn btn-primary nav-cta">
-                Enroll Now
+              <Link to="/apply" className="btn btn-primary nav-cta">
+                Apply Now
               </Link>
             </>
           )}

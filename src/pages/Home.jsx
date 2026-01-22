@@ -3,16 +3,23 @@ import { motion } from 'framer-motion'
 import './Home.css'
 
 // Import images
-import heroBanner from '../../assets/WhatsApp Image 2026-01-19 at 19.22.28.jpeg'
+import logoImage from '../../assets/logo.jpeg'
+// Old studio images for "Our Story" section
 import studioImage1 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.29.jpeg'
 import studioImage2 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.30.jpeg'
 import studioImage3 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.21.jpeg'
-import hipHopImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.24.jpeg'
-import kathakImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.25 (1).jpeg'
-import zumbaImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.22.jpeg'
-import classicalImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.26.jpeg'
-import contemporaryImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.23.jpeg'
-import bollywoodImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.22 (1).jpeg'
+
+// Dance style images - professional photos
+import classicalImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42 (2).jpeg'
+import contemporaryImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.44.jpeg'
+import hipHopImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.43.jpeg'
+import zumbaImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.48.jpeg'
+import kathakImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42 (1).jpeg'
+import bollywoodImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.55.jpeg'
+import balletImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.49 (1).jpeg'
+import salsaImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.47.jpeg'
+import jazzImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.39.jpeg'
+import folkImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42.jpeg'
 
 const Home = () => {
   const fadeInUp = {
@@ -30,12 +37,16 @@ const Home = () => {
   }
 
   const danceStyles = [
-    { name: 'Classical Dance', image: classicalImage, description: 'Master the timeless art of Bharatanatyam and classical forms.' },
-    { name: 'Contemporary', image: contemporaryImage, description: 'Express yourself through fluid, emotional movement.' },
-    { name: 'Hip Hop', image: hipHopImage, description: 'Learn the latest urban dance styles and techniques.' },
-    { name: 'Zumba', image: zumbaImage, description: 'High-energy fitness dance that makes working out fun.' },
-    { name: 'Kathak', image: kathakImage, description: 'Traditional Indian classical dance storytelling.' },
-    { name: 'Kuchipuri', image: bollywoodImage, description: 'Traditional South Indian classical dance form.' },
+    { name: 'Kathak', image: classicalImage, description: 'Traditional Indian classical dance with graceful spins and expressions.' },
+    { name: 'Contemporary', image: contemporaryImage, description: 'Express yourself through fluid, emotional movement and modern techniques.' },
+    { name: 'Hip Hop', image: hipHopImage, description: 'Urban street dance with dynamic moves and high energy beats.' },
+    { name: 'Zumba', image: zumbaImage, description: 'High-energy fitness dance that makes working out fun and exciting.' },
+    { name: 'Bollywood', image: kathakImage, description: 'Vibrant Indian film-style dance with colorful choreography.' },
+    { name: 'Folk Dance', image: bollywoodImage, description: 'Traditional cultural dances celebrating Indian heritage.' },
+    { name: 'Jazz', image: balletImage, description: 'Energetic and expressive dance with dynamic movements.' },
+    { name: 'Kids Dance', image: salsaImage, description: 'Fun age-appropriate classes for young aspiring dancers.' },
+    { name: 'Western', image: jazzImage, description: 'Modern western dance styles including jazz and freestyle.' },
+    { name: 'Semi-Classical', image: folkImage, description: 'Fusion of classical and contemporary Indian dance forms.' },
   ]
 
   const stats = [
@@ -100,8 +111,8 @@ const Home = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div className="hero-dancer with-image">
-              <img src={heroBanner} alt="Dream Dance Academy" className="hero-image" />
+            <div className="hero-dancer with-image hero-logo">
+              <img src={logoImage} alt="Dream Dance Academy Logo" className="hero-image" />
             </div>
           </motion.div>
         </div>
@@ -163,7 +174,9 @@ const Home = () => {
                 variants={fadeInUp}
                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
               >
-                <img src={style.image} alt={style.name} className="style-image" />
+                <div className="style-image-container">
+                  <img src={style.image} alt={style.name} className="style-image" />
+                </div>
                 <h3>{style.name}</h3>
                 <p>{style.description}</p>
                 <Link to="/classes" className="style-link">

@@ -131,8 +131,127 @@ export const sendNotificationEmail = async (params) => {
   }
 }
 
+/**
+ * Send trial class scheduled email
+ * @param {Object} params - Email parameters
+ * @returns {Promise}
+ */
+export const sendTrialClassEmail = async (params) => {
+  const templateParams = {
+    name: params.name,
+    email: params.email,
+    title: 'Your Trial Class is Scheduled! 🎉',
+    message: `
+Dear ${params.name},
+
+Great news! Your trial class at Dream Dance Academy has been scheduled.
+
+📅 Trial Class Details:
+- Date: ${params.trialDate}
+- Time: ${params.trialTime}
+- Dance Style: ${params.danceStyle || 'To be discussed'}
+- Branch: ${params.branchName || 'Dream Dance Academy'}
+
+What to bring:
+- Comfortable clothes for movement
+- Water bottle
+- Positive energy! 💃
+
+Location:
+${params.branchAddress || 'Contact us for directions'}
+
+If you need to reschedule, please contact us at:
+📞 +91 98765 43210
+✉️ info@dreamdanceacademy.in
+
+We can't wait to see you dance!
+
+Best regards,
+Dream Dance Academy Team
+    `.trim(),
+    time: new Date().toLocaleString()
+  }
+
+  try {
+    const response = await emailjs.send(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      templateParams
+    )
+    console.log('Trial class email sent successfully:', response)
+    return { success: true, response }
+  } catch (error) {
+    console.error('Failed to send trial class email:', error)
+    throw error
+  }
+}
+
+/**
+ * Send admission success email with login credentials
+ * @param {Object} params - Email parameters
+ * @returns {Promise}
+ */
+export const sendAdmissionSuccessEmail = async (params) => {
+  const templateParams = {
+    name: params.name,
+    email: params.email,
+    title: 'Welcome to Dream Dance Academy! 🎊',
+    message: `
+Dear ${params.name},
+
+Congratulations! Your admission to Dream Dance Academy has been approved! 🎉
+
+Your Student Details:
+━━━━━━━━━━━━━━━━━━━━━━━
+🎫 Student ID: ${params.studentId}
+📧 Login Email: ${params.email}
+🔑 Temporary Password: ${params.password}
+━━━━━━━━━━━━━━━━━━━━━━━
+
+🌐 Student Portal Access:
+Please login at: ${params.portalUrl || 'https://dreamdanceacademy.in/#/login'}
+
+⚠️ Important: Please change your password after first login for security.
+
+What's Next:
+1. Log in to your student portal
+2. Complete your profile
+3. Check your class schedule
+4. Start your dance journey!
+
+Branch: ${params.branchName || 'Dream Dance Academy'}
+Dance Style: ${params.danceStyle || 'Multiple styles available'}
+
+Need Help?
+📞 +91 98765 43210
+✉️ info@dreamdanceacademy.in
+
+Welcome to the Dream Dance family! Let's make your dance dreams come true! 💃🕺
+
+Best regards,
+Dream Dance Academy Team
+    `.trim(),
+    time: new Date().toLocaleString()
+  }
+
+  try {
+    const response = await emailjs.send(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      templateParams
+    )
+    console.log('Admission success email sent successfully:', response)
+    return { success: true, response }
+  } catch (error) {
+    console.error('Failed to send admission success email:', error)
+    throw error
+  }
+}
+
 export default {
   sendContactEmail,
   sendEnrollmentEmail,
-  sendNotificationEmail
+  sendNotificationEmail,
+  sendTrialClassEmail,
+  sendAdmissionSuccessEmail
 }

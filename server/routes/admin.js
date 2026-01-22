@@ -1,7 +1,13 @@
 import express from 'express'
 import bcrypt from 'bcryptjs'
+import path from 'path'
+import fs from 'fs'
+import { fileURLToPath } from 'url'
 import { db } from '../database.js'
 import { authenticateToken, isAdmin } from '../middleware/auth.js'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const router = express.Router()
 
@@ -361,6 +367,69 @@ router.get('/stats', (req, res) => {
   } catch (error) {
     console.error('Get stats error:', error)
     res.status(500).json({ error: 'Failed to get stats' })
+  }
+})
+
+// View/Download student document (Admin only)
+router.get('/documents/:id/file', (req, res) => {
+  try {
+    const document = db.prepare(`
+      SELECT * FROM documents WHERE id = ?
+    `).get(req.params.id)
+
+    if (!document) {
+      return res.status(404).json({ error: 'Document not found' })
+    }
+
+    const filePath = path.join(__dirname, '../../uploads', document.user_id.toString(), document.file_name)
+    
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ error: 'File not found on server' })
+    }
+
+    // Set content type based on file type
+    res.setHeader('Content-Type', document.file_type)
+    
+    // Check if download is requested
+    if (req.query.download === 'true') {
+      res.setHeader('Content-Disposition', `attachment; filename="${document.original_name}"`)
+    } else {
+      res.setHeader('Content-Disposition', `inline; filename="${document.original_name}"`)
+    }
+
+    // Send the file
+    res.sendFile(filePath)
+  } catch (error) {
+    console.error('Get document file error:', error)
+    res.status(500).json({ error: 'Failed to get document' })
+  }
+})
+
+// Delete student document (Admin only)
+router.delete('/documents/:id', (req, res) => {
+  try {
+    // Get document info
+    const document = db.prepare(`
+      SELECT * FROM documents WHERE id = ?
+    `).get(req.params.id)
+
+    if (!document) {
+      return res.status(404).json({ error: 'Document not found' })
+    }
+
+    // Delete file from disk
+    const filePath = path.join(__dirname, '../../uploads', document.user_id.toString(), document.file_name)
+    if (fs.existsSync(filePath)) {
+      fs.unlinkSync(filePath)
+    }
+
+    // Delete from database
+    db.prepare('DELETE FROM documents WHERE id = ?').run(req.params.id)
+
+    res.json({ message: 'Document deleted successfully' })
+  } catch (error) {
+    console.error('Delete document error:', error)
+    res.status(500).json({ error: 'Failed to delete document' })
   }
 })
 

@@ -51,7 +51,14 @@ const StudentDashboard = () => {
         zipCode: profileData.zip_code || '',
         emergencyName: profileData.emergency_name || '',
         emergencyPhone: profileData.emergency_phone || '',
-        emergencyRelation: profileData.emergency_relation || ''
+        emergencyRelation: profileData.emergency_relation || '',
+        parentGuardianName: profileData.parent_guardian_name || '',
+        parentGuardianPhone: profileData.parent_guardian_phone || '',
+        parentGuardianEmail: profileData.parent_guardian_email || '',
+        parentGuardianRelation: profileData.parent_guardian_relation || '',
+        qualification: profileData.qualification || '',
+        idProofType: profileData.id_proof_type || '',
+        idProofNumber: profileData.id_proof_number || ''
       })
     } catch (err) {
       setError('Failed to load profile data')
@@ -106,29 +113,7 @@ const StudentDashboard = () => {
     }
   }
 
-  const handleDeleteDocument = async (id) => {
-    if (!confirm('Are you sure you want to delete this document?')) return
-    try {
-      await studentAPI.deleteDocument(id)
-      setSuccess('Document deleted')
-      loadData()
-    } catch (err) {
-      setError(err.message)
-    }
-  }
-
-  const handleViewDocument = (id) => {
-    studentAPI.viewDocument(id)
-  }
-
-  const handleDownloadDocument = async (id, fileName) => {
-    try {
-      await studentAPI.downloadDocument(id, fileName)
-      setSuccess('Document downloaded')
-    } catch (err) {
-      setError(err.message)
-    }
-  }
+  // Document management is now admin-only
 
   const handleLogout = () => {
     logout()
@@ -420,6 +405,100 @@ const StudentDashboard = () => {
                       <div className="info-row"><span>Goals:</span><strong>{profile?.goals || 'Not set'}</strong></div>
                     </div>
                   </div>
+
+                  <div className="profile-section">
+                    <h3>Parent/Guardian Information</h3>
+                    {isEditing ? (
+                      <>
+                        <div className="form-row">
+                          <div className="form-group">
+                            <label>Parent/Guardian Name</label>
+                            <input type="text" value={editForm.parentGuardianName} onChange={e => setEditForm({...editForm, parentGuardianName: e.target.value})} />
+                          </div>
+                          <div className="form-group">
+                            <label>Phone</label>
+                            <input type="tel" value={editForm.parentGuardianPhone} onChange={e => setEditForm({...editForm, parentGuardianPhone: e.target.value})} />
+                          </div>
+                        </div>
+                        <div className="form-row">
+                          <div className="form-group">
+                            <label>Email</label>
+                            <input type="email" value={editForm.parentGuardianEmail} onChange={e => setEditForm({...editForm, parentGuardianEmail: e.target.value})} />
+                          </div>
+                          <div className="form-group">
+                            <label>Relationship</label>
+                            <select value={editForm.parentGuardianRelation} onChange={e => setEditForm({...editForm, parentGuardianRelation: e.target.value})}>
+                              <option value="">Select</option>
+                              <option value="Father">Father</option>
+                              <option value="Mother">Mother</option>
+                              <option value="Guardian">Guardian</option>
+                              <option value="Other">Other</option>
+                            </select>
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="info-display">
+                        <div className="info-row"><span>Name:</span><strong>{profile?.parent_guardian_name || 'Not set'}</strong></div>
+                        <div className="info-row"><span>Phone:</span><strong>{profile?.parent_guardian_phone || 'Not set'}</strong></div>
+                        <div className="info-row"><span>Email:</span><strong>{profile?.parent_guardian_email || 'Not set'}</strong></div>
+                        <div className="info-row"><span>Relationship:</span><strong>{profile?.parent_guardian_relation || 'Not set'}</strong></div>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="profile-section">
+                    <h3>Qualification</h3>
+                    {isEditing ? (
+                      <div className="form-group">
+                        <label>Educational Qualification</label>
+                        <select value={editForm.qualification} onChange={e => setEditForm({...editForm, qualification: e.target.value})}>
+                          <option value="">Select</option>
+                          <option value="Student">Student</option>
+                          <option value="High School">High School</option>
+                          <option value="Undergraduate">Undergraduate</option>
+                          <option value="Graduate">Graduate</option>
+                          <option value="Post Graduate">Post Graduate</option>
+                          <option value="Professional">Professional</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>
+                    ) : (
+                      <div className="info-display">
+                        <div className="info-row"><span>Qualification:</span><strong>{profile?.qualification || 'Not set'}</strong></div>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="profile-section">
+                    <h3>ID Proof</h3>
+                    {isEditing ? (
+                      <div className="form-row">
+                        <div className="form-group">
+                          <label>ID Proof Type</label>
+                          <select value={editForm.idProofType} onChange={e => setEditForm({...editForm, idProofType: e.target.value})}>
+                            <option value="">Select</option>
+                            <option value="Aadhaar Card">Aadhaar Card</option>
+                            <option value="Passport">Passport</option>
+                            <option value="School ID">School ID</option>
+                            <option value="Driving License">Driving License</option>
+                            <option value="Voter ID">Voter ID</option>
+                            <option value="PAN Card">PAN Card</option>
+                            <option value="Other">Other</option>
+                          </select>
+                        </div>
+                        <div className="form-group">
+                          <label>ID Number</label>
+                          <input type="text" value={editForm.idProofNumber} onChange={e => setEditForm({...editForm, idProofNumber: e.target.value})} placeholder="Enter ID number" />
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="info-display">
+                        <div className="info-row"><span>ID Type:</span><strong>{profile?.id_proof_type || 'Not set'}</strong></div>
+                        <div className="info-row"><span>ID Number:</span><strong>{profile?.id_proof_number || 'Not set'}</strong></div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             )}
@@ -502,6 +581,7 @@ const StudentDashboard = () => {
 
                 <div className="documents-list-section">
                   <h3>Uploaded Documents ({documents.length})</h3>
+                  <p className="documents-info-note">📌 Documents can only be viewed, downloaded and deleted by administrators.</p>
                   {documents.length > 0 ? (
                     <div className="documents-grid">
                       {documents.map(doc => (
@@ -514,10 +594,8 @@ const StudentDashboard = () => {
                             <span className="doc-type">{documentTypes.find(t => t.value === doc.document_type)?.label || doc.document_type}</span>
                             <span className="doc-date">{new Date(doc.upload_date).toLocaleDateString()}</span>
                           </div>
-                          <div className="doc-actions">
-                            <button className="view-btn" onClick={() => handleViewDocument(doc.id)} title="View">👁️</button>
-                            <button className="download-btn" onClick={() => handleDownloadDocument(doc.id, doc.original_name)} title="Download">⬇️</button>
-                            <button className="delete-btn" onClick={() => handleDeleteDocument(doc.id)} title="Delete">🗑️</button>
+                          <div className="doc-status">
+                            <span className="uploaded-badge">✓ Uploaded</span>
                           </div>
                         </div>
                       ))}

@@ -89,7 +89,38 @@ export const adminAPI = {
   
   getClasses: () => apiCall('/admin/classes'),
   
-  getAllSchedules: () => apiCall('/admin/schedules')
+  getAllSchedules: () => apiCall('/admin/schedules'),
+  
+  // Document management (Admin only)
+  viewDocument: (id) => {
+    const token = localStorage.getItem('token')
+    window.open(`${API_BASE}/admin/documents/${id}/file?token=${token}`, '_blank')
+  },
+  
+  downloadDocument: async (id, fileName) => {
+    const token = localStorage.getItem('token')
+    try {
+      const response = await fetch(`${API_BASE}/admin/documents/${id}/file?download=true`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      if (!response.ok) throw new Error('Download failed')
+      
+      const blob = await response.blob()
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = fileName
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      window.URL.revokeObjectURL(url)
+    } catch (error) {
+      throw new Error('Failed to download document')
+    }
+  },
+  
+  deleteDocument: (id) =>
+    apiCall(`/admin/documents/${id}`, { method: 'DELETE' })
 }
 
 // Student APIs
@@ -180,4 +211,157 @@ export const studentAPI = {
   getClasses: () => apiCall('/student/classes')
 }
 
-export default { authAPI, adminAPI, studentAPI }
+// Pre-admission APIs
+export const preadmissionAPI = {
+  // OTP
+  sendOTP: (identifier, purpose) =>
+    apiCall('/preadmission/send-otp', {
+      method: 'POST',
+      body: JSON.stringify({ identifier, purpose })
+    }),
+  
+  verifyOTP: (identifier, otp, purpose) =>
+    apiCall('/preadmission/verify-otp', {
+      method: 'POST',
+      body: JSON.stringify({ identifier, otp, purpose })
+    }),
+  
+  // Branches
+  getBranches: () => apiCall('/preadmission/branches'),
+  
+  // Trial Application
+  submitTrialApplication: async (formData, idProofFile) => {
+    const token = localStorage.getItem('token')
+    const data = new FormData()
+    
+    Object.keys(formData).forEach(key => {
+      if (formData[key] !== null && formData[key] !== undefined) {
+        data.append(key, formData[key])
+      }
+    })
+    
+    if (idProofFile) {
+      data.append('idProofDocument', idProofFile)
+    }
+    
+    const response = await fetch(`${API_BASE}/preadmission/trial-application`, {
+      method: 'POST',
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+      body: data
+    })
+    
+    const result = await response.json()
+    if (!response.ok) {
+      throw new Error(result.error || 'Submission failed')
+    }
+    return result
+  },
+  
+  // Full Admission Application
+  submitAdmissionApplication: async (formData, idProofFile, paymentScreenshot) => {
+    const token = localStorage.getItem('token')
+    const data = new FormData()
+    
+    Object.keys(formData).forEach(key => {
+      if (formData[key] !== null && formData[key] !== undefined) {
+        data.append(key, formData[key])
+      }
+    })
+    
+    if (idProofFile) {
+      data.append('idProofDocument', idProofFile)
+    }
+    if (paymentScreenshot) {
+      data.append('paymentScreenshot', paymentScreenshot)
+    }
+    
+    const response = await fetch(`${API_BASE}/preadmission/admission-application`, {
+      method: 'POST',
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+      body: data
+    })
+    
+    const result = await response.json()
+    if (!response.ok) {
+      throw new Error(result.error || 'Submission failed')
+    }
+    return result
+  },
+  
+  // Upload payment screenshot
+  uploadPaymentScreenshot: async (applicationId, file) => {
+    const data = new FormData()
+    data.append('paymentScreenshot', file)
+    
+    const response = await fetch(`${API_BASE}/preadmission/upload-payment/${applicationId}`, {
+      method: 'POST',
+      body: data
+    })
+    
+    const result = await response.json()
+    if (!response.ok) {
+      throw new Error(result.error || 'Upload failed')
+    }
+    return result
+  },
+  
+  // Check application status
+  checkApplicationStatus: (email) =>
+    apiCall(`/preadmission/application-status/${email}`),
+  
+  // Admin functions
+  getApplications: (status, type) => {
+    let url = '/preadmission/applications'
+    const params = []
+    if (status) params.push(`status=${status}`)
+    if (type) params.push(`type=${type}`)
+    if (params.length) url += '?' + params.join('&')
+    return apiCall(url)
+  },
+  
+  getApplication: (id) => apiCall(`/preadmission/applications/${id}`),
+  
+  viewApplicationDocument: (id, type) => {
+    const token = localStorage.getItem('token')
+    window.open(`${API_BASE}/preadmission/applications/${id}/document/${type}?token=${token}`, '_blank')
+  },
+  
+  approveTrial: (id, trialClassDate, trialClassTime, adminNotes) =>
+    apiCall(`/preadmission/applications/${id}/approve-trial`, {
+      method: 'POST',
+      body: JSON.stringify({ trialClassDate, trialClassTime, adminNotes })
+    }),
+  
+  approveAdmission: (id, adminNotes) =>
+    apiCall(`/preadmission/applications/${id}/approve-admission`, {
+      method: 'POST',
+      body: JSON.stringify({ adminNotes })
+    }),
+  
+  rejectApplication: (id, adminNotes) =>
+    apiCall(`/preadmission/applications/${id}/reject`, {
+      method: 'POST',
+      body: JSON.stringify({ adminNotes })
+    }),
+  
+  verifyPayment: (id, status) =>
+    apiCall(`/preadmission/applications/${id}/verify-payment`, {
+      method: 'POST',
+      body: JSON.stringify({ status })
+    }),
+  
+  // Admin branch management
+  addBranch: (branchData) =>
+    apiCall('/preadmission/branches', {
+      method: 'POST',
+      body: JSON.stringify(branchData)
+    }),
+  
+  updateBranch: (id, branchData) =>
+    apiCall(`/preadmission/branches/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(branchData)
+    })
+}
+
+export default { authAPI, adminAPI, studentAPI, preadmissionAPI }
