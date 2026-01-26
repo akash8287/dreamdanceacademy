@@ -225,6 +225,60 @@ router.delete('/students/:id', (req, res) => {
   }
 })
 
+// Pause/Freeze student profile
+router.post('/students/:id/pause', (req, res) => {
+  try {
+    const { reason } = req.body
+    
+    // Check if student exists
+    const student = db.prepare('SELECT * FROM users WHERE id = ? AND role = ?').get(req.params.id, 'student')
+    if (!student) {
+      return res.status(404).json({ error: 'Student not found' })
+    }
+
+    // Update student_details to set paused
+    db.prepare(`
+      UPDATE student_details SET
+        is_paused = 1,
+        paused_at = CURRENT_TIMESTAMP,
+        pause_reason = ?,
+        enrollment_status = 'paused'
+      WHERE user_id = ?
+    `).run(reason || 'Discontinued', req.params.id)
+
+    res.json({ message: 'Student profile paused successfully' })
+  } catch (error) {
+    console.error('Pause student error:', error)
+    res.status(500).json({ error: 'Failed to pause student' })
+  }
+})
+
+// Unpause/Unfreeze student profile
+router.post('/students/:id/unpause', (req, res) => {
+  try {
+    // Check if student exists
+    const student = db.prepare('SELECT * FROM users WHERE id = ? AND role = ?').get(req.params.id, 'student')
+    if (!student) {
+      return res.status(404).json({ error: 'Student not found' })
+    }
+
+    // Update student_details to unset paused
+    db.prepare(`
+      UPDATE student_details SET
+        is_paused = 0,
+        paused_at = NULL,
+        pause_reason = NULL,
+        enrollment_status = 'active'
+      WHERE user_id = ?
+    `).run(req.params.id)
+
+    res.json({ message: 'Student profile activated successfully' })
+  } catch (error) {
+    console.error('Unpause student error:', error)
+    res.status(500).json({ error: 'Failed to unpause student' })
+  }
+})
+
 // Get student schedules
 router.get('/students/:id/schedules', (req, res) => {
   try {
@@ -356,12 +410,16 @@ router.get('/stats', (req, res) => {
     const pendingEnrollments = db.prepare(`
       SELECT COUNT(*) as count FROM student_details WHERE enrollment_status = 'pending'
     `).get().count
+    const pausedStudents = db.prepare(`
+      SELECT COUNT(*) as count FROM student_details WHERE is_paused = 1 OR enrollment_status = 'paused'
+    `).get().count
     const totalClasses = db.prepare('SELECT COUNT(*) as count FROM dance_classes WHERE active = 1').get().count
 
     res.json({
       totalStudents,
       activeStudents,
       pendingEnrollments,
+      pausedStudents,
       totalClasses
     })
   } catch (error) {

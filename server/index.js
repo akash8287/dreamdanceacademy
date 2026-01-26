@@ -9,6 +9,7 @@ import authRoutes from './routes/auth.js'
 import adminRoutes from './routes/admin.js'
 import studentRoutes from './routes/student.js'
 import preadmissionRoutes from './routes/preadmission.js'
+import feesRoutes from './routes/fees.js'
 
 dotenv.config()
 
@@ -17,13 +18,16 @@ const __dirname = path.dirname(__filename)
 
 const app = express()
 const PORT = process.env.PORT || 3001
+const isProduction = process.env.NODE_ENV === 'production'
 
 // Initialize database
 initDB()
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3000'],
+  origin: isProduction 
+    ? ['https://dreamdanceacademy.onrender.com'] 
+    : ['http://localhost:5173', 'http://localhost:3000'],
   credentials: true
 }))
 app.use(express.json())
@@ -37,6 +41,7 @@ app.use('/api/auth', authRoutes)
 app.use('/api/admin', adminRoutes)
 app.use('/api/student', studentRoutes)
 app.use('/api/preadmission', preadmissionRoutes)
+app.use('/api/fees', feesRoutes)
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -55,6 +60,17 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Internal server error' })
 })
 
+// Serve frontend in production
+if (isProduction) {
+  // Serve static files from the dist folder
+  app.use(express.static(path.join(__dirname, '../dist')))
+  
+  // Handle SPA routing - serve index.html for all non-API routes
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../dist', 'index.html'))
+  })
+}
+
 app.listen(PORT, () => {
   console.log(`
   ╔════════════════════════════════════════════════════════╗
@@ -62,6 +78,7 @@ app.listen(PORT, () => {
   ║   🩰 Dream Dance Academy API Server                    ║
   ║                                                        ║
   ║   Server running on http://localhost:${PORT}             ║
+  ║   Mode: ${isProduction ? 'PRODUCTION' : 'DEVELOPMENT'}                               ║
   ║                                                        ║
   ║   Default Admin Login:                                 ║
   ║   Email: admin@dreamdance.com                          ║

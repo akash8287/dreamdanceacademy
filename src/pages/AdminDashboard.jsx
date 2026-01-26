@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useAuth } from '../context/AuthContext'
-import { adminAPI, preadmissionAPI } from '../services/api'
+import { adminAPI, preadmissionAPI, feesAPI } from '../services/api'
 import './AdminDashboard.css'
 
 const AdminDashboard = () => {
@@ -31,6 +31,26 @@ const AdminDashboard = () => {
     trialClassTime: '',
     adminNotes: ''
   })
+
+  // Fees management states
+  const [allFees, setAllFees] = useState([])
+  const [feeFilter, setFeeFilter] = useState('uploaded')
+  const [showCashPaymentModal, setShowCashPaymentModal] = useState(false)
+  const [cashPaymentForm, setCashPaymentForm] = useState({
+    userId: null,
+    month: new Date().toLocaleString('en-US', { month: 'long' }),
+    year: new Date().getFullYear(),
+    amount: 2000,
+    adminNotes: ''
+  })
+
+  // Certificates management states
+  const [allCertificates, setAllCertificates] = useState([])
+  const [certFilter, setCertFilter] = useState('pending')
+
+  // Meetings management states
+  const [meetings, setMeetings] = useState([])
+  const [meetingFilter, setMeetingFilter] = useState('pending')
 
   // Form states
   const [studentForm, setStudentForm] = useState({
@@ -159,6 +179,34 @@ const AdminDashboard = () => {
     }
   }
 
+  const handlePauseStudent = async (id) => {
+    const reason = prompt('Enter reason for pausing (optional):')
+    try {
+      await adminAPI.pauseStudent(id, reason || 'Discontinued')
+      setSuccess('Student profile paused successfully')
+      loadData()
+      if (selectedStudent?.id === id) {
+        handleViewStudent({ id })
+      }
+    } catch (err) {
+      setError(err.message)
+    }
+  }
+
+  const handleUnpauseStudent = async (id) => {
+    if (!confirm('Are you sure you want to reactivate this student?')) return
+    try {
+      await adminAPI.unpauseStudent(id)
+      setSuccess('Student profile reactivated successfully')
+      loadData()
+      if (selectedStudent?.id === id) {
+        handleViewStudent({ id })
+      }
+    } catch (err) {
+      setError(err.message)
+    }
+  }
+
   const handleViewStudent = async (student) => {
     try {
       const fullStudent = await adminAPI.getStudent(student.id)
@@ -253,6 +301,116 @@ const AdminDashboard = () => {
     }
   }
 
+  // Fees management functions
+  const loadFees = async (status = feeFilter) => {
+    try {
+      const data = await feesAPI.getAllFees(status)
+      setAllFees(data)
+    } catch (err) {
+      console.error('Failed to load fees:', err)
+    }
+  }
+
+  const handleVerifyFeePayment = async (feeId, status) => {
+    try {
+      await feesAPI.verifyPayment(feeId, status)
+      setSuccess(`Payment ${status === 'verified' ? 'verified' : status}`)
+      loadFees()
+    } catch (err) {
+      setError(err.message)
+    }
+  }
+
+  const handleRecordCashPayment = async (e) => {
+    e.preventDefault()
+    try {
+      await feesAPI.recordCashPayment(
+        cashPaymentForm.userId,
+        cashPaymentForm.month,
+        cashPaymentForm.year,
+        cashPaymentForm.amount,
+        cashPaymentForm.adminNotes
+      )
+      setSuccess('Cash payment recorded successfully')
+      setShowCashPaymentModal(false)
+      loadFees()
+    } catch (err) {
+      setError(err.message)
+    }
+  }
+
+  const handleGenerateFees = async () => {
+    const month = new Date().toLocaleString('en-US', { month: 'long' })
+    const year = new Date().getFullYear()
+    try {
+      const result = await feesAPI.generateFees(month, year)
+      setSuccess(result.message)
+    } catch (err) {
+      setError(err.message)
+    }
+  }
+
+  // Certificates management functions
+  const loadCertificates = async (status = certFilter) => {
+    try {
+      const data = await feesAPI.getAllCertificates(status)
+      setAllCertificates(data)
+    } catch (err) {
+      console.error('Failed to load certificates:', err)
+    }
+  }
+
+  const handleCertificateAction = async (certId, action) => {
+    try {
+      const result = await feesAPI.certificateAction(certId, action)
+      setSuccess(result.message)
+      loadCertificates()
+    } catch (err) {
+      setError(err.message)
+    }
+  }
+
+  // Meetings management functions
+  const loadMeetings = async (status = meetingFilter) => {
+    try {
+      const data = await feesAPI.getMeetings(status)
+      setMeetings(data)
+    } catch (err) {
+      console.error('Failed to load meetings:', err)
+    }
+  }
+
+  const handleMeetingAction = async (meetingId, status) => {
+    try {
+      await feesAPI.meetingAction(meetingId, status)
+      setSuccess(`Meeting ${status}`)
+      loadMeetings()
+    } catch (err) {
+      setError(err.message)
+    }
+  }
+
+  // Helper functions
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+      maximumFractionDigits: 0
+    }).format(amount)
+  }
+
+  const getCertificateName = (type) => {
+    const names = {
+      'd_certificate': 'D Certificate',
+      'd_basic': 'D-Basic Certificate',
+      'd_character': 'D-Character Certificate',
+      'd_advanced': 'D-Advanced Certificate',
+      'dance_teacher': 'Dance Teacher Certificate'
+    }
+    return names[type] || type
+  }
+
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
   const danceStyles = ['Classical Ballet', 'Contemporary', 'Hip Hop', 'Jazz', 'Kathak', 'Salsa & Latin', 'Bollywood Fusion', 'Kids Program']
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
@@ -288,6 +446,15 @@ const AdminDashboard = () => {
           </button>
           <button className={`nav-item ${activeTab === 'schedules' ? 'active' : ''}`} onClick={() => { setActiveTab('schedules'); setSelectedApplication(null) }}>
             <span>📅</span> Schedules
+          </button>
+          <button className={`nav-item ${activeTab === 'fees' ? 'active' : ''}`} onClick={() => { setActiveTab('fees'); loadFees() }}>
+            <span>💰</span> Fees
+          </button>
+          <button className={`nav-item ${activeTab === 'certificates' ? 'active' : ''}`} onClick={() => { setActiveTab('certificates'); loadCertificates() }}>
+            <span>🏆</span> Certificates
+          </button>
+          <button className={`nav-item ${activeTab === 'meetings' ? 'active' : ''}`} onClick={() => { setActiveTab('meetings'); loadMeetings() }}>
+            <span>📋</span> Meetings
           </button>
         </nav>
 
@@ -338,6 +505,13 @@ const AdminDashboard = () => {
                     <div className="stat-info">
                       <span className="stat-value">{stats?.pendingEnrollments || 0}</span>
                       <span className="stat-label">Pending</span>
+                    </div>
+                  </div>
+                  <div className="stat-card">
+                    <span className="stat-icon">⏸️</span>
+                    <div className="stat-info">
+                      <span className="stat-value">{stats?.pausedStudents || 0}</span>
+                      <span className="stat-label">Paused</span>
                     </div>
                   </div>
                   <div className="stat-card">
@@ -424,6 +598,11 @@ const AdminDashboard = () => {
                       <td>
                         <button className="action-btn" onClick={() => handleViewStudent(student)}>View</button>
                         <button className="action-btn delete" onClick={() => handleDeleteStudent(student.id)}>Delete</button>
+                        {student.enrollment_status === 'paused' || student.is_paused ? (
+                          <button className="action-btn activate" onClick={() => handleUnpauseStudent(student.id)}>Activate</button>
+                        ) : (
+                          <button className="action-btn pause" onClick={() => handlePauseStudent(student.id)}>Pause</button>
+                        )}
                       </td>
                     </tr>
                   ))}
@@ -439,13 +618,29 @@ const AdminDashboard = () => {
             <button className="back-btn" onClick={() => setSelectedStudent(null)}>← Back to Students</button>
             
             <div className="detail-header">
-              <div className="student-avatar">👤</div>
+              <div className="student-avatar">
+                {selectedStudent.enrollment_status === 'paused' || selectedStudent.is_paused ? '⏸️' : '👤'}
+              </div>
               <div className="student-info">
                 <h1>{selectedStudent.first_name} {selectedStudent.last_name}</h1>
                 <p>{selectedStudent.email}</p>
                 <span className={`status-badge ${selectedStudent.enrollment_status}`}>
                   {selectedStudent.enrollment_status || 'pending'}
                 </span>
+                {selectedStudent.is_paused && selectedStudent.pause_reason && (
+                  <span className="pause-reason">Reason: {selectedStudent.pause_reason}</span>
+                )}
+              </div>
+              <div className="student-actions">
+                {selectedStudent.enrollment_status === 'paused' || selectedStudent.is_paused ? (
+                  <button className="btn btn-success" onClick={() => handleUnpauseStudent(selectedStudent.id)}>
+                    ▶️ Reactivate Profile
+                  </button>
+                ) : (
+                  <button className="btn btn-warning" onClick={() => handlePauseStudent(selectedStudent.id)}>
+                    ⏸️ Pause Profile
+                  </button>
+                )}
               </div>
             </div>
 
@@ -834,6 +1029,233 @@ const AdminDashboard = () => {
             )}
           </div>
         )}
+
+        {/* Fees Tab */}
+        {activeTab === 'fees' && (
+          <div className="fees-admin-content">
+            <div className="content-header">
+              <h1>Fee Management</h1>
+              <div className="header-actions">
+                <button className="btn btn-secondary" onClick={handleGenerateFees}>
+                  📝 Generate Monthly Fees
+                </button>
+                <button className="btn btn-primary" onClick={() => setShowCashPaymentModal(true)}>
+                  💵 Record Cash Payment
+                </button>
+              </div>
+            </div>
+
+            <div className="filter-bar">
+              <button className={`filter-btn ${feeFilter === 'uploaded' ? 'active' : ''}`} onClick={() => { setFeeFilter('uploaded'); loadFees('uploaded') }}>
+                Pending Verification
+              </button>
+              <button className={`filter-btn ${feeFilter === 'verified' ? 'active' : ''}`} onClick={() => { setFeeFilter('verified'); loadFees('verified') }}>
+                Verified
+              </button>
+              <button className={`filter-btn ${feeFilter === 'pending' ? 'active' : ''}`} onClick={() => { setFeeFilter('pending'); loadFees('pending') }}>
+                Unpaid
+              </button>
+              <button className={`filter-btn ${feeFilter === '' ? 'active' : ''}`} onClick={() => { setFeeFilter(''); loadFees('') }}>
+                All
+              </button>
+            </div>
+
+            <div className="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Student</th>
+                    <th>Month</th>
+                    <th>Base Fee</th>
+                    <th>Penalty</th>
+                    <th>Total</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {allFees.map(fee => (
+                    <tr key={fee.id}>
+                      <td>
+                        <div className="student-info-cell">
+                          <strong>{fee.first_name} {fee.last_name}</strong>
+                          <small>{fee.student_id || fee.email}</small>
+                        </div>
+                      </td>
+                      <td>{fee.month} {fee.year}</td>
+                      <td>{formatCurrency(fee.base_amount)}</td>
+                      <td className={fee.penalty_amount > 0 ? 'penalty' : ''}>{formatCurrency(fee.penalty_amount || 0)}</td>
+                      <td className="total">{formatCurrency(fee.total_amount)}</td>
+                      <td>{fee.payment_method === 'cash' ? '💵 Cash' : fee.payment_method === 'online' ? '📱 Online' : '-'}</td>
+                      <td>
+                        <span className={`status-badge ${fee.status}`}>
+                          {fee.status}
+                        </span>
+                      </td>
+                      <td>
+                        {fee.status === 'uploaded' && (
+                          <div className="action-buttons">
+                            <button className="action-btn view" onClick={() => feesAPI.viewPaymentScreenshot(fee.id)}>
+                              👁️ View
+                            </button>
+                            <button className="action-btn approve" onClick={() => handleVerifyFeePayment(fee.id, 'verified')}>
+                              ✓
+                            </button>
+                            <button className="action-btn reject" onClick={() => handleVerifyFeePayment(fee.id, 'rejected')}>
+                              ✗
+                            </button>
+                          </div>
+                        )}
+                        {fee.status === 'pending' && (
+                          <button className="action-btn" onClick={() => {
+                            setCashPaymentForm({ ...cashPaymentForm, userId: fee.user_id, month: fee.month, year: fee.year, amount: fee.total_amount })
+                            setShowCashPaymentModal(true)
+                          }}>
+                            💵 Cash
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {allFees.length === 0 && (
+                <div className="empty-table">No fee records found</div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Certificates Tab */}
+        {activeTab === 'certificates' && (
+          <div className="certificates-admin-content">
+            <div className="content-header">
+              <h1>Certificate Applications</h1>
+            </div>
+
+            <div className="filter-bar">
+              <button className={`filter-btn ${certFilter === 'pending' ? 'active' : ''}`} onClick={() => { setCertFilter('pending'); loadCertificates('pending') }}>
+                Pending
+              </button>
+              <button className={`filter-btn ${certFilter === 'approved' ? 'active' : ''}`} onClick={() => { setCertFilter('approved'); loadCertificates('approved') }}>
+                Approved
+              </button>
+              <button className={`filter-btn ${certFilter === 'rejected' ? 'active' : ''}`} onClick={() => { setCertFilter('rejected'); loadCertificates('rejected') }}>
+                Rejected
+              </button>
+              <button className={`filter-btn ${certFilter === '' ? 'active' : ''}`} onClick={() => { setCertFilter(''); loadCertificates('') }}>
+                All
+              </button>
+            </div>
+
+            <div className="certificates-list">
+              {allCertificates.map(cert => (
+                <div key={cert.id} className={`certificate-admin-card ${cert.status}`}>
+                  <div className="cert-header">
+                    <div className="cert-icon">
+                      {cert.status === 'approved' ? '🏆' : cert.status === 'pending' ? '⏳' : '❌'}
+                    </div>
+                    <div className="cert-info">
+                      <h3>{getCertificateName(cert.certificate_type)}</h3>
+                      <p className="student-name">{cert.first_name} {cert.last_name}</p>
+                      <p className="student-id">{cert.student_id || cert.email}</p>
+                    </div>
+                  </div>
+                  <div className="cert-details">
+                    <span className={`status-badge ${cert.status}`}>{cert.status}</span>
+                    <span className="date">Applied: {new Date(cert.application_date).toLocaleDateString()}</span>
+                    {cert.certificate_number && (
+                      <span className="cert-number">#{cert.certificate_number}</span>
+                    )}
+                  </div>
+                  {cert.status === 'pending' && (
+                    <div className="cert-actions">
+                      <button className="btn btn-success btn-sm" onClick={() => handleCertificateAction(cert.id, 'approved')}>
+                        ✓ Approve
+                      </button>
+                      <button className="btn btn-danger btn-sm" onClick={() => handleCertificateAction(cert.id, 'rejected')}>
+                        ✗ Reject
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ))}
+              {allCertificates.length === 0 && (
+                <div className="empty-state">
+                  <span className="empty-icon">🏆</span>
+                  <h3>No Certificate Applications</h3>
+                  <p>Certificate applications will appear here</p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Meetings Tab */}
+        {activeTab === 'meetings' && (
+          <div className="meetings-admin-content">
+            <div className="content-header">
+              <h1>Meeting Requests</h1>
+            </div>
+
+            <div className="filter-bar">
+              <button className={`filter-btn ${meetingFilter === 'pending' ? 'active' : ''}`} onClick={() => { setMeetingFilter('pending'); loadMeetings('pending') }}>
+                Pending
+              </button>
+              <button className={`filter-btn ${meetingFilter === 'confirmed' ? 'active' : ''}`} onClick={() => { setMeetingFilter('confirmed'); loadMeetings('confirmed') }}>
+                Confirmed
+              </button>
+              <button className={`filter-btn ${meetingFilter === 'completed' ? 'active' : ''}`} onClick={() => { setMeetingFilter('completed'); loadMeetings('completed') }}>
+                Completed
+              </button>
+              <button className={`filter-btn ${meetingFilter === '' ? 'active' : ''}`} onClick={() => { setMeetingFilter(''); loadMeetings('') }}>
+                All
+              </button>
+            </div>
+
+            <div className="meetings-list">
+              {meetings.map(meeting => (
+                <div key={meeting.id} className={`meeting-card ${meeting.status}`}>
+                  <div className="meeting-header">
+                    <h3>{meeting.name}</h3>
+                    <span className={`status-badge ${meeting.status}`}>{meeting.status}</span>
+                  </div>
+                  <div className="meeting-details">
+                    <p>📧 {meeting.email}</p>
+                    <p>📞 {meeting.phone}</p>
+                    <p>📅 {meeting.preferred_date} at {meeting.preferred_time}</p>
+                    {meeting.purpose && <p>📝 {meeting.purpose}</p>}
+                  </div>
+                  <div className="meeting-actions">
+                    {meeting.status === 'pending' && (
+                      <>
+                        <button className="btn btn-success btn-sm" onClick={() => handleMeetingAction(meeting.id, 'confirmed')}>
+                          ✓ Confirm
+                        </button>
+                        <button className="btn btn-danger btn-sm" onClick={() => handleMeetingAction(meeting.id, 'cancelled')}>
+                          ✗ Cancel
+                        </button>
+                      </>
+                    )}
+                    {meeting.status === 'confirmed' && (
+                      <button className="btn btn-primary btn-sm" onClick={() => handleMeetingAction(meeting.id, 'completed')}>
+                        ✓ Mark Complete
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
+              {meetings.length === 0 && (
+                <div className="empty-state">
+                  <span className="empty-icon">📋</span>
+                  <h3>No Meeting Requests</h3>
+                  <p>Meeting requests will appear here</p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </main>
 
       {/* Add Student Modal */}
@@ -1021,6 +1443,79 @@ const AdminDashboard = () => {
                 <button type="submit" className="btn btn-success">
                   {selectedApplication.application_type === 'trial' ? '📅 Schedule Trial' : '✓ Approve Admission'}
                 </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Cash Payment Modal */}
+      {showCashPaymentModal && (
+        <div className="modal-overlay" onClick={() => setShowCashPaymentModal(false)}>
+          <div className="modal" onClick={e => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2>Record Cash Payment</h2>
+              <button className="close-btn" onClick={() => setShowCashPaymentModal(false)}>×</button>
+            </div>
+            <form onSubmit={handleRecordCashPayment}>
+              <div className="form-group">
+                <label>Student *</label>
+                <select 
+                  value={cashPaymentForm.userId || ''} 
+                  onChange={e => setCashPaymentForm({...cashPaymentForm, userId: parseInt(e.target.value)})}
+                  required
+                >
+                  <option value="">Select Student</option>
+                  {students.map(s => (
+                    <option key={s.id} value={s.id}>{s.first_name} {s.last_name} - {s.email}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Month *</label>
+                  <select 
+                    value={cashPaymentForm.month} 
+                    onChange={e => setCashPaymentForm({...cashPaymentForm, month: e.target.value})}
+                    required
+                  >
+                    {months.map(m => <option key={m} value={m}>{m}</option>)}
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label>Year *</label>
+                  <input 
+                    type="number" 
+                    value={cashPaymentForm.year} 
+                    onChange={e => setCashPaymentForm({...cashPaymentForm, year: parseInt(e.target.value)})}
+                    min="2024"
+                    max="2030"
+                    required 
+                  />
+                </div>
+              </div>
+              <div className="form-group">
+                <label>Amount (₹) *</label>
+                <input 
+                  type="number" 
+                  value={cashPaymentForm.amount} 
+                  onChange={e => setCashPaymentForm({...cashPaymentForm, amount: parseInt(e.target.value)})}
+                  min="0"
+                  required 
+                />
+              </div>
+              <div className="form-group">
+                <label>Admin Notes</label>
+                <textarea 
+                  value={cashPaymentForm.adminNotes} 
+                  onChange={e => setCashPaymentForm({...cashPaymentForm, adminNotes: e.target.value})} 
+                  rows="2"
+                  placeholder="e.g., Received in office on..."
+                ></textarea>
+              </div>
+              <div className="modal-actions">
+                <button type="button" className="btn btn-secondary" onClick={() => setShowCashPaymentModal(false)}>Cancel</button>
+                <button type="submit" className="btn btn-success">💵 Record Payment</button>
               </div>
             </form>
           </div>

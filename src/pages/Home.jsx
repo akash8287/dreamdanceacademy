@@ -9,6 +9,11 @@ import studioImage1 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.29.jpe
 import studioImage2 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.30.jpeg'
 import studioImage3 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.21.jpeg'
 
+// Featured horizontal images
+import featuredImg1 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.51 (1).jpeg' // Kids Program (id 19)
+import featuredImg2 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.52.jpeg' // Group Photo (id 22)
+import featuredImg3 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.53.jpeg' // Workshop (id 30)
+
 // Dance style images - professional photos
 import classicalImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42 (2).jpeg'
 import contemporaryImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.44.jpeg'
@@ -139,7 +144,8 @@ const Home = () => {
                 variants={fadeInUp}
               >
                 <span className="stat-number">{stat.number}</span>
-                <span className="stat-label">{stat.label}</span>
+                <span className="stat-label" style={{ color: "rgba(0,0,0,0.8)" ,fontWeight: "bold" }}
+                >{stat.label}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -156,8 +162,8 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span>What We Offer</span>
-            <h2>Dance Styles for Every Soul</h2>
+            <span style={{"font-size": "30px" }}>What We Offer</span>
+            <h2 style={{ color: "rgba(255, 255, 255, 0.8)" }}>Dance Styles for Every Soul</h2>
             <div className="decorative-line"></div>
           </motion.div>
           <motion.div 
@@ -229,6 +235,67 @@ const Home = () => {
                 </div>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Moments Section */}
+      <section className="section featured-moments">
+        <div className="container">
+          <motion.div 
+            className="section-title"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span>Highlights</span>
+            <h2>Featured Moments</h2>
+            <div className="decorative-line"></div>
+          </motion.div>
+          <div className="featured-grid">
+            <motion.div 
+              className="featured-item"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <img src={featuredImg1} alt="Kids Dance Program" />
+              <div className="featured-overlay">
+                <h4>Kids Program</h4>
+                <p>Young dancers showcasing their talent</p>
+              </div>
+            </motion.div>
+            <motion.div 
+              className="featured-item"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <img src={featuredImg2} alt="Dance Group Photo" />
+              <div className="featured-overlay">
+                <h4>Our Dance Family</h4>
+                <p>Dance batch group photo</p>
+              </div>
+            </motion.div>
+            <motion.div 
+              className="featured-item"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <img src={featuredImg3} alt="Dance Workshop" />
+              <div className="featured-overlay">
+                <h4>Dance Workshop</h4>
+                <p>Special training sessions</p>
+              </div>
+            </motion.div>
+          </div>
+          <div className="featured-cta">
+            <Link to="/gallery" className="btn btn-secondary">View Full Gallery</Link>
           </div>
         </div>
       </section>

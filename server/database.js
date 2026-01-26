@@ -167,6 +167,15 @@ const initDB = () => {
     db.exec(`ALTER TABLE student_details ADD COLUMN id_proof_type TEXT`)
   } catch (e) {}
   try {
+    db.exec(`ALTER TABLE student_details ADD COLUMN is_paused INTEGER DEFAULT 0`)
+  } catch (e) {}
+  try {
+    db.exec(`ALTER TABLE student_details ADD COLUMN paused_at DATETIME`)
+  } catch (e) {}
+  try {
+    db.exec(`ALTER TABLE student_details ADD COLUMN pause_reason TEXT`)
+  } catch (e) {}
+  try {
     db.exec(`ALTER TABLE student_details ADD COLUMN id_proof_number TEXT`)
   } catch (e) {}
 
@@ -217,6 +226,96 @@ const initDB = () => {
       active INTEGER DEFAULT 1
     )
   `)
+
+  // Student fees configuration
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS fee_structure (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      monthly_fee REAL NOT NULL,
+      late_penalty_per_day REAL DEFAULT 50,
+      grace_period_days INTEGER DEFAULT 2,
+      description TEXT,
+      is_active INTEGER DEFAULT 1,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+  `)
+
+  // Monthly fee payments
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS fee_payments (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id INTEGER NOT NULL,
+      month TEXT NOT NULL,
+      year INTEGER NOT NULL,
+      base_amount REAL NOT NULL,
+      penalty_amount REAL DEFAULT 0,
+      total_amount REAL NOT NULL,
+      payment_method TEXT CHECK(payment_method IN ('online', 'cash')),
+      payment_screenshot TEXT,
+      payment_date DATETIME,
+      due_date TEXT NOT NULL,
+      days_late INTEGER DEFAULT 0,
+      status TEXT DEFAULT 'pending' CHECK(status IN ('pending', 'uploaded', 'verified', 'rejected', 'paid')),
+      verified_by INTEGER,
+      verified_at DATETIME,
+      admin_notes TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+      FOREIGN KEY (verified_by) REFERENCES users(id),
+      UNIQUE(user_id, month, year)
+    )
+  `)
+
+  // Certificates
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS certificates (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id INTEGER NOT NULL,
+      certificate_type TEXT NOT NULL CHECK(certificate_type IN ('d_certificate', 'd_basic', 'd_character', 'd_advanced', 'dance_teacher')),
+      certificate_order INTEGER NOT NULL,
+      application_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+      status TEXT DEFAULT 'pending' CHECK(status IN ('pending', 'approved', 'rejected')),
+      approved_by INTEGER,
+      approved_at DATETIME,
+      certificate_number TEXT UNIQUE,
+      issue_date DATETIME,
+      admin_notes TEXT,
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+      FOREIGN KEY (approved_by) REFERENCES users(id)
+    )
+  `)
+
+  // Meeting bookings with owner
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS meeting_bookings (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      email TEXT NOT NULL,
+      phone TEXT NOT NULL,
+      purpose TEXT,
+      preferred_date TEXT NOT NULL,
+      preferred_time TEXT NOT NULL,
+      status TEXT DEFAULT 'pending' CHECK(status IN ('pending', 'confirmed', 'cancelled', 'completed')),
+      admin_notes TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+  `)
+
+  // Add monthly_fee to student_details if not exists
+  try {
+    db.exec(`ALTER TABLE student_details ADD COLUMN monthly_fee REAL DEFAULT 2000`)
+  } catch (e) {}
+
+  // Create default fee structure if not exists
+  const feeExists = db.prepare('SELECT id FROM fee_structure LIMIT 1').get()
+  if (!feeExists) {
+    db.prepare(`
+      INSERT INTO fee_structure (name, monthly_fee, late_penalty_per_day, grace_period_days, description)
+      VALUES (?, ?, ?, ?, ?)
+    `).run('Standard Fee', 2000, 50, 2, 'Standard monthly dance class fee')
+    console.log('Default fee structure created')
+  }
 
   // Add new columns to users table if they don't exist
   try {

@@ -1,9 +1,14 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { sendContactEmail } from '../services/emailService'
+import { feesAPI } from '../services/api'
 import './Contact.css'
 
 const Contact = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,11 +19,38 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null)
   const [errorMessage, setErrorMessage] = useState('')
+  
+  // Meeting booking state
+  const [showMeetingModal, setShowMeetingModal] = useState(false)
+  const [meetingForm, setMeetingForm] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    purpose: '',
+    preferredDate: '',
+    preferredTime: ''
+  })
+  const [meetingSubmitting, setMeetingSubmitting] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
+    
+    // Redirect to pre-admission page if "Book Trial Class" is selected
+    if (name === 'subject' && value === 'trial') {
+      navigate('/apply')
+      return
+    }
+    
     setFormData(prev => ({ ...prev, [name]: value }))
   }
+
+  // Handle URL query params for direct navigation
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    if (params.get('action') === 'meeting') {
+      setShowMeetingModal(true)
+    }
+  }, [location])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -259,15 +291,24 @@ const Contact = () => {
                       required
                     >
                       <option value="">Select a subject</option>
-                      <option value="other">Pre Admission</option>
+                      <option value="trial">🎯 Book Trial Class (Pre-Admission)</option>
+                      <option value="meeting">📋 Meeting with Owner</option>
                       <option value="general">General Inquiry</option>
                       <option value="classes">Class Information</option>
                       <option value="enrollment">Enrollment</option>
-                      <option value="trial">Book Trial Class</option>
                       <option value="events">Events & Performances</option>
                       <option value="feedback">Feedback</option>
                       <option value="other">Other</option>
                     </select>
+                    {formData.subject === 'meeting' && (
+                      <button 
+                        type="button" 
+                        className="btn btn-secondary schedule-meeting-btn"
+                        onClick={() => setShowMeetingModal(true)}
+                      >
+                        📋 Schedule Meeting with Owner
+                      </button>
+                    )}
                   </div>
                 </div>
 
@@ -347,6 +388,158 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      {/* Quick Actions */}
+      <section className="section quick-actions-section">
+        <div className="container">
+          <div className="quick-actions-grid">
+            <motion.div 
+              className="quick-action-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              onClick={() => navigate('/apply')}
+            >
+              <span className="action-icon">🎯</span>
+              <h3>Book Trial Class</h3>
+              <p>Experience a free trial class before enrolling</p>
+              <span className="action-arrow">→</span>
+            </motion.div>
+            <motion.div 
+              className="quick-action-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              onClick={() => setShowMeetingModal(true)}
+            >
+              <span className="action-icon">📋</span>
+              <h3>Meeting with Owner</h3>
+              <p>Book a time slot to meet with our academy head</p>
+              <span className="action-arrow">→</span>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Meeting Booking Modal */}
+      {showMeetingModal && (
+        <div className="modal-overlay" onClick={() => setShowMeetingModal(false)}>
+          <motion.div 
+            className="meeting-modal"
+            onClick={e => e.stopPropagation()}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+          >
+            <div className="modal-header">
+              <h2>📋 Schedule Meeting with Owner</h2>
+              <button className="close-btn" onClick={() => setShowMeetingModal(false)}>×</button>
+            </div>
+            <form onSubmit={async (e) => {
+              e.preventDefault()
+              setMeetingSubmitting(true)
+              try {
+                await feesAPI.bookMeeting(meetingForm)
+                setSubmitStatus('meeting_success')
+                setShowMeetingModal(false)
+                setMeetingForm({ name: '', email: '', phone: '', purpose: '', preferredDate: '', preferredTime: '' })
+                setTimeout(() => setSubmitStatus(null), 5000)
+              } catch (err) {
+                setErrorMessage(err.message || 'Failed to book meeting')
+                setSubmitStatus('error')
+              } finally {
+                setMeetingSubmitting(false)
+              }
+            }}>
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Full Name *</label>
+                  <input 
+                    type="text" 
+                    value={meetingForm.name}
+                    onChange={e => setMeetingForm({...meetingForm, name: e.target.value})}
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Phone Number *</label>
+                  <input 
+                    type="tel" 
+                    value={meetingForm.phone}
+                    onChange={e => setMeetingForm({...meetingForm, phone: e.target.value})}
+                    placeholder="+91 XXXXX XXXXX"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="form-group">
+                <label>Email Address *</label>
+                <input 
+                  type="email" 
+                  value={meetingForm.email}
+                  onChange={e => setMeetingForm({...meetingForm, email: e.target.value})}
+                  placeholder="your@email.com"
+                  required
+                />
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Preferred Date *</label>
+                  <input 
+                    type="date" 
+                    value={meetingForm.preferredDate}
+                    onChange={e => setMeetingForm({...meetingForm, preferredDate: e.target.value})}
+                    min={new Date().toISOString().split('T')[0]}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Preferred Time *</label>
+                  <select 
+                    value={meetingForm.preferredTime}
+                    onChange={e => setMeetingForm({...meetingForm, preferredTime: e.target.value})}
+                    required
+                  >
+                    <option value="">Select time slot</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="2:00 PM">2:00 PM</option>
+                    <option value="3:00 PM">3:00 PM</option>
+                    <option value="4:00 PM">4:00 PM</option>
+                    <option value="5:00 PM">5:00 PM</option>
+                    <option value="6:00 PM">6:00 PM</option>
+                  </select>
+                </div>
+              </div>
+              <div className="form-group">
+                <label>Purpose of Meeting</label>
+                <textarea 
+                  value={meetingForm.purpose}
+                  onChange={e => setMeetingForm({...meetingForm, purpose: e.target.value})}
+                  placeholder="Brief description of what you'd like to discuss..."
+                  rows="3"
+                ></textarea>
+              </div>
+              <div className="modal-actions">
+                <button type="button" className="btn btn-secondary" onClick={() => setShowMeetingModal(false)}>Cancel</button>
+                <button type="submit" className="btn btn-primary" disabled={meetingSubmitting}>
+                  {meetingSubmitting ? 'Scheduling...' : 'Schedule Meeting'}
+                </button>
+              </div>
+            </form>
+          </motion.div>
+        </div>
+      )}
+
+      {/* Meeting Success Message */}
+      {submitStatus === 'meeting_success' && (
+        <div className="floating-message success">
+          ✓ Meeting request submitted successfully! We'll confirm your appointment soon.
+        </div>
+      )}
     </motion.div>
   )
 }

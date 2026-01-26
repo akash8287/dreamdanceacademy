@@ -876,3 +876,302 @@ tr:hover td {
   padding: 0.25rem 0;
   color: var(--color-secondary);
 }
+
+/* ==================== FEES ADMIN SECTION ==================== */
+.fees-admin-content .content-header,
+.certificates-admin-content .content-header,
+.meetings-admin-content .content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.fees-admin-content .header-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  color: rgba(253, 246, 233, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+}
+
+.filter-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.filter-btn.active {
+  background: var(--color-secondary);
+  color: var(--color-dark);
+}
+
+.student-info-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.student-info-cell strong {
+  color: var(--color-cream);
+}
+
+.student-info-cell small {
+  font-size: 0.75rem;
+  color: rgba(253, 246, 233, 0.5);
+}
+
+.table-container td.penalty {
+  color: #ef4444;
+}
+
+.table-container td.total {
+  font-weight: 600;
+  color: var(--color-cream);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.action-btn.view {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+}
+
+.action-btn.approve {
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+}
+
+.action-btn.reject {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+.action-btn.pause {
+  background: rgba(234, 179, 8, 0.2);
+  color: #fbbf24;
+}
+
+.action-btn.activate {
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+}
+
+.btn-warning {
+  background: #f59e0b;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+  background: #d97706;
+}
+
+.pause-reason {
+  display: block;
+  font-size: 0.85rem;
+  color: #fbbf24;
+  margin-top: 0.25rem;
+}
+
+.student-actions {
+  margin-top: var(--space-sm);
+}
+
+.status-badge.paused {
+  background: rgba(234, 179, 8, 0.2);
+  color: #fbbf24;
+}
+
+.empty-table {
+  text-align: center;
+  padding: var(--space-lg);
+  color: rgba(253, 246, 233, 0.5);
+}
+
+/* ==================== CERTIFICATES ADMIN SECTION ==================== */
+.certificates-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-md);
+}
+
+.certificate-admin-card {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: var(--space-md);
+  border-left: 4px solid;
+}
+
+.certificate-admin-card.approved {
+  border-color: var(--color-secondary);
+}
+
+.certificate-admin-card.pending {
+  border-color: #fbbf24;
+}
+
+.certificate-admin-card.rejected {
+  border-color: #ef4444;
+}
+
+.cert-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: var(--space-sm);
+}
+
+.cert-header .cert-icon {
+  font-size: 2.5rem;
+}
+
+.cert-header .cert-info h3 {
+  color: var(--color-cream);
+  margin-bottom: 0.25rem;
+}
+
+.cert-header .student-name {
+  color: rgba(253, 246, 233, 0.8);
+  font-size: 0.95rem;
+  margin-bottom: 0.15rem;
+}
+
+.cert-header .student-id {
+  color: rgba(253, 246, 233, 0.5);
+  font-size: 0.8rem;
+}
+
+.cert-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cert-details .date {
+  font-size: 0.8rem;
+  color: rgba(253, 246, 233, 0.6);
+}
+
+.cert-details .cert-number {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--color-primary-light);
+}
+
+.cert-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+/* ==================== MEETINGS ADMIN SECTION ==================== */
+.meetings-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-md);
+}
+
+.meeting-card {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: var(--space-md);
+  border-left: 4px solid;
+}
+
+.meeting-card.pending {
+  border-color: #fbbf24;
+}
+
+.meeting-card.confirmed {
+  border-color: #3b82f6;
+}
+
+.meeting-card.completed {
+  border-color: var(--color-secondary);
+}
+
+.meeting-card.cancelled {
+  border-color: #ef4444;
+  opacity: 0.7;
+}
+
+.meeting-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+}
+
+.meeting-header h3 {
+  color: var(--color-cream);
+}
+
+.meeting-details p {
+  color: rgba(253, 246, 233, 0.8);
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+}
+
+.meeting-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Empty state in admin */
+.certificates-admin-content .empty-state,
+.meetings-admin-content .empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--space-xl);
+}
+
+.empty-state .empty-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: var(--space-sm);
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  color: var(--color-cream);
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: rgba(253, 246, 233, 0.6);
+}

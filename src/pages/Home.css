@@ -487,6 +487,69 @@
   flex-wrap: wrap;
 }
 
+/* Featured Moments Section */
+.featured-moments {
+  background: linear-gradient(135deg, var(--color-dark-soft), var(--color-dark));
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.featured-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 16/10;
+  cursor: pointer;
+}
+
+.featured-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.featured-item:hover img {
+  transform: scale(1.1);
+}
+
+.featured-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  padding: var(--space-md);
+  color: var(--color-cream);
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+}
+
+.featured-item:hover .featured-overlay {
+  transform: translateY(0);
+}
+
+.featured-overlay h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+  color: var(--color-secondary);
+}
+
+.featured-overlay p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.featured-cta {
+  text-align: center;
+  margin-top: var(--space-lg);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .hero-content {
@@ -533,6 +596,14 @@
 
   .testimonials-grid {
     grid-template-columns: 1fr;
+  }
+
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .featured-overlay {
+    transform: translateY(0);
   }
 }
 

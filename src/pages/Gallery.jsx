@@ -145,10 +145,10 @@ const Gallery = () => {
     // Studio
     { id: 17, category: 'studio', image: studioImg1, title: 'Academy Event', description: 'Birthday celebration at studio' },
     { id: 18, category: 'studio', image: studioImg2, title: 'Dance Practice', description: 'Group practice session' },
-    { id: 19, category: 'studio', image: studioImg3, title: 'Kids Program', description: 'Children dance performance' },
+    { id: 19, category: 'studio', image: studioImg3, title: 'Kids Program', description: 'Children dance performance', horizontal: true },
     { id: 20, category: 'studio', image: studioImg4, title: 'Admin Office', description: 'Our registration desk' },
     { id: 21, category: 'studio', image: studioImg5, title: 'Trophy Display', description: 'Awards and achievements' },
-    { id: 22, category: 'studio', image: studioImg6, title: 'Group Photo', description: 'Dance batch group picture' },
+    { id: 22, category: 'studio', image: studioImg6, title: 'Group Photo', description: 'Dance batch group picture', horizontal: true },
     
     // More Performances
     { id: 23, category: 'performances', image: danceImg5, title: 'Group Formation', description: 'Choreographed group formation' },
@@ -160,17 +160,17 @@ const Gallery = () => {
     
     // More Studio/Events
     { id: 29, category: 'studio', image: studioImg7, title: 'Practice Session', description: 'Daily practice at studio' },
-    { id: 30, category: 'events', image: studioImg9, title: 'Workshop', description: 'Special dance workshop' },
+    { id: 30, category: 'events', image: studioImg9, title: 'Workshop', description: 'Special dance workshop', horizontal: true },
     { id: 31, category: 'studio', image: studioImg10, title: 'Student Group', description: 'Our talented students' },
     { id: 32, category: 'events', image: studioImg11, title: 'Event Day', description: 'Special event celebration' },
-    { id: 33, category: 'studio', image: studioImg12, title: 'Academy Tour', description: 'Inside Dream Dance Academy' },
+    // { id: 33, category: 'studio', image: studioImg12, title: 'Academy Tour', description: 'Inside Dream Dance Academy' },
     { id: 34, category: 'events', image: oldImg1, title: 'Academy Banner', description: 'Dream Dance Academy signboard' },
-    { id: 35, category: 'studio', image: oldImg2, title: 'Studio Setup', description: 'Professional dance studio' },
+    // { id: 35, category: 'studio', image: oldImg2, title: 'Studio Setup', description: 'Professional dance studio' },
     { id: 36, category: 'studio', image: logoImage, title: 'Our Logo', description: 'Dream Dance Academy brand' },
     
     // Old Gallery Images - Jan 19 (Original Collection)
     { id: 37, category: 'studio', image: old19Img1, title: 'Dance Studio', description: 'Professional dance floor' },
-    { id: 38, category: 'classes', image: old19Img2, title: 'Group Class', description: 'Dance training session' },
+    // { id: 38, category: 'classes', image: old19Img2, title: 'Group Class', description: 'Dance training session' },
     { id: 39, category: 'classes', image: old19Img3, title: 'Zumba Class', description: 'High-energy fitness dance' },
     { id: 40, category: 'classes', image: old19Img4, title: 'Bollywood Class', description: 'Bollywood choreography session' },
     { id: 41, category: 'performances', image: old19Img5, title: 'Stage Show', description: 'Contemporary dance piece' },
@@ -247,7 +247,7 @@ const Gallery = () => {
               {filteredItems.map((item, index) => (
                 <motion.div
                   key={item.id}
-                  className="gallery-item"
+                  className={`gallery-item ${item.horizontal ? 'horizontal' : ''}`}
                   layout
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}

@@ -1,4 +1,5 @@
-const API_BASE = 'http://localhost:3001/api'
+// Use relative URL in production, localhost in development
+const API_BASE = import.meta.env.PROD ? '/api' : 'http://localhost:3001/api'
 
 // Helper function for API calls
 const apiCall = async (endpoint, options = {}) => {
@@ -68,6 +69,15 @@ export const adminAPI = {
   
   deleteStudent: (id) =>
     apiCall(`/admin/students/${id}`, { method: 'DELETE' }),
+  
+  pauseStudent: (id, reason) =>
+    apiCall(`/admin/students/${id}/pause`, {
+      method: 'POST',
+      body: JSON.stringify({ reason })
+    }),
+  
+  unpauseStudent: (id) =>
+    apiCall(`/admin/students/${id}/unpause`, { method: 'POST' }),
   
   getStudentSchedules: (studentId) =>
     apiCall(`/admin/students/${studentId}/schedules`),
@@ -364,4 +374,106 @@ export const preadmissionAPI = {
     })
 }
 
-export default { authAPI, adminAPI, studentAPI, preadmissionAPI }
+// Fees & Certificates APIs
+export const feesAPI = {
+  // Student fee routes
+  getMyFees: () => apiCall('/fees/my-fees'),
+  
+  payFee: async (month, year, screenshot) => {
+    const token = localStorage.getItem('token')
+    const data = new FormData()
+    data.append('month', month)
+    data.append('year', year)
+    data.append('screenshot', screenshot)
+    
+    const response = await fetch(`${API_BASE}/fees/pay`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+      body: data
+    })
+    
+    const result = await response.json()
+    if (!response.ok) {
+      throw new Error(result.error || 'Payment failed')
+    }
+    return result
+  },
+  
+  // Student certificate routes
+  getMyCertificates: () => apiCall('/fees/my-certificates'),
+  
+  applyCertificate: (certificateType) =>
+    apiCall('/fees/apply-certificate', {
+      method: 'POST',
+      body: JSON.stringify({ certificateType })
+    }),
+  
+  // Admin fee routes
+  getAllFees: (status, month, year) => {
+    let url = '/fees/all-fees'
+    const params = []
+    if (status) params.push(`status=${status}`)
+    if (month) params.push(`month=${month}`)
+    if (year) params.push(`year=${year}`)
+    if (params.length) url += '?' + params.join('&')
+    return apiCall(url)
+  },
+  
+  viewPaymentScreenshot: (id) => {
+    const token = localStorage.getItem('token')
+    window.open(`${API_BASE}/fees/payment-screenshot/${id}?token=${token}`, '_blank')
+  },
+  
+  verifyPayment: (id, status, adminNotes) =>
+    apiCall(`/fees/verify-payment/${id}`, {
+      method: 'POST',
+      body: JSON.stringify({ status, adminNotes })
+    }),
+  
+  recordCashPayment: (userId, month, year, amount, adminNotes) =>
+    apiCall(`/fees/cash-payment/${userId}`, {
+      method: 'POST',
+      body: JSON.stringify({ month, year, amount, adminNotes })
+    }),
+  
+  generateFees: (month, year) =>
+    apiCall('/fees/generate-fees', {
+      method: 'POST',
+      body: JSON.stringify({ month, year })
+    }),
+  
+  // Admin certificate routes
+  getAllCertificates: (status) => {
+    let url = '/fees/all-certificates'
+    if (status) url += `?status=${status}`
+    return apiCall(url)
+  },
+  
+  certificateAction: (id, action, adminNotes) =>
+    apiCall(`/fees/certificate-action/${id}`, {
+      method: 'POST',
+      body: JSON.stringify({ action, adminNotes })
+    }),
+  
+  // Meeting booking
+  bookMeeting: (data) =>
+    apiCall('/fees/book-meeting', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    }),
+  
+  // Admin meetings
+  getMeetings: (status) => {
+    let url = '/fees/meetings'
+    if (status) url += `?status=${status}`
+    return apiCall(url)
+  },
+  
+  meetingAction: (id, status, adminNotes) =>
+    apiCall(`/fees/meeting-action/${id}`, {
+      method: 'POST',
+      body: JSON.stringify({ status, adminNotes })
+    })
+}
+
+export default { authAPI, adminAPI, studentAPI, preadmissionAPI, feesAPI }
