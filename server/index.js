@@ -66,8 +66,14 @@ if (isProduction) {
   app.use(express.static(path.join(__dirname, '../dist')))
   
   // Handle SPA routing - serve index.html for all non-API routes
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../dist', 'index.html'))
+  // Use middleware approach for Express 5 compatibility
+  app.use((req, res, next) => {
+    // Only serve index.html for non-API GET requests
+    if (req.method === 'GET' && !req.path.startsWith('/api')) {
+      res.sendFile(path.join(__dirname, '../dist', 'index.html'))
+    } else {
+      next()
+    }
   })
 }
 
