@@ -56,6 +56,7 @@
   font-weight: 600;
   color: var(--color-cream);
   line-height: 1;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 .logo-tagline {
@@ -63,6 +64,7 @@
   text-transform: uppercase;
   letter-spacing: 3px;
   color: var(--color-secondary);
+  text-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
 }
 
 .nav-links {

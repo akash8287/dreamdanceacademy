@@ -20,7 +20,7 @@
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1.5fr;
   gap: var(--space-lg);
   position: relative;
   z-index: 1;
@@ -93,6 +93,20 @@
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
   color: var(--color-secondary);
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-links h4::after,
+.footer-contact h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-secondary), transparent);
 }
 
 .footer-links ul {
@@ -134,6 +148,27 @@
   color: rgba(245, 240, 232, 0.7);
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+.footer-qr {
+  margin-top: var(--space-md);
+  text-align: center;
+}
+
+.footer-qr h4 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-secondary);
+}
+
+.footer-qr-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .footer-bottom {

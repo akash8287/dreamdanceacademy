@@ -117,7 +117,7 @@
 .class-image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   transition: transform var(--transition-normal);
 }
@@ -155,9 +155,10 @@
 }
 
 .class-card h3 {
-  color: var(--color-dark);
+  color: var(--color-primary);
   margin-bottom: 0.75rem;
   font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .class-card > p {
@@ -208,6 +209,10 @@
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-secondary);
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(8, 145, 178, 0.1));
+  padding: 0.25rem 0.75rem;
+  border-radius: 8px;
+  text-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
 }
 
 .class-btn {
@@ -244,6 +249,53 @@
 
 .info-card p {
   opacity: 0.9;
+}
+
+/* QR Code Section */
+.qr-section {
+  background: var(--color-dark);
+  padding: var(--space-lg) 0;
+}
+
+.qr-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.05);
+  padding: var(--space-lg);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.qr-text {
+  text-align: center;
+}
+
+.qr-text h3 {
+  font-size: 1.8rem;
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.qr-text p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+}
+
+.qr-image-wrapper {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.qr-image {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  display: block;
 }
 
 /* Classes CTA */

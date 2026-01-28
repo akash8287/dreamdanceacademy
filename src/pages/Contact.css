@@ -41,7 +41,7 @@
 
 .contact-info-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: var(--space-md);
 }
 
@@ -88,6 +88,35 @@
 
 .info-action:hover {
   color: var(--color-primary);
+}
+
+/* QR Code Card */
+.contact-info-card.qr-card {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-dark));
+  color: var(--color-cream);
+}
+
+.contact-info-card.qr-card h3 {
+  color: var(--color-secondary);
+}
+
+.contact-info-card.qr-card p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.contact-qr-wrapper {
+  margin-top: 1rem;
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.contact-qr-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  display: block;
 }
 
 /* Contact Form Section */
@@ -257,6 +286,12 @@
 }
 
 /* Responsive */
+@media (max-width: 1200px) {
+  .contact-info-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 1024px) {
   .contact-info-grid {
     grid-template-columns: repeat(2, 1fr);

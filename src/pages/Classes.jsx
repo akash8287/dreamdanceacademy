@@ -16,6 +16,13 @@ import bollywoodImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42 (
 import jazzImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.39.jpeg'
 import westernImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.50.jpeg'
 import semiClassicalImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.49 (1).jpeg'
+import extraImage1 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.43 (1).jpeg'
+import extraImage2 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.44 (1).jpeg'
+import extraImage3 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.46.jpeg'
+import extraImage4 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.46 (1).jpeg'
+import extraImage5 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.47 (1).jpeg'
+import extraImage6 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.49.jpeg'
+import qrCodeImage from '../../assets/qr.jpeg'
 
 const Classes = () => {
   const [activeFilter, setActiveFilter] = useState('all')
@@ -164,6 +171,150 @@ const Classes = () => {
       schedule: 'Sun morning',
       price: '₹900/month',
       features: ['Popular songs', 'Easy choreography', 'Fun activities', 'Annual showcase']
+    },
+    {
+      id: 13,
+      name: 'Afro Dance',
+      category: 'urban',
+      level: 'All Levels',
+      duration: '60 min',
+      image: extraImage1,
+      description: 'Experience the vibrant and energetic Afro dance styles. Learn authentic African dance movements with powerful rhythms.',
+      schedule: 'Mon, Wed',
+      price: '₹1500/month',
+      features: ['African rhythms', 'Body isolations', 'Cultural expression', 'High energy']
+    },
+    {
+      id: 14,
+      name: 'Ballet',
+      category: 'classical',
+      level: 'All Levels',
+      duration: '75 min',
+      image: extraImage2,
+      description: 'Classical ballet training focusing on technique, grace, and poise. Build strength and flexibility through elegant movements.',
+      schedule: 'Tue, Thu, Sat',
+      price: '₹2000/month',
+      features: ['Classical technique', 'Barre work', 'Center combinations', 'Pointe preparation']
+    },
+    {
+      id: 15,
+      name: 'Belly Dance',
+      category: 'social',
+      level: 'All Levels',
+      duration: '60 min',
+      image: extraImage3,
+      description: 'Learn the mesmerizing art of belly dance. Master isolations, shimmies, and fluid movements for this ancient dance form.',
+      schedule: 'Wed, Fri',
+      price: '₹1600/month',
+      features: ['Hip isolations', 'Shimmies', 'Veil work', 'Core strength']
+    },
+    {
+      id: 16,
+      name: 'House Dance',
+      category: 'urban',
+      level: 'Intermediate',
+      duration: '60 min',
+      image: extraImage4,
+      description: 'Groove to house music with this fast-paced dance style. Learn footwork, jacking, and lofting techniques.',
+      schedule: 'Tue, Sat',
+      price: '₹1500/month',
+      features: ['Footwork', 'Jacking', 'Lofting', 'Social dancing']
+    },
+    {
+      id: 17,
+      name: 'K-Pop Dance',
+      category: 'modern',
+      level: 'All Levels',
+      duration: '60 min',
+      image: extraImage5,
+      description: 'Learn choreography from popular K-Pop songs. Master the sharp, synchronized moves of your favorite K-Pop artists.',
+      schedule: 'Mon, Wed, Fri',
+      price: '₹1500/month',
+      features: ['K-Pop choreography', 'Sharp movements', 'Group formations', 'Cover dance']
+    },
+    {
+      id: 18,
+      name: 'Krumping',
+      category: 'urban',
+      level: 'Intermediate+',
+      duration: '60 min',
+      image: extraImage6,
+      description: 'Express raw emotion through powerful krump movements. Learn chest pops, arm swings, and stomps in this intense dance style.',
+      schedule: 'Thu, Sat',
+      price: '₹1500/month',
+      features: ['Chest pops', 'Arm swings', 'Stomps', 'Battle training']
+    },
+    {
+      id: 19,
+      name: 'Locking',
+      category: 'urban',
+      level: 'All Levels',
+      duration: '60 min',
+      image: hipHopImage,
+      description: 'Master the funky art of locking with its signature pauses and pointing. Learn classic moves like locks, points, and wrist rolls.',
+      schedule: 'Mon, Wed',
+      price: '₹1500/month',
+      features: ['Lock techniques', 'Points & wrist rolls', 'Funk foundations', 'Performance style']
+    },
+    {
+      id: 20,
+      name: 'Lyrical Dance',
+      category: 'modern',
+      level: 'Intermediate',
+      duration: '75 min',
+      image: contemporaryImage,
+      description: 'Express emotions through fluid, expressive movement. Combine ballet and jazz techniques with contemporary storytelling.',
+      schedule: 'Tue, Thu',
+      price: '₹1800/month',
+      features: ['Emotional expression', 'Musicality', 'Floor work', 'Performance pieces']
+    },
+    {
+      id: 21,
+      name: 'Old School Hip Hop',
+      category: 'urban',
+      level: 'All Levels',
+      duration: '60 min',
+      image: westernImage,
+      description: 'Go back to the roots with old school hip hop. Learn classic grooves, party dances, and foundational moves from the 80s and 90s.',
+      schedule: 'Wed, Sat',
+      price: '₹1500/month',
+      features: ['Classic grooves', 'Party dances', 'Breakdance basics', 'Hip hop history']
+    },
+    {
+      id: 22,
+      name: 'Popping',
+      category: 'urban',
+      level: 'Intermediate',
+      duration: '60 min',
+      image: extraImage1,
+      description: 'Learn the art of popping with its iconic muscle contractions. Master hits, waves, and animation techniques.',
+      schedule: 'Mon, Thu',
+      price: '₹1500/month',
+      features: ['Hits & pops', 'Waves', 'Animation', 'Boogaloo style']
+    },
+    {
+      id: 23,
+      name: 'Tutting',
+      category: 'urban',
+      level: 'All Levels',
+      duration: '60 min',
+      image: extraImage2,
+      description: 'Create geometric shapes with your body in this visually stunning dance style. Master finger tutting and full-body angles.',
+      schedule: 'Tue, Fri',
+      price: '₹1500/month',
+      features: ['Finger tutting', 'Box shapes', 'Geometric patterns', 'Musicality']
+    },
+    {
+      id: 24,
+      name: 'Waacking',
+      category: 'urban',
+      level: 'All Levels',
+      duration: '60 min',
+      image: extraImage3,
+      description: 'Express yourself with dramatic arm movements and poses. Learn the disco-era dance with its signature punching and posing.',
+      schedule: 'Wed, Sat',
+      price: '₹1500/month',
+      features: ['Arm movements', 'Posing', 'Disco funk', 'Performance style']
     }
   ]
 
@@ -308,6 +459,27 @@ const Classes = () => {
               <p>Not sure which class is right for you? Try any class free before committing.</p>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* QR Code Section */}
+      <section className="section qr-section">
+        <div className="container">
+          <motion.div 
+            className="qr-content"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="qr-text">
+              <h3>Scan to Connect</h3>
+              <p>Scan this QR code to get in touch with us instantly or follow us on social media!</p>
+            </div>
+            <div className="qr-image-wrapper">
+              <img src={qrCodeImage} alt="Dream Dance Academy QR Code" className="qr-image" />
+            </div>
+          </motion.div>
         </div>
       </section>
 

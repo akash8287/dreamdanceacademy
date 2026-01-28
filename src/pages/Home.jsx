@@ -25,6 +25,13 @@ import balletImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.49 (1).
 import salsaImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.47.jpeg'
 import jazzImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.39.jpeg'
 import folkImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42.jpeg'
+import extraImage1 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.43 (1).jpeg'
+import extraImage2 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.44 (1).jpeg'
+import extraImage3 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.46.jpeg'
+import extraImage4 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.46 (1).jpeg'
+import extraImage5 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.47 (1).jpeg'
+import extraImage6 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.49.jpeg'
+import qrCodeImage from '../../assets/qr.jpeg'
 
 const Home = () => {
   const fadeInUp = {
@@ -52,6 +59,18 @@ const Home = () => {
     { name: 'Kids Dance', image: salsaImage, description: 'Fun age-appropriate classes for young aspiring dancers.' },
     { name: 'Western', image: jazzImage, description: 'Modern western dance styles including jazz and freestyle.' },
     { name: 'Semi-Classical', image: folkImage, description: 'Fusion of classical and contemporary Indian dance forms.' },
+    { name: 'Afro', image: extraImage1, description: 'Vibrant African dance styles with powerful rhythms and movements.' },
+    { name: 'Ballet', image: extraImage2, description: 'Classical ballet focusing on technique, grace, and poise.' },
+    { name: 'Belly Dance', image: extraImage3, description: 'Mesmerizing belly dance with isolations and fluid movements.' },
+    { name: 'House', image: extraImage4, description: 'Fast-paced house dance with footwork and jacking.' },
+    { name: 'K-Pop', image: extraImage5, description: 'Learn choreography from popular K-Pop songs and artists.' },
+    { name: 'Krumping', image: extraImage6, description: 'Express raw emotion through powerful krump movements.' },
+    { name: 'Locking', image: hipHopImage, description: 'Funky locking with signature pauses and pointing.' },
+    { name: 'Lyrical', image: contemporaryImage, description: 'Expressive dance combining ballet and jazz with emotion.' },
+    { name: 'Old School', image: jazzImage, description: 'Classic hip hop grooves and party dances from the 80s-90s.' },
+    { name: 'Popping', image: extraImage1, description: 'Iconic muscle contractions with hits, waves, and animation.' },
+    { name: 'Tutting', image: extraImage2, description: 'Create geometric shapes with your body and fingers.' },
+    { name: 'Waacking', image: extraImage3, description: 'Dramatic arm movements and poses from the disco era.' },
   ]
 
   const stats = [
@@ -338,6 +357,27 @@ const Home = () => {
                 </div>
               </motion.div>
             ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* QR Code Section */}
+      <section className="section qr-section">
+        <div className="container">
+          <motion.div 
+            className="qr-content"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="qr-text">
+              <h3>Connect With Us</h3>
+              <p>Scan this QR code to get in touch with us instantly or follow us on social media!</p>
+            </div>
+            <div className="qr-image-wrapper">
+              <img src={qrCodeImage} alt="Dream Dance Academy QR Code" className="qr-image" />
+            </div>
           </motion.div>
         </div>
       </section>

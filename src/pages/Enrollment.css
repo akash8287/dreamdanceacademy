@@ -308,6 +308,31 @@
   color: var(--color-secondary);
 }
 
+/* QR Card */
+.qr-card {
+  text-align: center;
+}
+
+.qr-card p {
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-sm);
+}
+
+.qr-wrapper {
+  background: #fff;
+  padding: 0.75rem;
+  border-radius: 12px;
+  display: inline-block;
+  border: 2px solid var(--color-primary);
+}
+
+.qr-code-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  display: block;
+}
+
 /* Success Page */
 .success-content {
   text-align: center;

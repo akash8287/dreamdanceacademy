@@ -3,6 +3,9 @@ import { motion } from 'framer-motion'
 import { sendEnrollmentEmail } from '../services/emailService'
 import './Enrollment.css'
 
+// Import QR code
+import qrCodeImage from '../../assets/qr.jpeg'
+
 const Enrollment = () => {
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState({
@@ -79,14 +82,29 @@ const Enrollment = () => {
   }
 
   const danceStyles = [
-    'Classical Ballet',
-    'Contemporary',
-    'Hip Hop',
-    'Jazz',
-    'Kathak',
-    'Salsa & Latin',
+    'Afro Dance',
+    'Ballet',
+    'Belly Dance',
     'Bollywood Fusion',
-    'Kids Program'
+    'Contemporary',
+    'Folk Dance',
+    'Hip Hop',
+    'House Dance',
+    'Jazz',
+    'K-Pop',
+    'Kathak',
+    'Kids Program',
+    'Krumping',
+    'Kuchipuri',
+    'Locking',
+    'Lyrical',
+    'Old School Hip Hop',
+    'Popping',
+    'Semi-Classical',
+    'Tutting',
+    'Waacking',
+    'Western Dance',
+    'Zumba'
   ]
 
   const experienceLevels = [
@@ -717,8 +735,16 @@ const Enrollment = () => {
             <div className="info-card enrollment-info-card contact-card">
               <h4>Need Help?</h4>
               <p>Our admissions team is here to assist you.</p>
-              <a href="tel:+15551234567">📞 +1 (555) 123-4567</a>
-              <a href="mailto:admissions@dreamdance.com">✉️ admissions@dreamdance.com</a>
+              <a href="tel:+917065910907">📞 +91 7065910907</a>
+              <a href="mailto:dreamdanceacademy28@gmail.com">✉️ dreamdanceacademy28@gmail.com</a>
+            </div>
+
+            <div className="info-card enrollment-info-card qr-card">
+              <h4>Scan to Connect</h4>
+              <p>Scan this QR code to reach us instantly!</p>
+              <div className="qr-wrapper">
+                <img src={qrCodeImage} alt="Dream Dance Academy QR Code" className="qr-code-img" />
+              </div>
             </div>
           </motion.div>
         </div>

@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 import './Footer.css'
 
+// Import QR code
+import qrCodeImage from '../../assets/qr.jpeg'
+
 const Footer = () => {
   const currentYear = new Date().getFullYear()
 
@@ -57,8 +60,19 @@ const Footer = () => {
               <li><Link to="/classes">Bollywood</Link></li>
               <li><Link to="/classes">Hip Hop</Link></li>
               <li><Link to="/classes">Contemporary</Link></li>
-              <li><Link to="/classes">Kathak</Link></li>
-              <li><Link to="/classes">Bharatanatyam</Link></li>
+              <li><Link to="/classes">K-Pop</Link></li>
+              <li><Link to="/classes">Afro</Link></li>
+            </ul>
+          </div>
+
+          <div className="footer-links">
+            <h4>More Styles</h4>
+            <ul>
+              <li><Link to="/classes">Ballet</Link></li>
+              <li><Link to="/classes">Belly Dance</Link></li>
+              <li><Link to="/classes">Waacking</Link></li>
+              <li><Link to="/classes">Popping</Link></li>
+              <li><Link to="/classes">Locking</Link></li>
             </ul>
           </div>
 
@@ -81,6 +95,10 @@ const Footer = () => {
                 <span className="contact-icon">🌐</span>
                 <p>www.dreamdanceacademy.in</p>
               </div>
+            </div>
+            <div className="footer-qr">
+              <h4>Scan to Connect</h4>
+              <img src={qrCodeImage} alt="Dream Dance Academy QR Code" className="footer-qr-img" />
             </div>
           </div>
         </div>

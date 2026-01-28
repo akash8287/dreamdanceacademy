@@ -5,6 +5,9 @@ import { sendContactEmail } from '../services/emailService'
 import { feesAPI } from '../services/api'
 import './Contact.css'
 
+// Import QR code
+import qrCodeImage from '../../assets/qr.jpeg'
+
 const Contact = () => {
   const navigate = useNavigate()
   const location = useLocation()
@@ -108,6 +111,13 @@ const Contact = () => {
       title: 'Website',
       details: ['www.dreamdanceacademy.in', 'Private & Online Classes Available'],
       action: null
+    },
+    {
+      icon: '📱',
+      title: 'Scan QR Code',
+      details: ['Connect with us instantly'],
+      action: null,
+      isQR: true
     }
   ]
 
@@ -161,7 +171,7 @@ const Contact = () => {
             {contactInfo.map((item, index) => (
               <motion.div
                 key={index}
-                className="contact-info-card"
+                className={`contact-info-card ${item.isQR ? 'qr-card' : ''}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -172,6 +182,11 @@ const Contact = () => {
                 {item.details.map((detail, i) => (
                   <p key={i}>{detail}</p>
                 ))}
+                {item.isQR && (
+                  <div className="contact-qr-wrapper">
+                    <img src={qrCodeImage} alt="Dream Dance Academy QR Code" className="contact-qr-img" />
+                  </div>
+                )}
                 {item.action && (
                   <a href={item.action.link} className="info-action">
                     {item.action.text} →
