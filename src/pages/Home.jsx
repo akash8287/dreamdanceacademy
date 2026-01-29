@@ -20,9 +20,10 @@ import contemporaryImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.4
 import hipHopImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.43.jpeg'
 import zumbaImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.48.jpeg'
 import kathakImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42 (1).jpeg'
-import bollywoodImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.55.jpeg'
-import balletImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.49 (1).jpeg'
-import salsaImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.47.jpeg'
+// Replaced images that had other academy logos (UNITY, RISE & RHYTHM)
+import bollywoodImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42.jpeg' // DDA branded - kids Bollywood
+import balletImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.44 (1).jpeg' // DDA branded
+import salsaImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.47 (1).jpeg' // Kids dancing - no external logo
 import jazzImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.39.jpeg'
 import folkImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42.jpeg'
 import extraImage1 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.43 (1).jpeg'
@@ -30,7 +31,7 @@ import extraImage2 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.44 (1).
 import extraImage3 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.46.jpeg'
 import extraImage4 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.46 (1).jpeg'
 import extraImage5 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.47 (1).jpeg'
-import extraImage6 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.49.jpeg'
+import extraImage6 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.43 (1).jpeg' // Replaced - original had UNITY logo
 import qrCodeImage from '../../assets/qr.jpeg'
 
 // New dance style images from newpics

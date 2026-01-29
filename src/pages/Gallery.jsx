@@ -23,16 +23,10 @@ import danceImg9 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.44 (1).jp
 import danceImg10 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.46.jpeg'
 import danceImg11 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.46 (1).jpeg'
 import danceImg12 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.46 (2).jpeg'
-import danceImg13 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.47.jpeg'
+// Removed images with other dance academy logos (UNITY, RISE & RHYTHM)
+// danceImg13, danceImg16-22 removed
 import danceImg14 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.47 (1).jpeg'
 import danceImg15 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.48.jpeg'
-import danceImg16 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.49.jpeg'
-import danceImg17 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.49 (1).jpeg'
-import danceImg18 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.49 (2).jpeg'
-import danceImg19 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.50.jpeg'
-import danceImg20 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.51.jpeg'
-import danceImg21 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.51 (1).jpeg'
-import danceImg22 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.55.jpeg'
 
 // Import studio/event images - Jan 21 (10.13.xx series)
 import studioImg1 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.50.jpeg'
@@ -146,22 +140,18 @@ const Gallery = () => {
     { id: 2, category: 'performances', image: danceImg8, title: 'Contemporary Ensemble', description: 'Large group contemporary performance' },
     { id: 3, category: 'performances', image: danceImg10, title: 'Dynamic Group Dance', description: 'Energetic jumping pose performance' },
     { id: 4, category: 'performances', image: danceImg4, title: 'Kathak Performance', description: 'Classical Kathak dancers on stage' },
-    { id: 5, category: 'performances', image: danceImg22, title: 'Folk Dance Show', description: 'Colorful traditional folk performance' },
+    // Removed: danceImg22 had UNITY DANCE ACADEMY logo
     
     // Classes
     { id: 6, category: 'classes', image: danceImg6, title: 'Hip Hop Class', description: 'Urban dance training session' },
     { id: 7, category: 'classes', image: danceImg15, title: 'Zumba Session', description: 'High-energy fitness dance class' },
     { id: 8, category: 'classes', image: danceImg2, title: 'Bollywood Dance', description: 'Kids learning Bollywood choreography' },
     { id: 9, category: 'classes', image: danceImg3, title: 'Classical Training', description: 'Traditional dance techniques' },
-    { id: 10, category: 'classes', image: danceImg19, title: 'Street Dance', description: 'Urban street dance training' },
-    { id: 11, category: 'classes', image: danceImg20, title: 'Group Practice', description: 'Students practicing choreography' },
+    // Removed: danceImg19 and danceImg20 had RISE & RHYTHM DANCE ACADEMY logo
     
     // Events
-    { id: 12, category: 'events', image: danceImg13, title: 'Kids Performance', description: 'Young dancers at annual showcase' },
+    // Removed: danceImg13, danceImg16, danceImg17, danceImg18 had other academy logos
     { id: 13, category: 'events', image: danceImg14, title: 'Dance Competition', description: 'Competition team rehearsal' },
-    { id: 14, category: 'events', image: danceImg16, title: 'Annual Day', description: 'Annual day celebrations' },
-    { id: 15, category: 'events', image: danceImg17, title: 'Jazz Performance', description: 'Elegant jazz dance showcase' },
-    { id: 16, category: 'events', image: danceImg18, title: 'Contemporary Show', description: 'Fusion dance presentation' },
     
     // Studio
     { id: 17, category: 'studio', image: studioImg1, title: 'Academy Event', description: 'Birthday celebration at studio' },
@@ -177,7 +167,7 @@ const Gallery = () => {
     { id: 25, category: 'performances', image: danceImg9, title: 'Stage Performance', description: 'Professional stage show' },
     { id: 26, category: 'performances', image: danceImg11, title: 'Dance Troupe', description: 'Academy dance troupe' },
     { id: 27, category: 'performances', image: danceImg12, title: 'Fusion Dance', description: 'Contemporary fusion piece' },
-    { id: 28, category: 'performances', image: danceImg21, title: 'Urban Performance', description: 'Street style performance' },
+    // Removed: danceImg21 had RISE & RHYTHM DANCE ACADEMY logo
     
     // More Studio/Events
     { id: 29, category: 'studio', image: studioImg7, title: 'Practice Session', description: 'Daily practice at studio' },
