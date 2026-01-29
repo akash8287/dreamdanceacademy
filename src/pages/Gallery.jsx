@@ -80,6 +80,27 @@ import old19Img24 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.29 (1).j
 import old19Img25 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.29 (2).jpeg'
 import old19Img26 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.30.jpeg'
 
+// Import new images from newpics folder (Jan 29)
+import newPunjabiImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.40.jpeg'
+import newLogoImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.41.jpeg'
+import newBollywoodImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.42.jpeg'
+import newVideoJobImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.43.jpeg'
+import newDesignerJobImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.44.jpeg'
+import newFreestyleImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.45.jpeg'
+import newWeddingImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.46.jpeg'
+import newAerobicsImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.47.jpeg'
+import newSalsaImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.48.jpeg'
+import newYogaImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.49.jpeg'
+import newTuttingImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.50.jpeg'
+import newLockingImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.51.jpeg'
+import newHouseImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.52.jpeg'
+import newPoppingImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.53.jpeg'
+import newStudioImg1 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.45.jpeg'
+import newStudioImg2 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.45 (1).jpeg'
+import newStudioImg3 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.46.jpeg'
+import newStudioImg4 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.46 (1).jpeg'
+import newStudioImg5 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.46 (2).jpeg'
+
 const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState('all')
   const [selectedImage, setSelectedImage] = useState(null)
@@ -194,7 +215,26 @@ const Gallery = () => {
     { id: 59, category: 'studio', image: old19Img23, title: 'LED Dance Floor', description: 'Modern dance studio' },
     { id: 60, category: 'studio', image: old19Img24, title: 'Studio Setup', description: 'Professional dance setup' },
     { id: 61, category: 'studio', image: old19Img25, title: 'Dance Room', description: 'Spacious dance room' },
-    { id: 62, category: 'studio', image: old19Img26, title: 'Studio View', description: 'Beautiful studio space' }
+    { id: 62, category: 'studio', image: old19Img26, title: 'Studio View', description: 'Beautiful studio space' },
+    
+    // New images from Jan 29
+    { id: 63, category: 'classes', image: newPunjabiImg, title: 'Punjabi Dance', description: 'Traditional Bhangra and Punjabi dance styles' },
+    { id: 64, category: 'studio', image: newLogoImg, title: 'DDA Branding', description: 'Dream Dance Academy official logo' },
+    { id: 65, category: 'performances', image: newBollywoodImg, title: 'Bollywood Group', description: 'Large Bollywood dance group performance' },
+    { id: 66, category: 'classes', image: newFreestyleImg, title: 'Freestyle Dance', description: 'Express yourself through freestyle movement' },
+    { id: 67, category: 'classes', image: newWeddingImg, title: 'Wedding Dance', description: 'Beautiful couple wedding dance choreography' },
+    { id: 68, category: 'classes', image: newAerobicsImg, title: 'Aerobics Class', description: 'High-energy aerobics workout session' },
+    { id: 69, category: 'classes', image: newSalsaImg, title: 'Salsa Dance', description: 'Passionate salsa partner dancing' },
+    { id: 70, category: 'classes', image: newYogaImg, title: 'Yoga Session', description: 'Mind-body yoga practice' },
+    { id: 71, category: 'classes', image: newTuttingImg, title: 'Tutting', description: 'Geometric shapes and finger tutting' },
+    { id: 72, category: 'classes', image: newLockingImg, title: 'Locking Dance', description: 'Funky locking dance style' },
+    { id: 73, category: 'classes', image: newHouseImg, title: 'House Dance', description: 'Fast-paced house dance moves' },
+    { id: 74, category: 'classes', image: newPoppingImg, title: 'Popping', description: 'Muscle contractions and animation' },
+    { id: 75, category: 'studio', image: newStudioImg1, title: 'Studio Session', description: 'Students at the dance studio' },
+    { id: 76, category: 'studio', image: newStudioImg2, title: 'Dance Practice', description: 'Group dance practice session' },
+    { id: 77, category: 'studio', image: newStudioImg3, title: 'Team Photo', description: 'Academy team group photo' },
+    { id: 78, category: 'studio', image: newStudioImg4, title: 'Studio Life', description: 'Behind the scenes at DDA' },
+    { id: 79, category: 'studio', image: newStudioImg5, title: 'Academy Moments', description: 'Capturing special moments' }
   ]
 
   const filteredItems = activeFilter === 'all' 

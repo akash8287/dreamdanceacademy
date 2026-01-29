@@ -308,6 +308,8 @@ const Contact = () => {
                       <option value="">Select a subject</option>
                       <option value="trial">🎯 Book Trial Class (Pre-Admission)</option>
                       <option value="meeting">📋 Meeting with Owner</option>
+                      <option value="job_dance_teacher">💃 Job for Dance Teacher</option>
+                      <option value="job_video_editor">🎬 Job for Video Shooter and Editor</option>
                       <option value="general">General Inquiry</option>
                       <option value="classes">Class Information</option>
                       <option value="enrollment">Enrollment</option>

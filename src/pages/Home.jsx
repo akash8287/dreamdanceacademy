@@ -33,6 +33,19 @@ import extraImage5 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.47 (1).
 import extraImage6 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.49.jpeg'
 import qrCodeImage from '../../assets/qr.jpeg'
 
+// New dance style images from newpics
+import punjabiImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.40.jpeg'
+import bollywoodNewImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.42.jpeg'
+import freestyleImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.45.jpeg'
+import weddingDanceImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.46.jpeg'
+import aerobicsImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.47.jpeg'
+import salsaNewImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.48.jpeg'
+import yogaImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.49.jpeg'
+import tuttingImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.50.jpeg'
+import lockingImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.51.jpeg'
+import houseDanceImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.52.jpeg'
+import poppingImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.53.jpeg'
+
 const Home = () => {
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
@@ -53,8 +66,14 @@ const Home = () => {
     { name: 'Contemporary', image: contemporaryImage, description: 'Express yourself through fluid, emotional movement and modern techniques.' },
     { name: 'Hip Hop', image: hipHopImage, description: 'Urban street dance with dynamic moves and high energy beats.' },
     { name: 'Zumba', image: zumbaImage, description: 'High-energy fitness dance that makes working out fun and exciting.' },
-    { name: 'Bollywood', image: kathakImage, description: 'Vibrant Indian film-style dance with colorful choreography.' },
+    { name: 'Bollywood', image: bollywoodNewImage, description: 'Vibrant Indian film-style dance with colorful choreography.' },
+    { name: 'Punjabi', image: punjabiImage, description: 'Energetic Bhangra and Punjabi dance with traditional moves.' },
     { name: 'Folk Dance', image: bollywoodImage, description: 'Traditional cultural dances celebrating Indian heritage.' },
+    { name: 'Freestyle', image: freestyleImage, description: 'Express your unique style through free-form dance movements.' },
+    { name: 'Wedding Dance', image: weddingDanceImage, description: 'Special choreography for your wedding first dance and sangeet.' },
+    { name: 'Aerobics', image: aerobicsImage, description: 'Fun cardio workout combining dance moves with fitness.' },
+    { name: 'Salsa', image: salsaNewImage, description: 'Passionate Latin dance with partner work and rhythmic footwork.' },
+    { name: 'Yoga', image: yogaImage, description: 'Mind-body practice combining movement, meditation and breathing.' },
     { name: 'Jazz', image: balletImage, description: 'Energetic and expressive dance with dynamic movements.' },
     { name: 'Kids Dance', image: salsaImage, description: 'Fun age-appropriate classes for young aspiring dancers.' },
     { name: 'Western', image: jazzImage, description: 'Modern western dance styles including jazz and freestyle.' },
@@ -62,14 +81,14 @@ const Home = () => {
     { name: 'Afro', image: extraImage1, description: 'Vibrant African dance styles with powerful rhythms and movements.' },
     { name: 'Ballet', image: extraImage2, description: 'Classical ballet focusing on technique, grace, and poise.' },
     { name: 'Belly Dance', image: extraImage3, description: 'Mesmerizing belly dance with isolations and fluid movements.' },
-    { name: 'House', image: extraImage4, description: 'Fast-paced house dance with footwork and jacking.' },
+    { name: 'House', image: houseDanceImage, description: 'Fast-paced house dance with footwork and jacking.' },
     { name: 'K-Pop', image: extraImage5, description: 'Learn choreography from popular K-Pop songs and artists.' },
     { name: 'Krumping', image: extraImage6, description: 'Express raw emotion through powerful krump movements.' },
-    { name: 'Locking', image: hipHopImage, description: 'Funky locking with signature pauses and pointing.' },
+    { name: 'Locking', image: lockingImage, description: 'Funky locking with signature pauses and pointing.' },
     { name: 'Lyrical', image: contemporaryImage, description: 'Expressive dance combining ballet and jazz with emotion.' },
     { name: 'Old School', image: jazzImage, description: 'Classic hip hop grooves and party dances from the 80s-90s.' },
-    { name: 'Popping', image: extraImage1, description: 'Iconic muscle contractions with hits, waves, and animation.' },
-    { name: 'Tutting', image: extraImage2, description: 'Create geometric shapes with your body and fingers.' },
+    { name: 'Popping', image: poppingImage, description: 'Iconic muscle contractions with hits, waves, and animation.' },
+    { name: 'Tutting', image: tuttingImage, description: 'Create geometric shapes with your body and fingers.' },
     { name: 'Waacking', image: extraImage3, description: 'Dramatic arm movements and poses from the disco era.' },
   ]
 
