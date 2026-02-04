@@ -6,225 +6,93 @@ import './Gallery.css'
 // Import logo
 import logoImage from '../../assets/logo.jpeg'
 
-// Import videos
-import performanceVideo1 from '../../assets/WhatsApp Video 2026-01-19 at 19.21.54.mp4'
-import performanceVideo2 from '../../assets/WhatsApp Video 2026-01-19 at 19.22.21.mp4'
-
-// Import all professional dance images - Jan 21
-import danceImg1 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.39.jpeg'
-import danceImg2 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42.jpeg'
-import danceImg3 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42 (1).jpeg'
-import danceImg4 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42 (2).jpeg'
-import danceImg5 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42 (3).jpeg'
-import danceImg6 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.43.jpeg'
-import danceImg7 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.43 (1).jpeg'
-import danceImg8 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.44.jpeg'
-import danceImg9 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.44 (1).jpeg'
-import danceImg10 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.46.jpeg'
-import danceImg11 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.46 (1).jpeg'
-import danceImg12 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.46 (2).jpeg'
-// Removed images with other dance academy logos (UNITY, RISE & RHYTHM)
-// danceImg13, danceImg16-22 removed
-import danceImg14 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.47 (1).jpeg'
-import danceImg15 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.48.jpeg'
-
-// Import studio/event images - Jan 21 (10.13.xx series)
-import studioImg1 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.50.jpeg'
-import studioImg2 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.51.jpeg'
-import studioImg3 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.51 (1).jpeg'
-import studioImg4 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.51 (2).jpeg'
-import studioImg5 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.51 (3).jpeg'
-import studioImg6 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.52.jpeg'
-import studioImg7 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.52 (1).jpeg'
-import studioImg8 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.52 (2).jpeg'
-import studioImg9 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.53.jpeg'
-import studioImg10 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.53 (1).jpeg'
-import studioImg11 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.53 (2).jpeg'
-import studioImg12 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.54.jpeg'
-
-// Import older images - Jan 19 & 20
-import oldImg1 from '../../assets/WhatsApp Image 2026-01-19 at 19.07.44.jpeg'
-import oldImg2 from '../../assets/WhatsApp Image 2026-01-20 at 19.02.26.jpeg'
-
-// Import all old Jan 19 images
-import old19Img1 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.21.jpeg'
-import old19Img2 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.21 (1).jpeg'
-import old19Img3 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.22.jpeg'
-import old19Img4 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.22 (1).jpeg'
-import old19Img5 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.23.jpeg'
-import old19Img6 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.23 (1).jpeg'
-import old19Img7 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.23 (2).jpeg'
-import old19Img8 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.24.jpeg'
-import old19Img9 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.24 (1).jpeg'
-import old19Img10 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.24 (2).jpeg'
-import old19Img11 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.25.jpeg'
-import old19Img12 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.25 (1).jpeg'
-import old19Img13 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.25 (2).jpeg'
-import old19Img14 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.26.jpeg'
-import old19Img15 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.26 (1).jpeg'
-import old19Img16 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.26 (2).jpeg'
-import old19Img17 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.27.jpeg'
-import old19Img18 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.27 (1).jpeg'
-import old19Img19 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.27 (2).jpeg'
-import old19Img20 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.28.jpeg'
-import old19Img21 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.28 (1).jpeg'
-import old19Img22 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.28 (2).jpeg'
-import old19Img23 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.29.jpeg'
-import old19Img24 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.29 (1).jpeg'
-import old19Img25 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.29 (2).jpeg'
-import old19Img26 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.30.jpeg'
-
-// Import new images from newpics folder (Jan 29)
-import newPunjabiImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.40.jpeg'
-import newLogoImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.41.jpeg'
-import newBollywoodImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.42.jpeg'
-import newVideoJobImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.43.jpeg'
-import newDesignerJobImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.44.jpeg'
-import newFreestyleImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.45.jpeg'
-import newWeddingImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.46.jpeg'
-import newAerobicsImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.47.jpeg'
-import newSalsaImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.48.jpeg'
-import newYogaImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.49.jpeg'
-import newTuttingImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.50.jpeg'
-import newLockingImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.51.jpeg'
-import newHouseImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.52.jpeg'
-import newPoppingImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.53.jpeg'
-import newStudioImg1 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.45.jpeg'
-import newStudioImg2 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.45 (1).jpeg'
-import newStudioImg3 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.46.jpeg'
-import newStudioImg4 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.46 (1).jpeg'
-import newStudioImg5 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.46 (2).jpeg'
+// Import all images from newpics folder only
+import img1 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.40.jpeg' // Punjabi
+import img2 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.40 (1).jpeg' // Contemporary
+import img3 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.40 (2).jpeg' // Classical Dance
+import img4 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.41.jpeg' // DDA Logo
+import img5 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.41 (1).jpeg' // Western Dance for Kids
+import img6 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.42.jpeg' // Bollywood
+import img7 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.42 (1).jpeg' // Dance Teachers Required
+import img8 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.43.jpeg' // Video Shooters Required
+import img9 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.44.jpeg' // Graphic Designers Required
+import img10 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.44 (1).jpeg' // Hip Hop Fusion
+import img11 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.45.jpeg' // Freestyle
+import img12 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.45 (1).jpeg' // Bharatanatyam
+import img13 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.46.jpeg' // Wedding Dance
+import img14 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.47.jpeg' // Aerobics
+import img15 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.47 (1).jpeg' // Couple Dance
+import img16 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.48.jpeg' // Salsa
+import img17 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.49.jpeg' // Yoga
+import img18 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.49 (1).jpeg' // Zumba
+import img19 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.49 (2).jpeg' // Waacking
+import img20 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.50.jpeg' // Tutting
+import img21 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.50 (2).jpeg' // Extra
+import img22 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.51.jpeg' // Locking
+import img23 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.51 (1).jpeg' // Extra
+import img24 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.51 (2).jpeg' // Extra
+import img25 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.52.jpeg' // House Dance
+import img26 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.52 (1).jpeg' // Extra
+import img27 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.52 (2).jpeg' // Extra
+import img28 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.52 (3).jpeg' // Extra
+import img29 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.53.jpeg' // Popping
+import img30 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.53 (1).jpeg' // Extra
+import img31 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.45.jpeg' // Studio Photo
+import img32 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.45 (1).jpeg' // Studio Photo
+import img33 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.46.jpeg' // Studio Photo
+import img34 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.46 (1).jpeg' // Studio Photo
+import img35 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.46 (2).jpeg' // Studio Photo
 
 const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState('all')
   const [selectedImage, setSelectedImage] = useState(null)
-  const [playingVideo, setPlayingVideo] = useState(null)
-  const videoRef1 = useRef(null)
-  const videoRef2 = useRef(null)
-
-  const handleVideoPlay = (videoId) => {
-    if (playingVideo === videoId) {
-      // Pause the video
-      if (videoId === 1 && videoRef1.current) {
-        videoRef1.current.pause()
-      } else if (videoId === 2 && videoRef2.current) {
-        videoRef2.current.pause()
-      }
-      setPlayingVideo(null)
-    } else {
-      // Pause other video first
-      if (videoRef1.current) videoRef1.current.pause()
-      if (videoRef2.current) videoRef2.current.pause()
-      
-      // Play the selected video
-      if (videoId === 1 && videoRef1.current) {
-        videoRef1.current.play()
-      } else if (videoId === 2 && videoRef2.current) {
-        videoRef2.current.play()
-      }
-      setPlayingVideo(videoId)
-    }
-  }
 
   const filters = [
     { id: 'all', label: 'All' },
-    { id: 'performances', label: 'Performances' },
+    { id: 'performances', label: 'Dance Styles' },
     { id: 'classes', label: 'Classes' },
-    { id: 'events', label: 'Events' },
     { id: 'studio', label: 'Studio' }
   ]
 
   const galleryItems = [
-    // Professional Dance Photos - Performances
-    { id: 1, category: 'performances', image: danceImg1, title: 'Dream Dance Academy', description: 'Professional group performance showcase' },
-    { id: 2, category: 'performances', image: danceImg8, title: 'Contemporary Ensemble', description: 'Large group contemporary performance' },
-    { id: 3, category: 'performances', image: danceImg10, title: 'Dynamic Group Dance', description: 'Energetic jumping pose performance' },
-    { id: 4, category: 'performances', image: danceImg4, title: 'Kathak Performance', description: 'Classical Kathak dancers on stage' },
-    // Removed: danceImg22 had UNITY DANCE ACADEMY logo
+    // Dance Styles - Performances
+    { id: 1, category: 'performances', image: img1, title: 'Punjabi Dance', description: 'Traditional Bhangra and Punjabi dance styles' },
+    { id: 2, category: 'performances', image: img2, title: 'Contemporary', description: 'Fluid emotional movement and modern techniques' },
+    { id: 3, category: 'performances', image: img3, title: 'Classical Dance', description: 'Traditional Indian classical dance forms' },
+    { id: 4, category: 'performances', image: img5, title: 'Western Dance for Kids', description: 'Fun western dance styles for children' },
+    { id: 5, category: 'performances', image: img6, title: 'Bollywood', description: 'Vibrant Indian film-style dance' },
+    { id: 6, category: 'performances', image: img10, title: 'Hip Hop Fusion', description: 'Urban groove and hip hop dance styles' },
+    { id: 7, category: 'performances', image: img11, title: 'Freestyle', description: 'Express yourself through free-form dance' },
+    { id: 8, category: 'performances', image: img12, title: 'Bharatanatyam', description: 'Classical South Indian dance form' },
+    { id: 9, category: 'performances', image: img13, title: 'Wedding Dance', description: 'Beautiful choreography for special occasions' },
+    { id: 10, category: 'performances', image: img14, title: 'Aerobics', description: 'High-energy fitness dance workout' },
+    { id: 11, category: 'performances', image: img15, title: 'Couple Dance', description: 'Elegant partner dancing' },
+    { id: 12, category: 'performances', image: img16, title: 'Salsa', description: 'Passionate Latin dance' },
+    { id: 13, category: 'classes', image: img17, title: 'Yoga', description: 'Mind-body practice and flexibility' },
+    { id: 14, category: 'classes', image: img18, title: 'Zumba', description: 'High-energy Zumba fitness dance' },
+    { id: 15, category: 'performances', image: img19, title: 'Waacking', description: 'Dramatic arm movements from disco era' },
+    { id: 16, category: 'performances', image: img20, title: 'Tutting', description: 'Geometric shapes with body and fingers' },
+    { id: 17, category: 'performances', image: img22, title: 'Locking', description: 'Funky locking with signature pauses' },
+    { id: 18, category: 'performances', image: img25, title: 'House Dance', description: 'Fast-paced house dance with footwork' },
+    { id: 19, category: 'performances', image: img29, title: 'Popping', description: 'Iconic muscle contractions and animation' },
     
-    // Classes
-    { id: 6, category: 'classes', image: danceImg6, title: 'Hip Hop Class', description: 'Urban dance training session' },
-    { id: 7, category: 'classes', image: danceImg15, title: 'Zumba Session', description: 'High-energy fitness dance class' },
-    { id: 8, category: 'classes', image: danceImg2, title: 'Bollywood Dance', description: 'Kids learning Bollywood choreography' },
-    { id: 9, category: 'classes', image: danceImg3, title: 'Classical Training', description: 'Traditional dance techniques' },
-    // Removed: danceImg19 and danceImg20 had RISE & RHYTHM DANCE ACADEMY logo
+    // Studio Photos
+    { id: 20, category: 'studio', image: img4, title: 'DDA Branding', description: 'Dream Dance Academy official logo' },
+    { id: 21, category: 'studio', image: logoImage, title: 'Our Logo', description: 'Dream Dance Academy brand' },
+    { id: 22, category: 'studio', image: img31, title: 'Studio Session', description: 'Students at the dance studio' },
+    { id: 23, category: 'studio', image: img32, title: 'Dance Practice', description: 'Group dance practice session' },
+    { id: 24, category: 'studio', image: img33, title: 'Team Photo', description: 'Academy team group photo' },
+    { id: 25, category: 'studio', image: img34, title: 'Studio Life', description: 'Behind the scenes at DDA' },
+    { id: 26, category: 'studio', image: img35, title: 'Academy Moments', description: 'Capturing special moments' },
     
-    // Events
-    // Removed: danceImg13, danceImg16, danceImg17, danceImg18 had other academy logos
-    { id: 13, category: 'events', image: danceImg14, title: 'Dance Competition', description: 'Competition team rehearsal' },
-    
-    // Studio
-    { id: 17, category: 'studio', image: studioImg1, title: 'Academy Event', description: 'Birthday celebration at studio' },
-    { id: 18, category: 'studio', image: studioImg2, title: 'Dance Practice', description: 'Group practice session' },
-    { id: 19, category: 'studio', image: studioImg3, title: 'Kids Program', description: 'Children dance performance', horizontal: true },
-    { id: 20, category: 'studio', image: studioImg4, title: 'Admin Office', description: 'Our registration desk' },
-    { id: 21, category: 'studio', image: studioImg5, title: 'Trophy Display', description: 'Awards and achievements' },
-    { id: 22, category: 'studio', image: studioImg6, title: 'Group Photo', description: 'Dance batch group picture', horizontal: true },
-    
-    // More Performances
-    { id: 23, category: 'performances', image: danceImg5, title: 'Group Formation', description: 'Choreographed group formation' },
-    { id: 24, category: 'performances', image: danceImg7, title: 'Hip Hop Crew', description: 'Urban dance crew showcase' },
-    { id: 25, category: 'performances', image: danceImg9, title: 'Stage Performance', description: 'Professional stage show' },
-    { id: 26, category: 'performances', image: danceImg11, title: 'Dance Troupe', description: 'Academy dance troupe' },
-    { id: 27, category: 'performances', image: danceImg12, title: 'Fusion Dance', description: 'Contemporary fusion piece' },
-    // Removed: danceImg21 had RISE & RHYTHM DANCE ACADEMY logo
-    
-    // More Studio/Events
-    { id: 29, category: 'studio', image: studioImg7, title: 'Practice Session', description: 'Daily practice at studio' },
-    { id: 30, category: 'events', image: studioImg9, title: 'Workshop', description: 'Special dance workshop', horizontal: true },
-    { id: 31, category: 'studio', image: studioImg10, title: 'Student Group', description: 'Our talented students' },
-    { id: 32, category: 'events', image: studioImg11, title: 'Event Day', description: 'Special event celebration' },
-    // { id: 33, category: 'studio', image: studioImg12, title: 'Academy Tour', description: 'Inside Dream Dance Academy' },
-    { id: 34, category: 'events', image: oldImg1, title: 'Academy Banner', description: 'Dream Dance Academy signboard' },
-    // { id: 35, category: 'studio', image: oldImg2, title: 'Studio Setup', description: 'Professional dance studio' },
-    { id: 36, category: 'studio', image: logoImage, title: 'Our Logo', description: 'Dream Dance Academy brand' },
-    
-    // Old Gallery Images - Jan 19 (Original Collection)
-    { id: 37, category: 'studio', image: old19Img1, title: 'Dance Studio', description: 'Professional dance floor' },
-    // { id: 38, category: 'classes', image: old19Img2, title: 'Group Class', description: 'Dance training session' },
-    { id: 39, category: 'classes', image: old19Img3, title: 'Zumba Class', description: 'High-energy fitness dance' },
-    { id: 40, category: 'classes', image: old19Img4, title: 'Bollywood Class', description: 'Bollywood choreography session' },
-    { id: 41, category: 'performances', image: old19Img5, title: 'Stage Show', description: 'Contemporary dance piece' },
-    { id: 42, category: 'performances', image: old19Img6, title: 'Classical Dance', description: 'Bharatanatyam performance' },
-    { id: 43, category: 'performances', image: old19Img7, title: 'Group Performance', description: 'Dance troupe on stage' },
-    { id: 44, category: 'classes', image: old19Img8, title: 'Hip Hop Training', description: 'Urban dance class' },
-    { id: 45, category: 'events', image: old19Img9, title: 'Online Classes', description: 'Virtual dance sessions' },
-    { id: 46, category: 'events', image: old19Img10, title: 'Workshop Session', description: 'Special dance workshop' },
-    { id: 47, category: 'events', image: old19Img11, title: 'Dance Styles', description: 'Multiple dance styles offered' },
-    { id: 48, category: 'classes', image: old19Img12, title: 'Kathak Class', description: 'Classical Kathak training' },
-    { id: 49, category: 'events', image: old19Img13, title: 'Summer Program', description: 'Summer dance workshop' },
-    { id: 50, category: 'performances', image: old19Img14, title: 'Classical Show', description: 'Traditional dance performance' },
-    { id: 51, category: 'performances', image: old19Img15, title: 'Kuchipudi', description: 'South Indian classical dance' },
-    { id: 52, category: 'performances', image: old19Img16, title: 'Dance Recital', description: 'Annual dance recital' },
-    { id: 53, category: 'events', image: old19Img17, title: 'Summer Classes', description: 'Summer camp activities' },
-    { id: 54, category: 'performances', image: old19Img18, title: 'Hip Hop Show', description: 'Urban dance showcase' },
-    { id: 55, category: 'events', image: old19Img19, title: 'Dance Event', description: 'Special dance event' },
-    { id: 56, category: 'events', image: old19Img20, title: 'Academy Promo', description: 'Dance academy promotion' },
-    { id: 57, category: 'studio', image: old19Img21, title: 'Studio Interior', description: 'Inside our academy' },
-    { id: 58, category: 'studio', image: old19Img22, title: 'Practice Room', description: 'Dance practice area' },
-    { id: 59, category: 'studio', image: old19Img23, title: 'LED Dance Floor', description: 'Modern dance studio' },
-    { id: 60, category: 'studio', image: old19Img24, title: 'Studio Setup', description: 'Professional dance setup' },
-    { id: 61, category: 'studio', image: old19Img25, title: 'Dance Room', description: 'Spacious dance room' },
-    { id: 62, category: 'studio', image: old19Img26, title: 'Studio View', description: 'Beautiful studio space' },
-    
-    // New images from Jan 29
-    { id: 63, category: 'classes', image: newPunjabiImg, title: 'Punjabi Dance', description: 'Traditional Bhangra and Punjabi dance styles' },
-    { id: 64, category: 'studio', image: newLogoImg, title: 'DDA Branding', description: 'Dream Dance Academy official logo' },
-    { id: 65, category: 'performances', image: newBollywoodImg, title: 'Bollywood Group', description: 'Large Bollywood dance group performance' },
-    { id: 66, category: 'classes', image: newFreestyleImg, title: 'Freestyle Dance', description: 'Express yourself through freestyle movement' },
-    { id: 67, category: 'classes', image: newWeddingImg, title: 'Wedding Dance', description: 'Beautiful couple wedding dance choreography' },
-    { id: 68, category: 'classes', image: newAerobicsImg, title: 'Aerobics Class', description: 'High-energy aerobics workout session' },
-    { id: 69, category: 'classes', image: newSalsaImg, title: 'Salsa Dance', description: 'Passionate salsa partner dancing' },
-    { id: 70, category: 'classes', image: newYogaImg, title: 'Yoga Session', description: 'Mind-body yoga practice' },
-    { id: 71, category: 'classes', image: newTuttingImg, title: 'Tutting', description: 'Geometric shapes and finger tutting' },
-    { id: 72, category: 'classes', image: newLockingImg, title: 'Locking Dance', description: 'Funky locking dance style' },
-    { id: 73, category: 'classes', image: newHouseImg, title: 'House Dance', description: 'Fast-paced house dance moves' },
-    { id: 74, category: 'classes', image: newPoppingImg, title: 'Popping', description: 'Muscle contractions and animation' },
-    { id: 75, category: 'studio', image: newStudioImg1, title: 'Studio Session', description: 'Students at the dance studio' },
-    { id: 76, category: 'studio', image: newStudioImg2, title: 'Dance Practice', description: 'Group dance practice session' },
-    { id: 77, category: 'studio', image: newStudioImg3, title: 'Team Photo', description: 'Academy team group photo' },
-    { id: 78, category: 'studio', image: newStudioImg4, title: 'Studio Life', description: 'Behind the scenes at DDA' },
-    { id: 79, category: 'studio', image: newStudioImg5, title: 'Academy Moments', description: 'Capturing special moments' }
+    // Additional dance styles
+    { id: 27, category: 'performances', image: img21, title: 'Dance Performance', description: 'Professional dance showcase' },
+    { id: 28, category: 'performances', image: img23, title: 'Group Dance', description: 'Synchronized group performance' },
+    { id: 29, category: 'performances', image: img24, title: 'Dance Crew', description: 'Our talented dance crew' },
+    { id: 30, category: 'performances', image: img26, title: 'Stage Show', description: 'Live stage performance' },
+    { id: 31, category: 'performances', image: img27, title: 'Dance Showcase', description: 'Annual showcase performance' },
+    { id: 32, category: 'performances', image: img28, title: 'Competition', description: 'Dance competition performance' },
+    { id: 33, category: 'performances', image: img30, title: 'Urban Dance', description: 'Street style urban dance' },
   ]
 
   const filteredItems = activeFilter === 'all' 
@@ -330,77 +198,6 @@ const Gallery = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Video Section */}
-      <section className="section section-dark video-section">
-        <div className="container">
-          <motion.div 
-            className="section-title"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <span>Featured</span>
-            <h2>Watch Our Performances</h2>
-            <div className="decorative-line"></div>
-          </motion.div>
-          <div className="video-grid-actual">
-            <motion.div 
-              className="video-card-actual"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="video-container" onClick={() => handleVideoPlay(1)}>
-                <video 
-                  ref={videoRef1}
-                  src={performanceVideo1} 
-                  className="performance-video"
-                  playsInline
-                  onEnded={() => setPlayingVideo(null)}
-                />
-                {playingVideo !== 1 && (
-                  <div className="video-overlay-play">
-                    <span className="play-icon">▶</span>
-                  </div>
-                )}
-              </div>
-              <div className="video-info">
-                <h4>Dance Performance Showcase</h4>
-                <p>Watch our talented dancers perform various styles</p>
-              </div>
-            </motion.div>
-            <motion.div 
-              className="video-card-actual"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <div className="video-container" onClick={() => handleVideoPlay(2)}>
-                <video 
-                  ref={videoRef2}
-                  src={performanceVideo2} 
-                  className="performance-video"
-                  playsInline
-                  onEnded={() => setPlayingVideo(null)}
-                />
-                {playingVideo !== 2 && (
-                  <div className="video-overlay-play">
-                    <span className="play-icon">▶</span>
-                  </div>
-                )}
-              </div>
-              <div className="video-info">
-                <h4>Academy Highlights</h4>
-                <p>Experience the energy of Dream Dance Academy</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="section gallery-cta">

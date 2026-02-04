@@ -2,13 +2,10 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import './About.css'
 
-// Import images
-import mainBanner from '../../assets/WhatsApp Image 2026-01-19 at 19.07.44.jpeg'
-import studioImage1 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.29.jpeg'
-import studioImage2 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.30.jpeg'
-import promoImage from '../../assets/WhatsApp Image 2026-01-19 at 19.22.28.jpeg'
-
-// New images
+// Import images from newpics folder only
+import mainBanner from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.42.jpeg' // Bollywood group
+import studioImage1 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.45.jpeg' // Studio photo
+import studioImage2 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.45 (1).jpeg' // Studio photo
 import newBollywoodImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.42.jpeg'
 import newStudioImg from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.45.jpeg'
 
@@ -88,7 +85,7 @@ const About = () => {
             >
               <div className="story-image-container">
                 <div className="story-image main-image">
-                  <img src={newBollywoodImg} alt="Dream Dance Academy" />
+                  <img src={mainBanner} alt="Dream Dance Academy" />
                 </div>
               </div>
             </motion.div>
@@ -260,7 +257,7 @@ const About = () => {
             >
               <div className="facilities-images">
                 <div className="facility-img">
-                  <img src={newStudioImg} alt="Dance Studio" />
+                  <img src={studioImage1} alt="Dance Studio" />
                 </div>
               </div>
             </motion.div>

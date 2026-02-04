@@ -4,48 +4,33 @@ import './Home.css'
 
 // Import images
 import logoImage from '../../assets/logo.jpeg'
-// Old studio images for "Our Story" section
-import studioImage1 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.29.jpeg'
-import studioImage2 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.30.jpeg'
-import studioImage3 from '../../assets/WhatsApp Image 2026-01-19 at 19.22.21.jpeg'
-
-// Featured horizontal images
-import featuredImg1 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.51 (1).jpeg' // Kids Program (id 19)
-import featuredImg2 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.52.jpeg' // Group Photo (id 22)
-import featuredImg3 from '../../assets/WhatsApp Image 2026-01-21 at 10.13.53.jpeg' // Workshop (id 30)
-
-// Dance style images - professional photos
-import classicalImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42 (2).jpeg'
-import contemporaryImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.44.jpeg'
-import hipHopImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.43.jpeg'
-import zumbaImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.48.jpeg'
-import kathakImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42 (1).jpeg'
-// Replaced images that had other academy logos (UNITY, RISE & RHYTHM)
-import bollywoodImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42.jpeg' // DDA branded - kids Bollywood
-import balletImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.44 (1).jpeg' // DDA branded
-import salsaImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.47 (1).jpeg' // Kids dancing - no external logo
-import jazzImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.39.jpeg'
-import folkImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42.jpeg'
-import extraImage1 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.43 (1).jpeg'
-import extraImage2 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.44 (1).jpeg'
-import extraImage3 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.46.jpeg'
-import extraImage4 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.46 (1).jpeg'
-import extraImage5 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.47 (1).jpeg'
-import extraImage6 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.43 (1).jpeg' // Replaced - original had UNITY logo
 import qrCodeImage from '../../assets/qr.jpeg'
 
-// New dance style images from newpics
+// Import all dance style images from newpics folder only
 import punjabiImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.40.jpeg'
-import bollywoodNewImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.42.jpeg'
+import contemporaryImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.40 (1).jpeg'
+import classicalImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.40 (2).jpeg'
+import kidsWesternImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.41 (1).jpeg'
+import bollywoodImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.42.jpeg'
+import hipHopImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.44 (1).jpeg'
 import freestyleImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.45.jpeg'
+import bharatanatyamImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.45 (1).jpeg'
 import weddingDanceImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.46.jpeg'
 import aerobicsImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.47.jpeg'
-import salsaNewImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.48.jpeg'
+import coupleDanceImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.47 (1).jpeg'
+import salsaImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.48.jpeg'
 import yogaImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.49.jpeg'
+import zumbaImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.49 (1).jpeg'
+import waackingImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.49 (2).jpeg'
 import tuttingImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.50.jpeg'
 import lockingImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.51.jpeg'
 import houseDanceImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.52.jpeg'
 import poppingImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.53.jpeg'
+
+// Featured images for sections
+import studioImg1 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.45.jpeg'
+import studioImg2 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.45 (1).jpeg'
+import studioImg3 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.46.jpeg'
 
 const Home = () => {
   const fadeInUp = {
@@ -63,34 +48,25 @@ const Home = () => {
   }
 
   const danceStyles = [
-    { name: 'Kathak', image: classicalImage, description: 'Traditional Indian classical dance with graceful spins and expressions.' },
-    { name: 'Contemporary', image: contemporaryImage, description: 'Express yourself through fluid, emotional movement and modern techniques.' },
-    { name: 'Hip Hop', image: hipHopImage, description: 'Urban street dance with dynamic moves and high energy beats.' },
-    { name: 'Zumba', image: zumbaImage, description: 'High-energy fitness dance that makes working out fun and exciting.' },
-    { name: 'Bollywood', image: bollywoodNewImage, description: 'Vibrant Indian film-style dance with colorful choreography.' },
     { name: 'Punjabi', image: punjabiImage, description: 'Energetic Bhangra and Punjabi dance with traditional moves.' },
-    { name: 'Folk Dance', image: bollywoodImage, description: 'Traditional cultural dances celebrating Indian heritage.' },
+    { name: 'Contemporary', image: contemporaryImage, description: 'Express yourself through fluid, emotional movement and modern techniques.' },
+    { name: 'Classical Dance', image: classicalImage, description: 'Traditional Indian classical dance forms with graceful expressions.' },
+    { name: 'Kids Western', image: kidsWesternImage, description: 'Fun western dance styles for young aspiring dancers.' },
+    { name: 'Bollywood', image: bollywoodImage, description: 'Vibrant Indian film-style dance with colorful choreography.' },
+    { name: 'Hip Hop', image: hipHopImage, description: 'Urban street dance with dynamic moves and high energy beats.' },
     { name: 'Freestyle', image: freestyleImage, description: 'Express your unique style through free-form dance movements.' },
-    { name: 'Wedding Dance', image: weddingDanceImage, description: 'Special choreography for your wedding first dance and sangeet.' },
+    { name: 'Bharatanatyam', image: bharatanatyamImage, description: 'Classical South Indian dance with intricate footwork.' },
+    { name: 'Wedding Dance', image: weddingDanceImage, description: 'Special choreography for your wedding and sangeet.' },
     { name: 'Aerobics', image: aerobicsImage, description: 'Fun cardio workout combining dance moves with fitness.' },
-    { name: 'Salsa', image: salsaNewImage, description: 'Passionate Latin dance with partner work and rhythmic footwork.' },
-    { name: 'Yoga', image: yogaImage, description: 'Mind-body practice combining movement, meditation and breathing.' },
-    { name: 'Jazz', image: balletImage, description: 'Energetic and expressive dance with dynamic movements.' },
-    { name: 'Kids Dance', image: salsaImage, description: 'Fun age-appropriate classes for young aspiring dancers.' },
-    { name: 'Western', image: jazzImage, description: 'Modern western dance styles including jazz and freestyle.' },
-    { name: 'Semi-Classical', image: folkImage, description: 'Fusion of classical and contemporary Indian dance forms.' },
-    { name: 'Afro', image: extraImage1, description: 'Vibrant African dance styles with powerful rhythms and movements.' },
-    { name: 'Ballet', image: extraImage2, description: 'Classical ballet focusing on technique, grace, and poise.' },
-    { name: 'Belly Dance', image: extraImage3, description: 'Mesmerizing belly dance with isolations and fluid movements.' },
-    { name: 'House', image: houseDanceImage, description: 'Fast-paced house dance with footwork and jacking.' },
-    { name: 'K-Pop', image: extraImage5, description: 'Learn choreography from popular K-Pop songs and artists.' },
-    { name: 'Krumping', image: extraImage6, description: 'Express raw emotion through powerful krump movements.' },
-    { name: 'Locking', image: lockingImage, description: 'Funky locking with signature pauses and pointing.' },
-    { name: 'Lyrical', image: contemporaryImage, description: 'Expressive dance combining ballet and jazz with emotion.' },
-    { name: 'Old School', image: jazzImage, description: 'Classic hip hop grooves and party dances from the 80s-90s.' },
-    { name: 'Popping', image: poppingImage, description: 'Iconic muscle contractions with hits, waves, and animation.' },
+    { name: 'Couple Dance', image: coupleDanceImage, description: 'Elegant partner dancing for couples.' },
+    { name: 'Salsa', image: salsaImage, description: 'Passionate Latin dance with rhythmic footwork.' },
+    { name: 'Yoga', image: yogaImage, description: 'Mind-body practice combining movement and meditation.' },
+    { name: 'Zumba', image: zumbaImage, description: 'High-energy fitness dance that makes working out fun.' },
+    { name: 'Waacking', image: waackingImage, description: 'Dramatic arm movements and poses from the disco era.' },
     { name: 'Tutting', image: tuttingImage, description: 'Create geometric shapes with your body and fingers.' },
-    { name: 'Waacking', image: extraImage3, description: 'Dramatic arm movements and poses from the disco era.' },
+    { name: 'Locking', image: lockingImage, description: 'Funky locking with signature pauses and pointing.' },
+    { name: 'House', image: houseDanceImage, description: 'Fast-paced house dance with footwork and jacking.' },
+    { name: 'Popping', image: poppingImage, description: 'Iconic muscle contractions with hits, waves, and animation.' },
   ]
 
   const stats = [
@@ -201,7 +177,7 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span style={{"font-size": "30px" }}>What We Offer</span>
+            <span style={{"fontSize": "30px" }}>What We Offer</span>
             <h2 style={{ color: "rgba(255, 255, 255, 0.8)" }}>Dance Styles for Every Soul</h2>
             <div className="decorative-line"></div>
           </motion.div>
@@ -264,13 +240,13 @@ const Home = () => {
             >
               <div className="visual-collage">
                 <div className="collage-item collage-1">
-                  <img src={studioImage1} alt="Dance Studio" />
+                  <img src={studioImg1} alt="Dance Studio" />
                 </div>
                 <div className="collage-item collage-2">
-                  <img src={studioImage2} alt="Dance Studio" />
+                  <img src={studioImg2} alt="Dance Studio" />
                 </div>
                 <div className="collage-item collage-3">
-                  <img src={studioImage3} alt="Dance Studio" />
+                  <img src={studioImg3} alt="Dance Studio" />
                 </div>
               </div>
             </motion.div>
@@ -300,10 +276,10 @@ const Home = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <img src={featuredImg1} alt="Kids Dance Program" />
+              <img src={bollywoodImage} alt="Bollywood Dance" />
               <div className="featured-overlay">
-                <h4>Kids Program</h4>
-                <p>Young dancers showcasing their talent</p>
+                <h4>Bollywood Dance</h4>
+                <p>Vibrant group performances</p>
               </div>
             </motion.div>
             <motion.div 
@@ -313,10 +289,10 @@ const Home = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <img src={featuredImg2} alt="Dance Group Photo" />
+              <img src={classicalImage} alt="Classical Dance" />
               <div className="featured-overlay">
-                <h4>Our Dance Family</h4>
-                <p>Dance batch group photo</p>
+                <h4>Classical Dance</h4>
+                <p>Traditional Indian dance forms</p>
               </div>
             </motion.div>
             <motion.div 
@@ -326,10 +302,10 @@ const Home = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <img src={featuredImg3} alt="Dance Workshop" />
+              <img src={hipHopImage} alt="Hip Hop Dance" />
               <div className="featured-overlay">
-                <h4>Dance Workshop</h4>
-                <p>Special training sessions</p>
+                <h4>Hip Hop</h4>
+                <p>Urban groove and street dance</p>
               </div>
             </motion.div>
           </div>
