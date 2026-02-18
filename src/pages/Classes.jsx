@@ -37,7 +37,7 @@ const Classes = () => {
       image: kathakImage,
       description: 'Explore the ancient art of Indian classical dance. Kathak combines storytelling, graceful spins, footwork, and expressive movements.',
       schedule: 'Sat, Sun',
-      price: '₹2200/month',
+      price: '₹1199/month',
       features: ['Tatkar (footwork)', 'Hand gestures', 'Facial expressions', 'Traditional compositions']
     },
     {
@@ -49,7 +49,7 @@ const Classes = () => {
       image: contemporaryImage,
       description: 'Express emotions through fluid movement. Contemporary dance combines elements of multiple dance styles, emphasizing personal expression and creativity.',
       schedule: 'Tue, Thu, Sat',
-      price: '₹1800/month',
+      price: '₹1199/month',
       features: ['Floor work', 'Improvisation', 'Contact techniques', 'Choreography']
     },
     {
@@ -61,7 +61,7 @@ const Classes = () => {
       image: hipHopImage,
       description: 'Learn the latest street dance styles including popping, locking, and breaking. High-energy classes set to the hottest beats.',
       schedule: 'Mon, Wed, Sat',
-      price: '₹1500/month',
+      price: '₹1199/month',
       features: ['Grooves & foundations', 'Freestyle', 'Choreography', 'Battle prep']
     },
     {
@@ -73,7 +73,7 @@ const Classes = () => {
       image: zumbaImage,
       description: 'High-energy fitness dance class that makes working out fun. Great cardio and full body workout!',
       schedule: 'Tue, Thu',
-      price: '₹1200/month',
+      price: '₹1199/month',
       features: ['Cardio workout', 'Latin rhythms', 'Easy moves', 'Fun atmosphere']
     },
     {
@@ -85,7 +85,7 @@ const Classes = () => {
       image: classicalImage,
       description: 'Vibrant Indian film-style dance with colorful choreography. Learn popular Bollywood moves and routines.',
       schedule: 'Mon, Wed, Fri',
-      price: '₹1500/month',
+      price: '₹1199/month',
       features: ['Film choreography', 'Expressive movements', 'Group formations', 'Performance prep']
     },
     {
@@ -97,7 +97,7 @@ const Classes = () => {
       image: kuchipuriImage,
       description: 'Traditional cultural dances celebrating Indian heritage. Learn various folk styles from different regions.',
       schedule: 'Fri, Sun',
-      price: '₹1500/month',
+      price: '₹1199/month',
       features: ['Regional styles', 'Traditional costumes', 'Group choreography', 'Cultural events']
     },
     {
@@ -109,7 +109,7 @@ const Classes = () => {
       image: classPromoImage,
       description: 'Fun, age-appropriate classes introducing children to the joy of dance. Building coordination, confidence, and creativity.',
       schedule: 'Sat morning',
-      price: '₹1000/month',
+      price: '₹1199/month',
       features: ['Creative movement', 'Basic technique', 'Games & activities', 'Recital prep']
     },
     {
@@ -121,7 +121,7 @@ const Classes = () => {
       image: classicalImage2,
       description: 'Fusion of classical and contemporary Indian dance forms. Perfect blend of tradition and modernity.',
       schedule: 'Wed, Sat',
-      price: '₹1800/month',
+      price: '₹1199/month',
       features: ['Fusion techniques', 'Modern compositions', 'Traditional elements', 'Stage performance']
     },
     {
@@ -133,7 +133,7 @@ const Classes = () => {
       image: westernImage,
       description: 'Modern western dance styles including jazz, freestyle, and commercial choreography for all skill levels.',
       schedule: 'Mon, Wed, Fri',
-      price: '₹1500/month',
+      price: '₹1199/month',
       features: ['Jazz basics', 'Freestyle', 'Commercial style', 'Music video choreography']
     },
     {
@@ -145,7 +145,7 @@ const Classes = () => {
       image: jazzImage,
       description: 'Energetic theatrical dance with dynamic choreography. Learn classic and contemporary jazz techniques.',
       schedule: 'Tue, Thu',
-      price: '₹1600/month',
+      price: '₹1199/month',
       features: ['Jazz technique', 'Isolations', 'Broadway style', 'Performance pieces']
     },
     {
@@ -157,7 +157,7 @@ const Classes = () => {
       image: semiClassicalImage,
       description: 'Advanced fusion of contemporary and jazz styles for experienced dancers seeking artistic expression.',
       schedule: 'Sat afternoon',
-      price: '₹2000/month',
+      price: '₹1199/month',
       features: ['Advanced technique', 'Improvisation', 'Partnering', 'Competition prep']
     },
     {
@@ -169,7 +169,7 @@ const Classes = () => {
       image: bollywoodImage,
       description: 'Fun Bollywood dance classes designed specially for kids. Learn popular movie songs and choreography.',
       schedule: 'Sun morning',
-      price: '₹900/month',
+      price: '₹1199/month',
       features: ['Popular songs', 'Easy choreography', 'Fun activities', 'Annual showcase']
     },
     {
@@ -181,7 +181,7 @@ const Classes = () => {
       image: extraImage1,
       description: 'Experience the vibrant and energetic Afro dance styles. Learn authentic African dance movements with powerful rhythms.',
       schedule: 'Mon, Wed',
-      price: '₹1500/month',
+      price: '₹1199/month',
       features: ['African rhythms', 'Body isolations', 'Cultural expression', 'High energy']
     },
     {
@@ -193,7 +193,7 @@ const Classes = () => {
       image: extraImage2,
       description: 'Classical ballet training focusing on technique, grace, and poise. Build strength and flexibility through elegant movements.',
       schedule: 'Tue, Thu, Sat',
-      price: '₹2000/month',
+      price: '₹1199/month',
       features: ['Classical technique', 'Barre work', 'Center combinations', 'Pointe preparation']
     },
     {
@@ -205,7 +205,7 @@ const Classes = () => {
       image: extraImage3,
       description: 'Learn the mesmerizing art of belly dance. Master isolations, shimmies, and fluid movements for this ancient dance form.',
       schedule: 'Wed, Fri',
-      price: '₹1600/month',
+      price: '₹1199/month',
       features: ['Hip isolations', 'Shimmies', 'Veil work', 'Core strength']
     },
     {
@@ -217,7 +217,7 @@ const Classes = () => {
       image: extraImage4,
       description: 'Groove to house music with this fast-paced dance style. Learn footwork, jacking, and lofting techniques.',
       schedule: 'Tue, Sat',
-      price: '₹1500/month',
+      price: '₹1199/month',
       features: ['Footwork', 'Jacking', 'Lofting', 'Social dancing']
     },
     {
@@ -229,7 +229,7 @@ const Classes = () => {
       image: extraImage5,
       description: 'Learn choreography from popular K-Pop songs. Master the sharp, synchronized moves of your favorite K-Pop artists.',
       schedule: 'Mon, Wed, Fri',
-      price: '₹1500/month',
+      price: '₹1199/month',
       features: ['K-Pop choreography', 'Sharp movements', 'Group formations', 'Cover dance']
     },
     {
@@ -241,7 +241,7 @@ const Classes = () => {
       image: extraImage6,
       description: 'Express raw emotion through powerful krump movements. Learn chest pops, arm swings, and stomps in this intense dance style.',
       schedule: 'Thu, Sat',
-      price: '₹1500/month',
+      price: '₹1199/month',
       features: ['Chest pops', 'Arm swings', 'Stomps', 'Battle training']
     },
     {
@@ -253,7 +253,7 @@ const Classes = () => {
       image: hipHopImage,
       description: 'Master the funky art of locking with its signature pauses and pointing. Learn classic moves like locks, points, and wrist rolls.',
       schedule: 'Mon, Wed',
-      price: '₹1500/month',
+      price: '₹1199/month',
       features: ['Lock techniques', 'Points & wrist rolls', 'Funk foundations', 'Performance style']
     },
     {
@@ -265,7 +265,7 @@ const Classes = () => {
       image: contemporaryImage,
       description: 'Express emotions through fluid, expressive movement. Combine ballet and jazz techniques with contemporary storytelling.',
       schedule: 'Tue, Thu',
-      price: '₹1800/month',
+      price: '₹1199/month',
       features: ['Emotional expression', 'Musicality', 'Floor work', 'Performance pieces']
     },
     {
@@ -277,7 +277,7 @@ const Classes = () => {
       image: westernImage,
       description: 'Go back to the roots with old school hip hop. Learn classic grooves, party dances, and foundational moves from the 80s and 90s.',
       schedule: 'Wed, Sat',
-      price: '₹1500/month',
+      price: '₹1199/month',
       features: ['Classic grooves', 'Party dances', 'Breakdance basics', 'Hip hop history']
     },
     {
@@ -289,7 +289,7 @@ const Classes = () => {
       image: extraImage1,
       description: 'Learn the art of popping with its iconic muscle contractions. Master hits, waves, and animation techniques.',
       schedule: 'Mon, Thu',
-      price: '₹1500/month',
+      price: '₹1199/month',
       features: ['Hits & pops', 'Waves', 'Animation', 'Boogaloo style']
     },
     {
@@ -301,7 +301,7 @@ const Classes = () => {
       image: extraImage2,
       description: 'Create geometric shapes with your body in this visually stunning dance style. Master finger tutting and full-body angles.',
       schedule: 'Tue, Fri',
-      price: '₹1500/month',
+      price: '₹1199/month',
       features: ['Finger tutting', 'Box shapes', 'Geometric patterns', 'Musicality']
     },
     {
@@ -313,7 +313,7 @@ const Classes = () => {
       image: extraImage3,
       description: 'Express yourself with dramatic arm movements and poses. Learn the disco-era dance with its signature punching and posing.',
       schedule: 'Wed, Sat',
-      price: '₹1500/month',
+      price: '₹1199/month',
       features: ['Arm movements', 'Posing', 'Disco funk', 'Performance style']
     }
   ]

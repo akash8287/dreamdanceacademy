@@ -43,7 +43,7 @@ const PreAdmission = () => {
     parentGuardianName: '',
     parentGuardianPhone: '',
     parentGuardianRelation: '',
-    paymentAmount: '2000'
+    paymentAmount: '1199'
   })
 
   const idProofTypes = [

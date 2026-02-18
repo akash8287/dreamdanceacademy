@@ -27,7 +27,7 @@ const StudentDashboard = () => {
   // Fees and Certificates state
   const [fees, setFees] = useState([])
   const [currentFee, setCurrentFee] = useState(null)
-  const [monthlyFee, setMonthlyFee] = useState(2000)
+  const [monthlyFee, setMonthlyFee] = useState(1199)
   const [certificates, setCertificates] = useState([])
   const [certificateData, setCertificateData] = useState({
     isEligible: false,
@@ -51,7 +51,7 @@ const StudentDashboard = () => {
         studentAPI.getProfile(),
         studentAPI.getSchedule(),
         studentAPI.getDocuments(),
-        feesAPI.getMyFees().catch(() => ({ fees: [], currentFee: null, monthlyFee: 2000 })),
+        feesAPI.getMyFees().catch(() => ({ fees: [], currentFee: null, monthlyFee: 1199 })),
         feesAPI.getMyCertificates().catch(() => ({ certificates: [], isEligible: false }))
       ])
       setProfile(profileData)

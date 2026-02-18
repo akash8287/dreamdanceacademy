@@ -40,7 +40,7 @@ const AdminDashboard = () => {
     userId: null,
     month: new Date().toLocaleString('en-US', { month: 'long' }),
     year: new Date().getFullYear(),
-    amount: 2000,
+    amount: 1199,
     adminNotes: ''
   })
 
