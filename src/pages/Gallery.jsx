@@ -3,9 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import './Gallery.css'
 
-// Import logo
-import logoImage from '../../assets/logo.jpeg'
-
 // Import all images from newpics folder only
 import img1 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.40.jpeg' // Punjabi
 import img2 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.40 (1).jpeg' // Contemporary
@@ -43,19 +40,6 @@ import img33 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.46.jp
 import img34 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.46 (1).jpeg' // Studio Photo
 import img35 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.46 (2).jpeg' // Studio Photo
 
-// Import images from latestpics folder - Dance Floor
-import floor1 from '../../assets/latestpics/WhatsApp Image 2026-02-04 at 12.46.26.jpeg'
-import floor2 from '../../assets/latestpics/WhatsApp Image 2026-02-04 at 12.46.26 (1).jpeg'
-import floor3 from '../../assets/latestpics/WhatsApp Image 2026-02-04 at 12.46.26 (2).jpeg'
-import floor4 from '../../assets/latestpics/WhatsApp Image 2026-02-04 at 12.46.28.jpeg'
-import floor5 from '../../assets/latestpics/WhatsApp Image 2026-02-04 at 12.46.28 (1).jpeg'
-import floor6 from '../../assets/latestpics/WhatsApp Image 2026-02-04 at 12.46.29.jpeg'
-import floor7 from '../../assets/latestpics/WhatsApp Image 2026-02-04 at 12.46.29 (1).jpeg'
-import floor8 from '../../assets/latestpics/WhatsApp Image 2026-02-04 at 12.46.30.jpeg'
-import floor9 from '../../assets/latestpics/WhatsApp Image 2026-02-04 at 12.46.30 (1).jpeg'
-import floor10 from '../../assets/latestpics/WhatsApp Image 2026-02-04 at 12.46.30 (2).jpeg'
-import floor11 from '../../assets/latestpics/WhatsApp Image 2026-02-04 at 12.46.31.jpeg'
-
 const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState('all')
   const [selectedImage, setSelectedImage] = useState(null)
@@ -92,7 +76,7 @@ const Gallery = () => {
     
     // Studio Photos
     { id: 20, category: 'studio', image: img4, title: 'DDA Branding', description: 'Dream Dance Academy official logo' },
-    { id: 21, category: 'studio', image: logoImage, title: 'Our Logo', description: 'Dream Dance Academy brand' },
+    { id: 21, category: 'studio', image: img4, title: 'Our Logo', description: 'Dream Dance Academy brand' },
     { id: 22, category: 'studio', image: img31, title: 'Studio Session', description: 'Students at the dance studio' },
     { id: 23, category: 'studio', image: img32, title: 'Dance Practice', description: 'Group dance practice session' },
     { id: 24, category: 'studio', image: img33, title: 'Team Photo', description: 'Academy team group photo' },
@@ -108,18 +92,18 @@ const Gallery = () => {
     { id: 32, category: 'performances', image: img28, title: 'Competition', description: 'Dance competition performance' },
     { id: 33, category: 'performances', image: img30, title: 'Urban Dance', description: 'Street style urban dance' },
     
-    // The Dance Floor
-    { id: 34, category: 'dancefloor', image: floor1, title: 'The Dance Floor', description: 'Our beautiful dance floor space' },
-    { id: 35, category: 'dancefloor', image: floor2, title: 'The Dance Floor', description: 'Practice space for dancers' },
-    { id: 36, category: 'dancefloor', image: floor3, title: 'The Dance Floor', description: 'Professional dance studio' },
-    { id: 37, category: 'dancefloor', image: floor4, title: 'The Dance Floor', description: 'Spacious dance area' },
-    { id: 38, category: 'dancefloor', image: floor5, title: 'The Dance Floor', description: 'Dance studio ambiance' },
-    { id: 39, category: 'dancefloor', image: floor6, title: 'The Dance Floor', description: 'Where magic happens' },
-    { id: 40, category: 'dancefloor', image: floor7, title: 'The Dance Floor', description: 'Training space' },
-    { id: 41, category: 'dancefloor', image: floor8, title: 'The Dance Floor', description: 'Dance practice area' },
-    { id: 42, category: 'dancefloor', image: floor9, title: 'The Dance Floor', description: 'Studio floor view' },
-    { id: 43, category: 'dancefloor', image: floor10, title: 'The Dance Floor', description: 'Dance floor setup' },
-    { id: 44, category: 'dancefloor', image: floor11, title: 'The Dance Floor', description: 'Our dance space' },
+    // The Dance Floor - studio photos from newpics
+    { id: 34, category: 'dancefloor', image: img31, title: 'The Dance Floor', description: 'Our beautiful dance floor space' },
+    { id: 35, category: 'dancefloor', image: img32, title: 'The Dance Floor', description: 'Practice space for dancers' },
+    { id: 36, category: 'dancefloor', image: img33, title: 'The Dance Floor', description: 'Professional dance studio' },
+    { id: 37, category: 'dancefloor', image: img34, title: 'The Dance Floor', description: 'Spacious dance area' },
+    { id: 38, category: 'dancefloor', image: img35, title: 'The Dance Floor', description: 'Dance studio ambiance' },
+    { id: 39, category: 'dancefloor', image: img31, title: 'The Dance Floor', description: 'Where magic happens' },
+    { id: 40, category: 'dancefloor', image: img32, title: 'The Dance Floor', description: 'Training space' },
+    { id: 41, category: 'dancefloor', image: img33, title: 'The Dance Floor', description: 'Dance practice area' },
+    { id: 42, category: 'dancefloor', image: img34, title: 'The Dance Floor', description: 'Studio floor view' },
+    { id: 43, category: 'dancefloor', image: img35, title: 'The Dance Floor', description: 'Dance floor setup' },
+    { id: 44, category: 'dancefloor', image: img31, title: 'The Dance Floor', description: 'Our dance space' },
   ]
 
   const filteredItems = activeFilter === 'all' 

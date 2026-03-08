@@ -3,25 +3,28 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import './Classes.css'
 
-// Import images - Professional dance photos
-import hipHopImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.43.jpeg'
-import kathakImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42 (2).jpeg'
-import zumbaImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.48.jpeg'
-import classicalImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42 (1).jpeg'
-import contemporaryImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.44.jpeg'
-import kuchipuriImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.55.jpeg'
-import classicalImage2 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42.jpeg'
-import classPromoImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.47.jpeg'
-import bollywoodImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.42 (1).jpeg'
-import jazzImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.39.jpeg'
-import westernImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.50.jpeg'
-import semiClassicalImage from '../../assets/WhatsApp Image 2026-01-21 at 10.14.49 (1).jpeg'
-import extraImage1 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.43 (1).jpeg'
-import extraImage2 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.44 (1).jpeg'
-import extraImage3 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.46.jpeg'
-import extraImage4 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.46 (1).jpeg'
-import extraImage5 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.47 (1).jpeg'
-import extraImage6 from '../../assets/WhatsApp Image 2026-01-21 at 10.14.49.jpeg'
+// Single source of truth - same images as Home page
+import {
+  contemporaryImage,
+  classicalImage,
+  punjabiImage,
+  bharatanatyamImage,
+  kidsWesternImage,
+  bollywoodImage,
+  hipHopImage,
+  freestyleImage,
+  zumbaImage,
+  lockingImage,
+  tuttingImage,
+  waackingImage,
+  poppingImage,
+  extraImage1,
+  extraImage2,
+  extraImage3,
+  extraImage4,
+  extraImage5,
+  extraImage6,
+} from '../constants/danceImages'
 import qrCodeImage from '../../assets/qr.jpeg'
 
 const Classes = () => {
@@ -34,7 +37,7 @@ const Classes = () => {
       category: 'classical',
       level: 'All Levels',
       duration: '90 min',
-      image: kathakImage,
+      image: classicalImage,
       description: 'Explore the ancient art of Indian classical dance. Kathak combines storytelling, graceful spins, footwork, and expressive movements.',
       schedule: 'Sat, Sun',
       price: '₹1199/month',
@@ -82,7 +85,7 @@ const Classes = () => {
       category: 'social',
       level: 'All Levels',
       duration: '60 min',
-      image: classicalImage,
+      image: bollywoodImage,
       description: 'Vibrant Indian film-style dance with colorful choreography. Learn popular Bollywood moves and routines.',
       schedule: 'Mon, Wed, Fri',
       price: '₹1199/month',
@@ -94,7 +97,7 @@ const Classes = () => {
       category: 'social',
       level: 'All Levels',
       duration: '60 min',
-      image: kuchipuriImage,
+      image: punjabiImage,
       description: 'Traditional cultural dances celebrating Indian heritage. Learn various folk styles from different regions.',
       schedule: 'Fri, Sun',
       price: '₹1199/month',
@@ -106,7 +109,7 @@ const Classes = () => {
       category: 'kids',
       level: 'Ages 4-12',
       duration: '45-60 min',
-      image: classPromoImage,
+      image: kidsWesternImage,
       description: 'Fun, age-appropriate classes introducing children to the joy of dance. Building coordination, confidence, and creativity.',
       schedule: 'Sat morning',
       price: '₹1199/month',
@@ -118,7 +121,7 @@ const Classes = () => {
       category: 'classical',
       level: 'All Levels',
       duration: '75 min',
-      image: classicalImage2,
+      image: bharatanatyamImage,
       description: 'Fusion of classical and contemporary Indian dance forms. Perfect blend of tradition and modernity.',
       schedule: 'Wed, Sat',
       price: '₹1199/month',
@@ -130,7 +133,7 @@ const Classes = () => {
       category: 'urban',
       level: 'All Levels',
       duration: '60 min',
-      image: westernImage,
+      image: freestyleImage,
       description: 'Modern western dance styles including jazz, freestyle, and commercial choreography for all skill levels.',
       schedule: 'Mon, Wed, Fri',
       price: '₹1199/month',
@@ -142,7 +145,7 @@ const Classes = () => {
       category: 'modern',
       level: 'Intermediate',
       duration: '60 min',
-      image: jazzImage,
+      image: contemporaryImage,
       description: 'Energetic theatrical dance with dynamic choreography. Learn classic and contemporary jazz techniques.',
       schedule: 'Tue, Thu',
       price: '₹1199/month',
@@ -154,7 +157,7 @@ const Classes = () => {
       category: 'modern',
       level: 'Advanced',
       duration: '90 min',
-      image: semiClassicalImage,
+      image: contemporaryImage,
       description: 'Advanced fusion of contemporary and jazz styles for experienced dancers seeking artistic expression.',
       schedule: 'Sat afternoon',
       price: '₹1199/month',
@@ -250,7 +253,7 @@ const Classes = () => {
       category: 'urban',
       level: 'All Levels',
       duration: '60 min',
-      image: hipHopImage,
+      image: lockingImage,
       description: 'Master the funky art of locking with its signature pauses and pointing. Learn classic moves like locks, points, and wrist rolls.',
       schedule: 'Mon, Wed',
       price: '₹1199/month',
@@ -274,7 +277,7 @@ const Classes = () => {
       category: 'urban',
       level: 'All Levels',
       duration: '60 min',
-      image: westernImage,
+      image: hipHopImage,
       description: 'Go back to the roots with old school hip hop. Learn classic grooves, party dances, and foundational moves from the 80s and 90s.',
       schedule: 'Wed, Sat',
       price: '₹1199/month',
@@ -286,7 +289,7 @@ const Classes = () => {
       category: 'urban',
       level: 'Intermediate',
       duration: '60 min',
-      image: extraImage1,
+      image: poppingImage,
       description: 'Learn the art of popping with its iconic muscle contractions. Master hits, waves, and animation techniques.',
       schedule: 'Mon, Thu',
       price: '₹1199/month',
@@ -298,7 +301,7 @@ const Classes = () => {
       category: 'urban',
       level: 'All Levels',
       duration: '60 min',
-      image: extraImage2,
+      image: tuttingImage,
       description: 'Create geometric shapes with your body in this visually stunning dance style. Master finger tutting and full-body angles.',
       schedule: 'Tue, Fri',
       price: '₹1199/month',
@@ -310,7 +313,7 @@ const Classes = () => {
       category: 'urban',
       level: 'All Levels',
       duration: '60 min',
-      image: extraImage3,
+      image: waackingImage,
       description: 'Express yourself with dramatic arm movements and poses. Learn the disco-era dance with its signature punching and posing.',
       schedule: 'Wed, Sat',
       price: '₹1199/month',

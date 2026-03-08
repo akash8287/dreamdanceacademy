@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from '../context/AuthContext'
 import './Navbar.css'
-import logoImage from '../../assets/logo.jpeg'
+import { logoImage } from '../constants/danceImages'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
