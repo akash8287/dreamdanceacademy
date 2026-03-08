@@ -29,6 +29,8 @@ import logoImage from '../../assets/newpics/WhatsApp Image 2026-01-29 at 11.30.4
 import studioImg1 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.45.jpeg'
 import studioImg2 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.45 (1).jpeg'
 import studioImg3 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.46.jpeg'
+import studioImg4 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.46 (1).jpeg'
+import studioImg5 from '../../assets/newpics/WhatsApp Image 2026-01-29 at 13.06.46 (2).jpeg'
 
 // Extra images for Classes-only styles (reuse style images for consistency)
 const extraImage1 = hipHopImage   // Afro Dance
@@ -62,6 +64,8 @@ export {
   studioImg1,
   studioImg2,
   studioImg3,
+  studioImg4,
+  studioImg5,
   extraImage1,
   extraImage2,
   extraImage3,
